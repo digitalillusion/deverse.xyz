@@ -1,0 +1,138 @@
+footer .switch-button div {
+    display: none;
+}
+
+#portfolio {
+    overflow: hidden;
+}
+
+
+.main-title-text{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.main-title-subtext{
+    position: relative;
+    z-index: 10;
+}
+
+#home svg{
+    width: 100%;
+    height: inherit;
+    text{
+        text-anchor: middle;
+    }
+    #title{
+        letter-spacing: -2px;
+        font-size: 12em;
+        font-weight: 800;
+    }
+    #subtitle{
+        letter-spacing: 8px;
+        font-size: 1.2em;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+    .dark-mode #base{
+
+    }
+    #alpha{
+        fill: url(#alpha-gradient);
+    }
+    #base{
+        fill: white;
+        mask: url(#mask);
+    }
+}
+
+.dark-mode #home svg #base {
+    fill: #171B27;
+    mask: url(#mask);
+}
+
+section#home,
+section#about {
+    background-color:  transparent;
+}
+section {
+    position: relative;
+    z-index: 10;
+    background-color: white;
+}
+section svg text {
+    font-size: 6px;
+}
+section#about {
+    z-index: 1;
+    height: 1000px;
+}
+
+
+.dark-mode section {
+    background-color: #171B27;
+}
+
+#wallpaper{
+    background: url(/images/wall.jpg) no-repeat top center;
+    background-size: cover;
+    position: fixed !important;
+    width: 100%;
+    min-height: 200px;
+    z-index: 0;
+}
+
+.intro {
+    position: relative;
+    z-index: 10;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+.row {
+    max-width: 1280px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.footer {
+    position: relative;
+    index: 1;
+}
+
+.social-buttons {
+    z-index:10
+}
+
+.default__wrapper {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding-top: 10em;
+}
+
+.default__wrapper .caption {
+    font-weight: bold;
+    font-size: 2em;
+    white-space: nowrap;
+}
+
+.default__wrapper .label {
+    font-weight: normal;
+    font-size: 0.5em;
+}
+
+.default__wrapper .balloon {
+    text-align: center;
+    padding: 2em;
+    max-width: 600px;
+}
+
