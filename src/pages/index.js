@@ -1,14 +1,13 @@
 import React, { useState } from "react"
-import Layout from "gatsby-theme-elemental/src/components/layout";
+import Layout from "../components/layout";
 import { graphql } from "gatsby";
-import SEO from "gatsby-theme-elemental/src/components/seo";
-import SocialLinks from "gatsby-theme-elemental/src/components/sociallinks";
-import PortfolioList from "gatsby-theme-elemental/src/components/list-portfolio";
-import BlogList from "gatsby-theme-elemental/src/components/list-blog";
-import Contact from "gatsby-theme-elemental/src/components/contact";
-import "gatsby-theme-elemental/src/style/wall.less";
+import SEO from "../components/seo"
+import SocialLinks from "../components/sociallinks";
+import "../styles/wall.less";
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 import AboutSection from "../components/about"
+import Img from "gatsby-image";
+import PortfolioSection from "../components/portfolio"
 
 function IndexPage({ data }){
   const siteMetadata = data.site.siteMetadata
@@ -18,7 +17,9 @@ function IndexPage({ data }){
   });
   return (
     <Layout placeholder={false}>
-      <div id="wallpaper" style={{ height: winHeight + "px" }} />
+      <Img className="wallpaper" fluid={
+        data.wall.childImageSharp.fluid
+      } />
       <section id="home">
         <SEO
           lang="en"
@@ -40,7 +41,7 @@ function IndexPage({ data }){
                       <stop offset="70%" stop-color="white" />
                       <stop offset="80%" stop-color="lightgrey" />
                       <stop offset="90%" stop-color="grey" />
-                      <stop offset="100%" stop-color="black" />
+                      <stop offset="99%" stop-color="black" />
                     </linearGradient>
                   </defs>
                   <rect id="base" x="0" y="0" width="100%" height="100%"/>
@@ -66,9 +67,7 @@ function IndexPage({ data }){
       </section>
 
       <AboutSection messages={siteMetadata.aboutMessages}/>
-      <PortfolioList />
-      <BlogList />
-      <Contact />
+      <PortfolioSection />
     </Layout>
   );
 }
@@ -94,6 +93,13 @@ export const query = graphql`
                   label
                 }
             }
+        }
+        wall: file(absolutePath: { regex: "/wall.jpg/" }) {
+          childImageSharp {
+            fluid (quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
     }
 `;

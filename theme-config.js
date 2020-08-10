@@ -2,9 +2,9 @@
 module.exports = {
   siteMetadata: {
     title: `deverse.xyz`,
-    logo: `/images/logo.png`,
-    icon: `/images/icon.png`,
-
+    logo: `/images/deverse.svg`,
+    icon: `/images/deverse.svg`,
+    titleImage: `/images/wall.jpg`,
     introTag: `FRONT END | BACK END | MOBILE`,
     description: `Professional full-stack freelance development and integration, at your service.`,
     author: `@_akzhy`,
@@ -12,10 +12,11 @@ module.exports = {
     portfolioItemsPerPage: 10,
     darkmode: true,
     switchTheme: true,
+    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     aboutMessages: [
       { caption: "A development universe", label: "Expertise in a wide variety of technologies and functional domains" },
-      { caption: "Diverse development", label: "Committing to work with engagement and interest in the project, or not committing at all!" },
-      { caption: "Development is sexy at last!", label: "Always thriving passion, creativity and fun" },
+      { caption: "A diverse mindset", label: "Devoted to work only with engagement and interest" },
+      { caption: "Enjoying makes it better", label: "Always thriving passion, creativity and fun" },
     ],
     navLinks: [{
         name: "home",
@@ -48,23 +49,18 @@ module.exports = {
         }
     ],
     social: [{
-        name: "Facebook",
-        icon: "/images/Facebook.svg",
+        name: "github",
+        icon: "/images/github.svg",
         url: "#"
       },
       {
-        name: "Twitter",
-        icon: "/images/Twitter.svg",
+        name: "Linkedin",
+        icon: "/images/linkedin.svg",
         url: "#"
       },
       {
-        name: "Instagram",
-        icon: "/images/Instagram.svg",
-        url: "#"
-      },
-      {
-        name: "Youtube",
-        icon: "/images/Youtube.svg",
+        name: "Stackoverflow",
+        icon: "/images/stackoverflow.svg",
         url: "#"
       }
     ],
@@ -77,8 +73,6 @@ module.exports = {
       address: "1234 \nLocation \nLocation"
     },
 
-
-    titleImage: "",
     capitalizeTitleOnHome: ""
   }
 }
