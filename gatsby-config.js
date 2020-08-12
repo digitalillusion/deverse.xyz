@@ -1,17 +1,13 @@
+const themeConfig = require("./theme-config.js")
+
 module.exports = {
-  siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
-    },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
-    social: {
-      twitter: `kylemathews`,
-    },
-  },
+  siteMetadata: themeConfig.siteMetadata,
   plugins: [
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-less`,
+    {
+      resolve: `gatsby-plugin-anchor-links`,
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
