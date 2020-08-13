@@ -2,6 +2,7 @@ a {
     box-shadow: none;
 }
 
+
 footer .switch-button div {
     display: none;
 }
@@ -65,14 +66,18 @@ section {
     position: relative;
     z-index: 10;
     background-color: white;
+
+    svg text {
+        font-size: 6px;
+    }
+
 }
-section svg text {
-    font-size: 6px;
-}
+
 section#about {
     z-index: 1;
     height: 1000px;
 }
+
 section#about::after {
     content: "";
     position: absolute;
@@ -84,8 +89,6 @@ section#about::after {
     opacity: 0.2;
     transition: opacity 0.35s;
 }
-
-
 
 .dark-mode section {
     background-color: #171B27;

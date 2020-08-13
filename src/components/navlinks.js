@@ -35,8 +35,8 @@ function ListItem({ data, section}) {
                       to={data.url}
                       {...anchorAttrs}
                       className={
-                          (!section || section === data.name) && "/" + location.pathname.split("/")[1] ===
-                          data.url
+                          (section === data.name) ||
+                          (!section && "/" + location.pathname.split("/")[1] === data.url)
                             ? "active"
                             : ""
                       }
@@ -117,27 +117,26 @@ export default function() {
     let [lastSectionOnScreen, setLastSectionOnScreen] = useState(items[0].name)
 
     useEffect(() => {
-        if (window.location.pathname !== "/") {
-            setLastSectionOnScreen(null)
+        function findLastSection() {
+            let lastSection = null
+            for (let item of items) {
+                let section = document.getElementById(item.name)
+                if (section && section.getBoundingClientRect().top < window.outerHeight * 0.5) {
+                    lastSection = item.name
+                }
+            }
+            if (lastSection && lastSectionOnScreen !== lastSection) {
+                setLastSectionOnScreen(lastSection)
+            }
         }
+        findLastSection()
         let ticking = false;
         window.addEventListener('scroll', function(e) {
-
             if (!ticking) {
                 window.requestAnimationFrame(function() {
-                    let lastSection = null
-                    for (let item of items) {
-                        let section = document.getElementById(item.name)
-                        if (section && section.getBoundingClientRect().top < window.outerHeight * 0.5) {
-                            lastSection = item.name
-                        }
-                    }
-                    if (lastSection && lastSectionOnScreen !== lastSection) {
-                        setLastSectionOnScreen(lastSection)
-                    }
+                    findLastSection()
                     ticking = false;
                 });
-
                 ticking = true;
             }
         });

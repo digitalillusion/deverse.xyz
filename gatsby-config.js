@@ -3,6 +3,12 @@ const themeConfig = require("./theme-config.js")
 module.exports = {
   siteMetadata: themeConfig.siteMetadata,
   plugins: [
+    {
+      resolve: "gatsby-plugin-categories",
+      options: {
+        templatePath: `${__dirname}/src/templates/category.js`,
+      },
+    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-less`,
     {

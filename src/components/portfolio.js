@@ -1,44 +1,15 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import PortfolioItem from "./items-portfolio"
+import CategoryItem from "./items-category"
 
-const PortfolioSection = () => {
-  const data = useStaticQuery(graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-            coverImage
-          }
-        }
-      }
-    }
-  }
-`)
-
-  const posts = data.allMarkdownRemark.edges
-
+const PortfolioSection = ({ postsByCategory }) => {
   return (
     <section id="portfolio" className="container">
-      {posts.map((node, index) => {
+      {postsByCategory.map((category, index) => {
         return (
-          <PortfolioItem
-            key={node.id}
+          <CategoryItem
+            key={category.id}
             aos={index%2 === 1 ? "fade-right" : "fade-left"}
-            data={node} />
+            data={category} />
         )
       })}
     </section>

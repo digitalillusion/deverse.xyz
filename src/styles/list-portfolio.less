@@ -1,6 +1,6 @@
 
 #portfolio{
-	.item{
+	.item-portfolio {
 		margin: 160px 0;
 
 		&:first-child{
@@ -15,6 +15,17 @@
 			.flex{
 				flex-direction: row-reverse;
 			}
+		}
+	}
+	.item-category {
+		&:nth-child(odd){
+			.flex{
+				flex-direction: row-reverse;
+				text-align: right;
+			}
+		}
+		h2.text-primary {
+			font-size: 4em;
 		}
 	}
 	.flex{
@@ -52,6 +63,10 @@
 		p{
 			margin-top: 15px;
 		}
+	}
+	.text-totalcount {
+		font-size: 12em;
+		padding: 0;
 	}
 }
 

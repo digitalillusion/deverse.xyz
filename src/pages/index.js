@@ -67,7 +67,7 @@ function IndexPage({ data }){
       </section>
 
       <AboutSection messages={siteMetadata.aboutMessages}/>
-      <PortfolioSection />
+      <PortfolioSection postsByCategory={data.allMarkdownRemark.group} />
     </Layout>
   );
 }
@@ -93,6 +93,37 @@ export const query = graphql`
                   label
                 }
             }
+        }
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+        ) {
+          group(
+            field: frontmatter___category,
+            limit: 1
+          ) {
+            totalCount
+            edges {
+              node {
+                excerpt
+                fields {
+                  slug
+                }
+                frontmatter {
+                  category
+                  date(formatString: "MMMM DD, YYYY")
+                  title
+                  description,
+                  coverImage {
+                    childImageSharp {
+                      fluid(quality: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
         wall: file(absolutePath: { regex: "/wall.jpg/" }) {
           childImageSharp {

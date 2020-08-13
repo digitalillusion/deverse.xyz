@@ -1,15 +1,21 @@
 import React from "react";
 
 import { Link } from "gatsby";
+import Img from "gatsby-image";
 import "../styles/list-portfolio.less";
 import SEO from "./seo"
 
 function PortfolioItem({ data, aos }) {
   return (
-    <div className="item col s12" data-aos={aos} >
+    <div className="item-portfolio col s12" data-aos={aos} >
       <SEO title={data.node.frontmatter.title} description={data.node.frontmatter.description} />
       <div className="row flex">
         <div className="col m6 image">
+          <Img
+            fluid={
+              data.node.frontmatter.coverImage.childImageSharp.fluid
+            }
+          />
           <Link
             to={data.node.fields.slug}
             title={data.node.frontmatter.title}

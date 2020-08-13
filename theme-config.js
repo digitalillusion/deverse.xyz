@@ -16,7 +16,7 @@ module.exports = {
     aboutMessages: [
       { caption: "A development universe", label: "Expertise in a wide variety of technologies and functional domains" },
       { caption: "A diverse mindset", label: "Devoted to work only with engagement and interest" },
-      { caption: "Enjoying makes it better", label: "Always thriving passion, creativity and fun" },
+      { caption: "Enjoying it makes it better", label: "Always thriving passion, creativity and fun" },
     ],
     navLinks: [{
         name: "home",
@@ -29,8 +29,7 @@ module.exports = {
       },
       {
         name: "portfolio",
-        url: "/portfolio",
-        anchor: true
+        url: "/#portfolio",
       },
       {
         name: "blog",
