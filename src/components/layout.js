@@ -6,7 +6,7 @@ import Footer from "./footer";
 const Layout = ({ placeholder, children }) => {
     return (
         <React.Fragment>
-            <Head />
+            <Head/>
             <Navbar
                 placeholder={placeholder === undefined ? true : placeholder}
             />

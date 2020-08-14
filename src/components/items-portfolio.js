@@ -5,10 +5,10 @@ import Img from "gatsby-image";
 import "../styles/list-portfolio.less";
 import SEO from "./seo"
 
-function PortfolioItem({ data, aos }) {
+function PortfolioItem({ data, aos, noSeo }) {
   return (
     <div className="item-portfolio col s12" data-aos={aos} >
-      <SEO title={data.node.frontmatter.title} description={data.node.frontmatter.description} />
+      {!!!noSeo && <SEO title={data.node.frontmatter.title} description={data.node.frontmatter.description} />}
       <div className="row flex">
         <div className="col m6 image">
           <Img

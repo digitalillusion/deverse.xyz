@@ -114,6 +114,10 @@ section#about::after {
     max-width: 1280px;
     width: 80%;
     margin: 0 auto;
+
+    .blog-post p {
+        text-align: justify;
+    }
 }
 
 .container {
@@ -219,4 +223,18 @@ div.input-border::after {
 
 .portfolio-post .content .col {
     color: #b8b7bf !important;
+}
+
+footer nav,
+header nav {
+    position: inherit;
+
+    ul {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+header {
+    text-align: center;
 }

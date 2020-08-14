@@ -62,6 +62,7 @@ class SectionTitle extends React.Component {
                         y="52"
                         fill={"url(#primaryGradient" + this._id + ")"}
                     >
+                        {this.props.children}
                         {this.props.title}
                     </text>
                 </svg>

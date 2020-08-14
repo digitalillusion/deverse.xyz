@@ -23,7 +23,7 @@ function IndexPage({ data }){
       <section id="home">
         <SEO
           lang="en"
-          title={siteMetadata.title}
+          title="Home page"
         />
         <div className="wall">
           <div className="intro container">
@@ -107,6 +107,7 @@ export const query = graphql`
                 excerpt
                 fields {
                   slug
+                  categorySlug
                 }
                 frontmatter {
                   category
