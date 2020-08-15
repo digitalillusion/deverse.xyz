@@ -14,7 +14,7 @@ module.exports = {
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     aboutMessages: [
       { caption: "A development universe", label: "Expertise in a wide variety of technologies and functional domains" },
-      { caption: "A diverse mindset", label: "Devoted to work only with engagement and interest" },
+      { caption: "A different mindset", label: "Devoted to work only with engagement and interest" },
       { caption: "Enjoying it makes it better", label: "Always thriving passion, creativity and fun" },
     ],
     navLinks: [{
@@ -60,12 +60,8 @@ module.exports = {
       }
     ],
     contact: {
-      api_url: "./test.json",
-      /* Leave this completely empty (no space either) if you don't want a contact form. */
-      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet accumsan arcu. Proin ac consequat arcu.`,
-      mail: "hi@akzhy.com",
-      phone: "000-000-0000",
-      address: "1234 \nLocation \nLocation"
+      description: `You are welcome to contact me if you need to hire a freelance developer. You can find my profile on the networks below, or you can use the form hereby to input your question directly.`,
+      address: "Vence, France"
     },
 
     capitalizeTitleOnHome: ""

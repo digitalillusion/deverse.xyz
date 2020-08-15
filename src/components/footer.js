@@ -35,7 +35,8 @@ export default function() {
                 </div>
                 <p className="text-primary f-d">
                     Copyright &copy; {query.site.siteMetadata.title}{" "}
-                    {new Date().getFullYear()}
+                    {new Date().getFullYear()}.
+                    All registered trademarks are property of their respective owners.
                 </p>
             </div>
         </footer>

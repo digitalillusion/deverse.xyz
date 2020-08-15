@@ -78,6 +78,7 @@ section {
 }
 
 #portfolio::after,
+#contact::before,
 #about::after {
     content: "";
     position: absolute;
@@ -237,4 +238,13 @@ header nav {
 
 header {
     text-align: center;
+}
+
+#email_form {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.f-d {
+    font-size: 0.8em;
 }

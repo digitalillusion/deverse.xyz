@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
 import SEO from "../components/seo"
@@ -14,7 +14,7 @@ import Contact from "../components/contact"
 function IndexPage({ data }){
   const siteMetadata = data.site.siteMetadata
   let [winHeight, setWinHeight] = useState(window.outerHeight);
-  let [wallpaper, setWallpaper] = useState(chooseWallpaper());
+  let [wallpaper, setWallpaper] = useState(null);
 
   function chooseWallpaper() {
     let documentHeight = document.body.offsetHeight
@@ -27,22 +27,23 @@ function IndexPage({ data }){
     return wallpaper
   }
 
-  useEffect(() => {
-    window.requestAnimationFrame(function() {
-      window.addEventListener("resize", function() {
-        setWinHeight(window.outerHeight)
-      })
-      window.addEventListener("scroll", function() {
-        setWallpaper(chooseWallpaper())
-      })
+  window.requestAnimationFrame(function() {
+    window.addEventListener("resize", function() {
+      setWinHeight(window.outerHeight)
     })
+    window.addEventListener("scroll", function() {
+      setWallpaper(chooseWallpaper())
+    })
+    if (wallpaper == null) {
+      setTimeout(() => setWallpaper(chooseWallpaper()), 100)
+    }
   })
 
   return (
     <Layout placeholder={false}>
-      <Img className="wallpaper" fluid={
+      {wallpaper && <Img className="wallpaper" fluid={
         data[wallpaper].childImageSharp.fluid
-      } />
+      } />}
       <section id="home" className="seethrough">
         <SEO
           lang="en"
