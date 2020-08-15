@@ -58,9 +58,8 @@ footer .switch-button div {
     mask: url(#mask);
 }
 
-section#home,
-section#about {
-    background-color:  transparent;
+.seethrough {
+    background-color:  transparent !important;
 }
 section {
     position: relative;
@@ -73,12 +72,13 @@ section {
 
 }
 
-section#about {
+.seethrough {
     z-index: 1;
     height: 1000px;
 }
 
-section#about::after {
+#portfolio::after,
+#about::after {
     content: "";
     position: absolute;
     bottom: 0;

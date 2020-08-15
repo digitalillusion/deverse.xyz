@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
 import SEO from "../components/seo"
@@ -8,19 +8,42 @@ import { AnchorLink } from "gatsby-plugin-anchor-links"
 import AboutSection from "../components/about"
 import Img from "gatsby-image";
 import PortfolioSection from "../components/portfolio"
+import TechSection from "../components/tech"
+import Contact from "../components/contact"
 
 function IndexPage({ data }){
   const siteMetadata = data.site.siteMetadata
   let [winHeight, setWinHeight] = useState(window.outerHeight);
-  window.addEventListener("resize", function() {
-    setWinHeight(window.outerHeight)
-  });
+  let [wallpaper, setWallpaper] = useState(chooseWallpaper());
+
+  function chooseWallpaper() {
+    let documentHeight = document.body.offsetHeight
+    let scroll = window.innerHeight + window.scrollY
+    if (scroll < documentHeight * 0.6 && wallpaper !== "wall") {
+      return "wall"
+    } else if (scroll >= documentHeight * 0.6 && wallpaper !== "wall2") {
+      return "wall2"
+    }
+    return wallpaper
+  }
+
+  useEffect(() => {
+    window.requestAnimationFrame(function() {
+      window.addEventListener("resize", function() {
+        setWinHeight(window.outerHeight)
+      })
+      window.addEventListener("scroll", function() {
+        setWallpaper(chooseWallpaper())
+      })
+    })
+  })
+
   return (
     <Layout placeholder={false}>
       <Img className="wallpaper" fluid={
-        data.wall.childImageSharp.fluid
+        data[wallpaper].childImageSharp.fluid
       } />
-      <section id="home">
+      <section id="home" className="seethrough">
         <SEO
           lang="en"
           title="Home page"
@@ -67,7 +90,9 @@ function IndexPage({ data }){
       </section>
 
       <AboutSection messages={siteMetadata.aboutMessages}/>
-      <PortfolioSection postsByCategory={data.allMarkdownRemark.group} />
+      <PortfolioSection postsByCategory={data.allCategories.group} />
+      <TechSection postsByTag={data.allTags.group} />
+      <Contact />
     </Layout>
   );
 }
@@ -80,7 +105,6 @@ export const query = graphql`
             siteMetadata {
                 title
                 capitalizeTitleOnHome
-                titleImage
                 introTag
                 description
                 social {
@@ -94,7 +118,7 @@ export const query = graphql`
                 }
             }
         }
-        allMarkdownRemark(
+        allCategories: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
         ) {
           group(
@@ -126,7 +150,25 @@ export const query = graphql`
             }
           }
         }
+        allTags:   allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+        ) {
+          group(
+            field: frontmatter___tags,
+            limit: 1
+          ) {
+            fieldValue
+            totalCount
+          }
+        }
         wall: file(absolutePath: { regex: "/wall.jpg/" }) {
+          childImageSharp {
+            fluid (quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        wall2: file(absolutePath: { regex: "/wall2.jpg/" }) {
           childImageSharp {
             fluid (quality: 100) {
               ...GatsbyImageSharpFluid

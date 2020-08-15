@@ -5,8 +5,10 @@ description: This is a custom description for SEO and Open Graph purposes, rathe
 coverImage: cover.jpg
 category: Websites
 tags:
-  - example
-  - post
+  - html5
+  - npm
+  - js-square
+  - java
 ---
 
 Far far away, behind the word mountains, far from the countries Vokalia and

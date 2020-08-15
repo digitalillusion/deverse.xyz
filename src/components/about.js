@@ -19,8 +19,8 @@ function AboutSection() {
   `)
   const messages = data.site.siteMetadata.aboutMessages
 
-  return <section id="about">
-    <div className={'default__containe  r'}>
+  return <section id="about" className="seethrough">
+    <div className={'default__container'}>
       <div className={'default__wrapper'}>
         <RellaxWrapper speed={-2.05}>
           <div className="balloon" style={{ left: 400 }}>

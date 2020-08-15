@@ -5,8 +5,9 @@ description: "Hello World"
 coverImage: salty_egg.jpg
 category: Puppets
 tags:
-  - puppets
-  - post
+  - html5
+  - java
+  - npm
 ---
 
 This is my first post on my new fake blog! How exciting!

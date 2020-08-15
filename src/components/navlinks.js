@@ -12,11 +12,11 @@ function ListItem({ data, section}) {
     return (
       <Location>
           {({ location }) => {
-              if (data.anchor && location.pathname === "/") {
+              if (location.pathname === "/") {
                   return (
                     <li>
                         <AnchorLink
-                          to={"#" + data.url.substr(1)}
+                          to={data.url}
                           className={
                               section ===
                               data.name
@@ -103,7 +103,6 @@ export default function() {
                     navLinks {
                         name
                         url
-                        anchor
                     }
                     darkmode
                     switchTheme

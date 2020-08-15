@@ -4,7 +4,6 @@ module.exports = {
     title: `deverse.xyz`,
     logo: `/images/deverse.svg`,
     icon: `/images/deverse.svg`,
-    titleImage: `/images/wall.jpg`,
     introTag: `FRONT END | BACK END | MOBILE`,
     description: `Professional full-stack freelance development and integration, at your service.`,
     author: `@_akzhy`,
@@ -25,21 +24,18 @@ module.exports = {
       {
         name: "about",
         url: "/about",
-        anchor: true
       },
       {
         name: "portfolio",
         url: "/#portfolio",
       },
       {
-        name: "blog",
-        url: "/blog",
-        anchor: true
+        name: "tech",
+        url: "/#tech",
       },
       {
         name: "contact",
-        url: "/contact",
-        anchor: true
+        url: "/#contact",
       }
     ],
     footerLinks: [{

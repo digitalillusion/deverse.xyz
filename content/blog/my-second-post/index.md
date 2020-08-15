@@ -4,8 +4,8 @@ date: "2015-05-06T23:46:37.121Z"
 coverImage: cover.jpg
 category: Puppets
 tags:
-  - puppets
-  - post
+  - node
+  - java
 ---
 
 Wow! I love blogging so much already.
