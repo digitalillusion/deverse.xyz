@@ -1,6 +1,5 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Mapmarker } from "./icons";
 import SocialLinks from "./sociallinks";
 import "../styles/contact.less";
 
@@ -25,8 +24,6 @@ function Contact({ contact }) {
       <div data-aos="fade-up">
         <div className={"row"}  >
               <div className="col s12 m6">
-                <span className="color-error">{getUrlParameter("pm_err")}</span>
-                <span className="color-success">{getUrlParameter("pm_suc")}</span>
                 <form action="https://postmail.invotes.com/send"
                       method="post" id="email_form" onSubmit={function() {
                         this.value = "Sending...";
@@ -44,19 +41,22 @@ function Contact({ contact }) {
                     </div>
                   </div>
                   <div className="input-border">
-                    <textarea className="field-box" name="text" placeholder="Message"></textarea>
+                    <textarea className="field-box" name="text" placeholder="Message"/>
                   </div>
                   <input type="hidden" name="access_token" value="a73kobmjq7nnwo2plw7ofl56" />
-                  <input type="hidden" name="success_url" value="/?error=0&pm_suc=Thanks for your inquiry." />
-                  <input type="hidden" name="error_url" value="/?error=1" />
-
+                  <input type="hidden" name="success_url" value="/?sent#contact" />
+                  <input type="hidden" name="error_url" value="/?error#contact" />
+                  <div>
+                    <span className="color-success">{getUrlParameter("sent") ? "Thanks for your inquiry." : ""}</span>
+                    <span className="color-error">{getUrlParameter("error") ? "Please fill in all required fields." : ""}</span>
+                  </div>
 
                   <div className="field">
-                    <label className="ib">
-                      <button className="btn" id="submit_form" type="submit" >Send</button>
+                    <label className="ib" htmlFor="submit_form" >
+                      <button name="submit_form" className="btn" id="submit_form" type="submit" >Send</button>
                     </label>
                   </div>
-                  <p>Powered by <a href="https://postmail.invotes.com" target="_blank">PostMail</a></p>
+                  <p>Powered by <a href="https://postmail.invotes.com" target="_blank" rel="noreferrer">PostMail</a></p>
                 </form>
               </div>
             <div
@@ -68,17 +68,6 @@ function Contact({ contact }) {
                     </p>
                 )}
                 <ul>
-                    {contact.address && (
-                        <li
-                            className="text-tertiary item"
-                            style={{ whiteSpace: "pre" }}
-                        >
-                            <span className="icon">
-                                <Mapmarker />
-                            </span>
-                            {contact.address}
-                        </li>
-                    )}
                     <li>
                         <SocialLinks />
                     </li>
@@ -98,7 +87,6 @@ export default () => (
                     siteMetadata {
                         contact {
                             description
-                            address
                         }
                     }
                 }
