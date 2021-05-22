@@ -90,9 +90,7 @@ export const pageQuery = graphql`
             description
             coverImage {
               childImageSharp {
-                fluid(quality: 100) {
-                ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(layout: CONSTRAINED)
               }
             }
           }

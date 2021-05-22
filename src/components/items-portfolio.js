@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Link } from "gatsby";
-import Img from "gatsby-image";
 import "../styles/list-portfolio.less";
 import SEO from "./seo"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 function PortfolioItem({ data, aos, noSeo }) {
   return (
@@ -11,11 +11,7 @@ function PortfolioItem({ data, aos, noSeo }) {
       {!!!noSeo && <SEO title={data.node.frontmatter.title} description={data.node.frontmatter.description} />}
       <div className="row flex">
         <div className="col m6 image">
-          <Img
-            fluid={
-              data.node.frontmatter.coverImage.childImageSharp.fluid
-            }
-          />
+          <GatsbyImage image={data.node.frontmatter.coverImage.childImageSharp.gatsbyImageData} alt={data.node.frontmatter.title}/>
           <Link
             to={data.node.fields.slug}
             title={data.node.frontmatter.title}

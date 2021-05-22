@@ -6,10 +6,10 @@ import SocialLinks from "../components/sociallinks";
 import "../styles/wall.less";
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 import AboutSection from "../components/about"
-import Img from "gatsby-image";
 import PortfolioSection from "../components/portfolio"
 import TechSection from "../components/tech"
 import Contact from "../components/contact"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 function IndexPage({ data }){
   const siteMetadata = data.site.siteMetadata
@@ -41,9 +41,7 @@ function IndexPage({ data }){
 
   return (
     <Layout placeholder={false}>
-      {wallpaper && <Img className="wallpaper" fluid={
-        data[wallpaper].childImageSharp.fluid
-      } />}
+      {wallpaper && <GatsbyImage className="wallpaper" image={data[wallpaper].childImageSharp.gatsbyImageData} alt="wallpaper"/>}
       <section id="home" className="seethrough">
         <SEO
           lang="en"
@@ -141,9 +139,7 @@ export const query = graphql`
                   description,
                   coverImage {
                     childImageSharp {
-                      fluid(quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
+                      gatsbyImageData(layout: CONSTRAINED)
                     }
                   }
                 }
@@ -164,16 +160,12 @@ export const query = graphql`
         }
         wall: file(absolutePath: { regex: "/wall.jpg/" }) {
           childImageSharp {
-            fluid (quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FIXED)
           }
         }
         wall2: file(absolutePath: { regex: "/wall2.jpg/" }) {
           childImageSharp {
-            fluid (quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(layout: FIXED)
           }
         }
     }

@@ -3,8 +3,8 @@ import SEO from "../components/seo"
 import { Container } from "react-bootstrap"
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image/index"
 import { Mapmarker } from "../components/icons";
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const About = ({ data }) => {
   return (
@@ -16,13 +16,11 @@ const About = ({ data }) => {
           <Container>
             <div className="row flex">
               <div className="col m6 image" data-aos="flip-left">
-                <Img fluid={
-                  data.profilePic.childImageSharp.fluid
-                } />
+                <GatsbyImage image={data.profilePic.childImageSharp.gatsbyImageData} alt={data.site.siteMetadata.title}/>
               </div>
               <div className="col m6 vcenter" data-aos="fade-down">
                 <p>
-                  Hello, welcome to my portfolio website.
+                  Hello visitor, welcome to my portfolio website.
                 </p>
                 <p>
                   I'm Adriano, a senior and passionate developer with several years of experience in the IT industry.
@@ -58,9 +56,7 @@ export const pageQuery = graphql`
   query AboutPage {
     profilePic: file(relativePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
-        fluid (quality: 100, maxWidth: 350) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: CONSTRAINED)
       }
     }
     site {
