@@ -124,6 +124,10 @@ section {
 .container {
     max-width: 100% !important;
     width: 100% !important;
+
+    footer {
+        background-color: #171B27 !important;
+    }
 }
 
 .footer {
@@ -236,9 +240,10 @@ header nav {
     }
 }
 
-header {
+header, footer {
     text-align: center;
 }
+
 
 #email_form {
     margin-top: 35px;

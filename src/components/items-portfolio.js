@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import "../styles/list-portfolio.less";
 import SEO from "./seo"
 import { GatsbyImage } from "gatsby-plugin-image"
+import TechItem from "./items-tech"
 
 function PortfolioItem({ data, aos, noSeo }) {
   return (
@@ -37,6 +38,17 @@ function PortfolioItem({ data, aos, noSeo }) {
           <p className="text-tertiary">
             {data.node.frontmatter.description || data.node.excerpt}
           </p>
+          <div className="badge-wrapper">
+            {data.node.frontmatter.tags.map((tag, index) => {
+              return <TechItem
+                key={index}
+                index={index}
+                maxCount={1}
+                data={{ fieldValue: tag, totalCount: 1 }}
+                icon={true}
+              />
+            })}
+          </div>
         </div>
       </div>
     </div>

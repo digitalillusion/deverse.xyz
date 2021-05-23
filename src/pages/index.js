@@ -103,7 +103,6 @@ export const query = graphql`
         site {
             siteMetadata {
                 title
-                capitalizeTitleOnHome
                 introTag
                 description
                 social {
@@ -136,7 +135,7 @@ export const query = graphql`
                   category
                   date(formatString: "MMMM DD, YYYY")
                   title
-                  description,
+                  description
                   coverImage {
                     childImageSharp {
                       gatsbyImageData(layout: CONSTRAINED)

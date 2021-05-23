@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import TechItem from "../components/items-tech"
 
 const NavBlock = ({ pageContext, post }) => {
   const { previous, next } = pageContext
@@ -73,6 +74,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <NavBlock pageContext={pageContext} post={post} />
           </header>
             <div className="blog-post" dangerouslySetInnerHTML={{ __html: post.html }} />
+            <div className="badge-wrapper">
+              {post.frontmatter.tags.map((tag, index) => {
+                return <TechItem
+                  key={index}
+                  index={index}
+                  maxCount={1}
+                  data={{ fieldValue: tag, totalCount: 1 }}
+                  icon={true}
+                />
+              })}
+            </div>
           <footer>
             <NavBlock pageContext={pageContext} post={post} />
           </footer>
@@ -103,6 +115,7 @@ export const pageQuery = graphql`
         category
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
   }

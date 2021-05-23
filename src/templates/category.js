@@ -88,6 +88,7 @@ export const pageQuery = graphql`
             title
             date
             description
+            tags
             coverImage {
               childImageSharp {
                 gatsbyImageData(layout: CONSTRAINED)

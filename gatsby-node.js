@@ -6,6 +6,7 @@ exports.createPages = async ({ node, graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const techTemplate = path.resolve("src/templates/technology.js")
   const result = await graphql(
     `
       {
@@ -16,13 +17,18 @@ exports.createPages = async ({ node, graphql, actions }) => {
           edges {
             node {
               fields {
-                slug,
+                slug
                 category
               }
               frontmatter {
                 title
               }
             }
+          }
+        }
+        tagsGroup: allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___tags) {
+            fieldValue
           }
         }
       }
@@ -57,6 +63,18 @@ exports.createPages = async ({ node, graphql, actions }) => {
           next,
         },
       })
+    })
+  })
+
+  // Create technologies pages.
+  const tags = result.data.tagsGroup.group
+  tags.forEach(tag => {
+    createPage({
+      path: `/technologies/${slug(tag.fieldValue)}/`,
+      component: techTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
     })
   })
 }

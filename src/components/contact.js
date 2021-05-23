@@ -56,7 +56,9 @@ function Contact({ contact }) {
                       <button name="submit_form" className="btn" id="submit_form" type="submit" >Send</button>
                     </label>
                   </div>
-                  <p>Powered by <a href="https://postmail.invotes.com" target="_blank" rel="noreferrer">PostMail</a></p>
+                  <p>
+                    Powered by <a className="text-secondary" href="https://postmail.invotes.com" target="_blank" rel="noreferrer">PostMail</a>
+                  </p>
                 </form>
               </div>
             <div
