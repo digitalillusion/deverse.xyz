@@ -1,34 +1,28 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import SocialLinks from "./sociallinks";
+import { init, sendForm } from "emailjs-com"
 import "../styles/contact.less";
-
-var getUrlParameter = function getUrlParameter(sParam) {
-  var sPageURL = window.location.search.substring(1),
-    sURLVariables = sPageURL.split('&'),
-    sParameterName,
-    i;
-
-  for (i = 0; i < sURLVariables.length; i++) {
-    sParameterName = sURLVariables[i].split('=');
-
-    if (sParameterName[0] === sParam) {
-      return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-    }
-  }
-};
+import SocialLinks from "./sociallinks";
 
 function Contact({ contact }) {
+  init("user_FJytP23RSN3LXSJA6gPJa");
+
   return (
     <section id="contact" className="container" >
       <div data-aos="fade-up">
         <div className={"row"}  >
               <div className="col s12 m6">
                 <form action="https://postmail.invotes.com/send"
-                      method="post" id="email_form" onSubmit={function() {
-                        this.value = "Sending...";
-                        this.disabled = true;
-                      }}>
+                      method="post" id="email_form" onSubmit={event => {
+                  event.preventDefault();
+                  this.contact_number.value = Math.random() * 100000 | 0;
+                  sendForm('service_ht0g628', 'template_2ji6njb', this)
+                    .then(function() {
+                      console.log('SUCCESS!');
+                    }, function(error) {
+                      console.log('FAILED...', error);
+                    });
+                }}>
 
                   <div className="field">
                     <div className="input-border">
@@ -47,17 +41,17 @@ function Contact({ contact }) {
                   <input type="hidden" name="success_url" value="/?sent#contact" />
                   <input type="hidden" name="error_url" value="/?error#contact" />
                   <div>
-                    <span className="color-success">{getUrlParameter("sent") ? "Thanks for your inquiry." : ""}</span>
-                    <span className="color-error">{getUrlParameter("error") ? "Please fill in all required fields." : ""}</span>
+                    <span className="color-success">{ "Thanks for your inquiry."}</span>
+                    <span className="color-error">{"Please fill in all required fields."}</span>
                   </div>
-
                   <div className="field">
+                    <div className="g-recaptcha" data-sitekey="6Lc3eg8bAAAAAPFnTyw5ahAoZJqHUzVfQfnqMytX"/>
                     <label className="ib" htmlFor="submit_form" >
                       <button name="submit_form" className="btn" id="submit_form" type="submit" >Send</button>
                     </label>
                   </div>
-                  <p>
-                    Powered by <a className="text-secondary" href="https://postmail.invotes.com" target="_blank" rel="noreferrer">PostMail</a>
+                  <p className="powered-by">
+                    Powered by <a className="text-secondary" href="https://www.emailjs.com/" target="_blank" rel="noreferrer">emailjs</a>
                   </p>
                 </form>
               </div>

@@ -3,8 +3,13 @@ a {
 }
 
 
-footer .switch-button div {
-    display: none;
+footer {
+    .switch-button div,
+    .menu-flags-button {
+        display: none;
+    }
+
+
 }
 
 #portfolio {
@@ -79,7 +84,8 @@ section {
 
 #portfolio::after,
 #contact::before,
-#about::after {
+#about::after,
+#technologies::after{
     content: "";
     position: absolute;
     bottom: 0;
@@ -144,6 +150,15 @@ section {
     justify-content: space-between;
     color: white;
     padding-top: 10em;
+
+    div:hover {
+        transform: scale(1.2);
+        transition: transform 0.5s;
+    }
+    div:not(:hover) {
+        transform: scale(1);
+        transition: transform 0.5s;
+    }
 }
 
 .default__wrapper .caption {
@@ -160,8 +175,10 @@ section {
 .default__wrapper .balloon {
     text-align: center;
     padding: 1em;
-    max-width: 485px;
+    max-width: 585px;
+    width: 585px;
     position: relative;
+    display: block;
 }
 
 .default__wrapper .balloon a {
@@ -178,10 +195,11 @@ section {
     padding: 5px 0;
 }
 
-.wall .social-buttons ul li img {
+.wall .social-buttons ul li:not(:hover) img {
     opacity: 1 !important;
     width:48px;
     height:48px;
+    transition: width 0.5s, height 0.5s;
 }
 
 .wall .social-buttons ul li:hover img {

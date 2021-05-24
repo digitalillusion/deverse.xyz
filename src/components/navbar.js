@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl"
 import Sidebar from "react-sidebar";
 import NavLinks from "./navlinks";
 import SocialLinks from "./sociallinks";

@@ -5,11 +5,12 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Mapmarker } from "../components/icons";
 import { GatsbyImage } from "gatsby-plugin-image"
+import { FormattedMessage } from "gatsby-plugin-intl"
 
 const About = ({ data }) => {
   return (
     <Layout>
-      <div className="category-container">
+      <div className="about-container">
         <SEO title={`About deverse.xyz`} />
 
         <section id="about" className="container">
@@ -43,7 +44,7 @@ const About = ({ data }) => {
               </div>
             </div>
             <div className="main-title-text">
-              {data.site.siteMetadata.title}
+              <FormattedMessage id={"site_metadata_title"} />
             </div>
           </Container>
         </section>

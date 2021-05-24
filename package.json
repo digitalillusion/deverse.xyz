@@ -1,20 +1,23 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "deverse.xyz",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "deverse.xyz Portfolio website",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "digitalillusion <adriano.dalpane@gmail.com>",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/digitalillusion/deverse.xyz/issues"
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "cross-env": "^7.0.3",
+    "emailjs-com": "^2.6.4",
     "gatsby": "^2.32.13",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-categories": "^2.3.7",
     "gatsby-plugin-feed": "^2.13.1",
     "gatsby-plugin-google-analytics": "^2.11.0",
     "gatsby-plugin-image": "^1.5.0",
+    "gatsby-plugin-intl": "^0.3.3",
     "gatsby-plugin-less": "^4.7.0",
     "gatsby-plugin-manifest": "^2.12.1",
     "gatsby-plugin-offline": "^3.10.2",
@@ -35,6 +38,7 @@
     "react": "^16.14.0",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^16.14.0",
+    "react-flags-select": "^2.1.2",
     "react-helmet": "^5.2.1",
     "react-rellax-wrapper": "^1.0.6",
     "react-sidebar": "^3.0.2",
@@ -46,7 +50,10 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "prettier": "2.0.5",
+    "@iconify/icons-fa-solid": "^1.1.1",
+    "@iconify/icons-simple-icons": "^1.1.26",
+    "@iconify/react": "^1.1.4",
+    "prettier": "2.3.0",
     "slug": "^3.5.2"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -61,7 +68,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

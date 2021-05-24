@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "gatsby";
+import { Link } from "gatsby-plugin-intl";
 import "../styles/list-portfolio.less";
 import SEO from "./seo"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -42,7 +42,6 @@ function PortfolioItem({ data, aos, noSeo }) {
             {data.node.frontmatter.tags.map((tag, index) => {
               return <TechItem
                 key={index}
-                index={index}
                 maxCount={1}
                 data={{ fieldValue: tag, totalCount: 1 }}
                 icon={true}

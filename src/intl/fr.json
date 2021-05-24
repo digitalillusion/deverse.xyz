@@ -1,0 +1,18 @@
+{
+  "site_metadata_title" : "deverse.xyz",
+  "index_title": "Site web Portfolio",
+  "index_intro_tag" : "FRONT END | BACK END | ANDROID | BLOCKCHAIN | IA",
+  "index_intro_description" : "Développement et integration full-stack professionelle, à votre service.",
+  "index_intro_works" : "Voir les realisations",
+  "index_about_msg_0_caption" : "Un univers de développement",
+  "index_about_msg_0_label" : "Expertise dans une grande variété de technologies et de domaines fonctionnels",
+  "index_about_msg_1_caption" : "Un état d'esprit différent",
+  "index_about_msg_1_label" : "Dévoué à travailler avec intérêt et engagement",
+  "index_about_msg_2_caption" : "Une entreprise passionnante",
+  "index_about_msg_2_label" : "Passion, créativité et amusement toujours en plein essor",
+  "navlinks_home": "Home",
+  "navlinks_about": "À propos",
+  "navlinks_portfolio": "Portfolio",
+  "navlinks_technologies": "Technologies",
+  "navlinks_contact": "Contact"
+}

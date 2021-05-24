@@ -1,10 +1,10 @@
 import React from "react"
 
-import { Link } from "gatsby"
+import { Link } from "gatsby-plugin-intl"
 import "../styles/list-portfolio.less"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-function CategoryItem({  data, aos }) {
+function CategoryItem({ data, aos }) {
   let post = data.edges[0].node
   let category = post.frontmatter.category
   return (

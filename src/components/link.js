@@ -1,9 +1,9 @@
 import React from "react";
-import { Link as GatsbyLink } from "gatsby";
+import { Link as IntlLink } from "gatsby-plugin-intl";
 
 const Link = props => {
     if (props.to.startsWith("/")) {
-        return <GatsbyLink {...props}>{props.children}</GatsbyLink>;
+        return <IntlLink {...props}>{props.children}</IntlLink>;
     }
 
     return (

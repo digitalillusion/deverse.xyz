@@ -7,7 +7,7 @@ category: Puppets
 tags:
   - html5
   - java
-  - npm
+  - typescript
 ---
 
 This is my first post on my new fake blog! How exciting!

@@ -1,11 +1,12 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Container } from "react-bootstrap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PortfolioItem from "../components/items-portfolio"
 import SectionTitle from "../components/sectiontitle"
+import { Link } from "gatsby-plugin-intl"
 
 const NavBlock = ({ currentCategory, allCategories }) => {
   return <nav>

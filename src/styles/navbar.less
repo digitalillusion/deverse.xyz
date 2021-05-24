@@ -8,7 +8,7 @@ nav {
 	padding: 22px 44px;
 	align-items: center;
 	z-index: 99;
-	transition: height .25s;
+	transition: padding 0.25s;
 
 	#menu-open{
 		position: absolute;
@@ -32,6 +32,7 @@ nav {
 
 	&.scrolled {
 		padding: 12px 36px 0;
+		transition: padding 0.25s;
 
 		img {
 			width: 34px;
@@ -89,6 +90,7 @@ nav {
 					height: 24px;
 					position: relative;
 					overflow: hidden;
+					margin: 0 0 0 2em;
 
 					div{
 						position: absolute;
@@ -185,6 +187,20 @@ nav {
 			}
 		}
 	}
+}
+
+.menu-flags {
+	vertical-align: top !important;
+}
+
+.menu-flags-button {
+	color: #6888DF;
+	border-width: 0;
+}
+
+.menu-flags-button::after {
+	border-top-color: #6888DF !important;
+	border-bottom-color: #6888DF !important;
 }
 
 

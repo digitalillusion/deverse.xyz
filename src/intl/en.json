@@ -1,0 +1,18 @@
+{
+  "site_metadata_title" : "deverse.xyz",
+  "index_title": "Portfolio website",
+  "index_intro_tag" : "FRONT END | BACK END | ANDROID | BLOCKCHAIN | AI",
+  "index_intro_description" : "Professional full-stack freelance development and integration, at your service.",
+  "index_intro_works" : "See the works",
+  "index_about_msg_0_caption" : "A development universe",
+  "index_about_msg_0_label" : "Expertise in a wide variety of technologies and functional domains",
+  "index_about_msg_1_caption" : "A different mindset",
+  "index_about_msg_1_label" : "Devoted to work with interest and engagement",
+  "index_about_msg_2_caption" : "An exciting endeavour",
+  "index_about_msg_2_label" : "Always thriving passion, creativity and fun",
+  "navlinks_home": "Home",
+  "navlinks_about": "About",
+  "navlinks_portfolio": "Portfolio",
+  "navlinks_technologies": "Technologies",
+  "navlinks_contact": "Contact"
+}

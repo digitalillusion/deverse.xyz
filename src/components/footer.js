@@ -1,9 +1,10 @@
 import React from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { useStaticQuery, graphql} from "gatsby";
 import Logo from "./logo";
 import Navlinks from "./navlinks";
 import FooterLinks from "./footer-links";
 import "../styles/footer.less";
+import { Link } from "gatsby-plugin-intl"
 
 export default function() {
     const query = useStaticQuery(graphql`

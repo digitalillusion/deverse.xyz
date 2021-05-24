@@ -10,7 +10,6 @@ const TechSection = ({ postsByTag }) => {
           {postsByTag.map((tag, index) => {
             return <TechItem
               key={index}
-              index={index}
               maxCount={maxCount}
               data={tag} />
           })}

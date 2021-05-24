@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby";
 import { Location } from "@reach/router";
 import { Sun, Moon } from "./icons";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { useIntl, changeLocale, FormattedMessage } from "gatsby-plugin-intl"
+import ReactFlagsSelect from 'react-flags-select';
+
 
 function ListItem({ data, section}) {
-    let anchorAttrs = {
-        href: data.url,
+    const intl = useIntl();
+    let anchor = {
+        href:  intl.routed || intl.locale ? `/${intl.locale}${data.url}` : `${data.url}`,
         title: data.name
     };
     return (
       <Location>
           {({ location }) => {
-              if (location.pathname === "/") {
+              if (location.pathname === "/" + intl.locale + "/") {
                   return (
                     <li>
                         <AnchorLink
-                          to={data.url}
+                          to={anchor.href}
                           className={
                               section ===
-                              data.name
+                              anchor.title
                                 ? "active"
                                 : ""
                           }
                         >
-                            <span>{data.name}</span>
+                            <FormattedMessage id={"navlinks_" + anchor.title} />
                         </AnchorLink>
                     </li>
                   )
@@ -32,16 +36,16 @@ function ListItem({ data, section}) {
               return (
                 <li>
                     <AnchorLink
-                      to={data.url}
-                      {...anchorAttrs}
+                      to={anchor.href}
+                      {...anchor}
                       className={
-                          (section === data.name) ||
+                          (section === anchor.title) ||
                           (!section && "/" + location.pathname.split("/")[1] === data.url)
                             ? "active"
                             : ""
                       }
                     >
-                        <span>{data.name}</span>
+                        <FormattedMessage id={"navlinks_" + anchor.title} />
                     </AnchorLink>
                 </li>
               );
@@ -96,6 +100,7 @@ function ThemeSwitchButton() {
 }
 
 export default function() {
+    const intl = useIntl();
     const data = useStaticQuery(graphql`
         query NavbarLinkQuery2 {
             site {
@@ -106,6 +111,10 @@ export default function() {
                     }
                     darkmode
                     switchTheme
+                    i18n {
+                        country
+                        language
+                    }
                 }
             }
         }
@@ -115,31 +124,37 @@ export default function() {
 
     let [lastSectionOnScreen, setLastSectionOnScreen] = useState(items[0].name)
 
-    useEffect(() => {
-        function findLastSection() {
-            let lastSection = null
-            for (let item of items) {
-                let section = document.getElementById(item.name)
-                if (section && section.getBoundingClientRect().top < window.outerHeight * 0.5) {
-                    lastSection = item.name
-                }
-            }
-            if (lastSection && lastSectionOnScreen !== lastSection) {
-                setLastSectionOnScreen(lastSection)
+    let findLastSection = useCallback(() => {
+        let lastSection = null
+        for (let item of items) {
+            let section = document.getElementById(item.name)
+            if (section && section.getBoundingClientRect().top < window.outerHeight * 0.5) {
+                lastSection = item.name
             }
         }
-        findLastSection()
-        let ticking = false;
-        window.addEventListener('scroll', function(e) {
-            if (!ticking) {
-                window.requestAnimationFrame(function() {
-                    findLastSection()
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }, [lastSectionOnScreen, items])
+        if (lastSection && lastSectionOnScreen !== lastSection) {
+            return lastSection
+        }
+        return false
+    }, [items, lastSectionOnScreen]);
+
+    useEffect(() => {
+        let lastSection = findLastSection();
+        if (lastSection) {
+            setLastSectionOnScreen(lastSection);
+        }
+    }, [lastSectionOnScreen, items, findLastSection])
+
+    let ticking = false;
+    window.addEventListener('scroll', function(e) {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                findLastSection()
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
 
     items.forEach(function(e, i) {
         list.push(<ListItem key={[e.url, i, lastSectionOnScreen]} data={e} section={lastSectionOnScreen} />);
@@ -153,6 +168,21 @@ export default function() {
           />
         );
     }
+
+    let i18n = data.site.siteMetadata.i18n;
+    list.push(
+        <ReactFlagsSelect
+          key="languageswitcher"
+          selected={i18n.find(i => i.language === intl.locale).country}
+          countries={i18n.map(i => i.country)}
+          onSelect={code => changeLocale(i18n.find(i => i.country === code).language) }
+          fullWidth={false}
+          className="menu-flags"
+          selectButtonClassName="menu-flags-button"
+          showSelectedLabel={false}
+          showOptionLabel={false}
+        />
+    );
 
     return <ul className="navbar-links">{list}</ul>;
 }

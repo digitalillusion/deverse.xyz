@@ -1,10 +1,11 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import TechItem from "../components/items-tech"
+import { Link } from "gatsby-plugin-intl"
 
 const NavBlock = ({ pageContext, post }) => {
   const { previous, next } = pageContext
@@ -78,7 +79,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               {post.frontmatter.tags.map((tag, index) => {
                 return <TechItem
                   key={index}
-                  index={index}
                   maxCount={1}
                   data={{ fieldValue: tag, totalCount: 1 }}
                   icon={true}

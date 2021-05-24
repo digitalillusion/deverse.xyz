@@ -7,7 +7,7 @@ const PortfolioSection = ({ postsByCategory }) => {
       {postsByCategory.map((category, index) => {
         return (
           <CategoryItem
-            key={category.id}
+            key={index}
             aos={index%2 === 1 ? "fade-right" : "fade-left"}
             data={category} />
         )

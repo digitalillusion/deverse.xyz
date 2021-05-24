@@ -1,10 +1,11 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import Layout from "../components/layout"
 import SectionTitle from "../components/sectiontitle"
 import { Container } from "react-bootstrap"
 import PortfolioItem from "../components/items-portfolio"
+import { Link } from "gatsby-plugin-intl"
 
 const Technology = ({ pageContext, data }) => {
   const { tag } = pageContext
