@@ -1,6 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Link from "./link";
+import { FormattedMessage } from "gatsby-plugin-intl"
 
 function ListItem(props) {
     const data = props.data;
@@ -11,7 +12,7 @@ function ListItem(props) {
     return (
         <li>
             <Link to={data.url} {...anchorAttrs}>
-                <span>{data.name}</span>
+                <span><FormattedMessage id={"footerlinks_" + data.name} /></span>
             </Link>
         </li>
     );

@@ -7,12 +7,21 @@
   "index_about_msg_0_caption": "Un universo di sviluppo",
   "index_about_msg_0_label": "Competenza in un'ampia varietà di tecnologie e domini funzionali",
   "index_about_msg_1_caption": "Una mentalità diversa",
-  "index_about_msg_1_label": "Dedicato a lavorare con interesse e coinvolgimento",
+  "index_about_msg_1_label": "Dedito a lavorare con interesse e coinvolgimento",
   "index_about_msg_2_caption": "Un'impresa entusiasmante",
   "index_about_msg_2_label": "Passione, creatività e divertimento sempre vivi",
+  "index_contact_intro" : "Non esitare a contattarmi se hai bisogno di assumere uno sviluppatore remoto, part-time e freelance. Possiamo connetterci sui social network, oppure puoi utilizzare il modulo qui presente per inviare direttamente la tua domanda.",
+  "index_contact_from": "La tua email",
+  "index_contact_subject": "Oggetto",
+  "index_contact_message": "Messaggio",
+  "index_contact_success": "Grazie per la richiesta.",
+  "index_contact_fail": "Prego compilare correttamente tutti i campi richiesti.",
+  "index_contact_send" : "Invia",
   "navlinks_home": "Home",
   "navlinks_about": "Chi sono?",
   "navlinks_portfolio": "Portfolio",
   "navlinks_technologies": "Tecnologie",
-  "navlinks_contact": "Contatto"
+  "navlinks_contact": "Contatto",
+  "footerlinks_privacy-policy": "Politica sulla riservatezza",
+  "footer_copyright": "Copyright © {0} {1} - Tutti i marchi registrati sono di proprietà dei rispettivi proprietari."
 }

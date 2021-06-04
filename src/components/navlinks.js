@@ -84,14 +84,14 @@ function ThemeSwitchButton() {
                     data-switch-to="dark"
                     className={!darkMode ? "active" : ""}
                   >
-                      <Sun />
+                      <Moon />
                   </div>
                   <div
                     title="Switch to Light Mode"
                     data-switch-to="light"
                     className={darkMode? "active" : ""}
                   >
-                      <Moon />
+                      <Sun />
                   </div>
               </div>
           </li>
@@ -139,22 +139,22 @@ export default function() {
     }, [items, lastSectionOnScreen]);
 
     useEffect(() => {
-        let lastSection = findLastSection();
-        if (lastSection) {
-            setLastSectionOnScreen(lastSection);
+        let scrollListener = () => {
+            let lastSection = findLastSection();
+            if (lastSection) {
+                setLastSectionOnScreen(lastSection);
+            }
+        }
+
+        if (lastSectionOnScreen == null) {
+            scrollListener()
+        }
+
+        window.addEventListener('scroll', scrollListener)
+        return () => {
+            window.removeEventListener('scroll', scrollListener)
         }
     }, [lastSectionOnScreen, items, findLastSection])
-
-    let ticking = false;
-    window.addEventListener('scroll', function(e) {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                findLastSection()
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
 
     items.forEach(function(e, i) {
         list.push(<ListItem key={[e.url, i, lastSectionOnScreen]} data={e} section={lastSectionOnScreen} />);

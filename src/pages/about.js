@@ -5,9 +5,10 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Mapmarker } from "../components/icons";
 import { GatsbyImage } from "gatsby-plugin-image"
-import { FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
 
 const About = ({ data }) => {
+  let intl = useIntl();
   return (
     <Layout>
       <div className="about-container">
@@ -17,7 +18,7 @@ const About = ({ data }) => {
           <Container>
             <div className="row flex">
               <div className="col m6 image" data-aos="flip-left">
-                <GatsbyImage image={data.profilePic.childImageSharp.gatsbyImageData} alt={data.site.siteMetadata.title}/>
+                <GatsbyImage image={data.profilePic.childImageSharp.gatsbyImageData} alt={intl.formatMessage({ id: "site_metadata_title" })}/>
               </div>
               <div className="col m6 vcenter" data-aos="fade-down">
                 <p>
@@ -62,7 +63,6 @@ export const pageQuery = graphql`
     }
     site {
         siteMetadata {
-          title
           contact {
               address
           }

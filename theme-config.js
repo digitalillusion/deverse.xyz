@@ -41,21 +41,21 @@ module.exports = {
     social: [{
         name: "github",
         icon: "/images/github.svg",
-        url: "#"
+        url: "https://github.com/digitalillusion"
       },
       {
         name: "Linkedin",
         icon: "/images/linkedin.svg",
-        url: "#"
+        url: "https://www.linkedin.com/in/adriano-dalpane/"
       },
       {
         name: "Stackoverflow",
         icon: "/images/stackoverflow.svg",
-        url: "#"
+        url: "https://stackexchange.com/users/43213/digital-illusion"
       }
     ],
     contact: {
-      description: `You are welcome to contact me if you need to hire a freelance developer. We can connect on the social networks, or you can use the form hereby to input your question directly.`,
+      description: ``,
       address: "Vence, France"
     }
   }

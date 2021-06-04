@@ -1,27 +1,18 @@
 import React from "react";
-import { useStaticQuery, graphql} from "gatsby";
 import Logo from "./logo";
 import Navlinks from "./navlinks";
 import FooterLinks from "./footer-links";
 import "../styles/footer.less";
-import { Link } from "gatsby-plugin-intl"
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
 
 export default function() {
-    const query = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                    title
-                }
-            }
-        }
-    `);
-
+    let intl = useIntl();
+    let title = intl.formatMessage({ id : "site_metadata_title"});
     return (
         <footer className="footer">
             <div className="container">
                 <div className="logo">
-                    <Link to="/" title={query.site.siteMetadata.title}>
+                    <Link to="/" title={title}>
                         <Logo />
                     </Link>
                 </div>
@@ -35,9 +26,7 @@ export default function() {
                     <FooterLinks />
                 </div>
                 <p className="text-primary f-d">
-                    Copyright &copy; {query.site.siteMetadata.title}{" "}
-                    {new Date().getFullYear()}.
-                    All registered trademarks are property of their respective owners.
+                    <FormattedMessage id={"footer_copyright"} values={{ 0 : new Date().getFullYear(), 1 : title}} />
                 </p>
             </div>
         </footer>

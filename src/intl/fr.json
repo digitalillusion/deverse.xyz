@@ -10,9 +10,18 @@
   "index_about_msg_1_label" : "Dévoué à travailler avec intérêt et engagement",
   "index_about_msg_2_caption" : "Une entreprise passionnante",
   "index_about_msg_2_label" : "Passion, créativité et amusement toujours en plein essor",
+  "index_contact_intro" : "Vous pouvez me contacter si vous avez besoin d'embaucher un développeur freelance à distance, à temps partiel. Nous pouvons nous connecter sur les réseaux sociaux, ou vous pouvez utiliser le formulaire ci-joint pour saisir directement votre question.",
+  "index_contact_from" : "Votre email",
+  "index_contact_subject" : "Sujet",
+  "index_contact_message": "Message",
+  "index_contact_success" : "Merci pour votre demande.",
+  "index_contact_fail" : "Veuillez remplir correctement tous les champs obligatoires.",
+  "index_contact_send" : "Envoyer",
   "navlinks_home": "Home",
   "navlinks_about": "À propos",
   "navlinks_portfolio": "Portfolio",
   "navlinks_technologies": "Technologies",
-  "navlinks_contact": "Contact"
+  "navlinks_contact": "Contact",
+  "footerlinks_privacy-policy" : "Politique de confidentialité",
+  "footer_copyright" : "Copyright © {0} {1} - Toutes les marques déposées sont la propriété de leurs propriétaires respectifs."
 }
