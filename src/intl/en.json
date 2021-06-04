@@ -17,6 +17,7 @@
   "index_contact_success" : "Thanks for your inquiry.",
   "index_contact_fail" : "Please fill in correctly all required fields.",
   "index_contact_send" : "Send",
+  "about_intro" : "<p>Hello visitor, welcome to my portfolio website.</p><p>I'm Adriano, a senior and passionate developer with several years of experience in the IT industry.</p><p>I've moved on to a freelance career in order to work as contractor and to progress on personal projects as well.</p>",
   "navlinks_home" : "Home",
   "navlinks_about" : "About",
   "navlinks_portfolio" : "Portfolio",

@@ -304,6 +304,12 @@ header, footer {
         margin-left: 6em;
         margin-top: 5em;
     }
+    .hcenter {
+        text-align: center;
+        margin-left: 6em;
+        margin-top: 5em;
+        z-index: 100;
+    }
     .item {
         white-space: pre;
         margin: 8em 14em;

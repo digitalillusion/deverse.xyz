@@ -21,15 +21,7 @@ const About = ({ data }) => {
                 <GatsbyImage image={data.profilePic.childImageSharp.gatsbyImageData} alt={intl.formatMessage({ id: "site_metadata_title" })}/>
               </div>
               <div className="col m6 vcenter" data-aos="fade-down">
-                <p>
-                  Hello visitor, welcome to my portfolio website.
-                </p>
-                <p>
-                  I'm Adriano, a senior and passionate developer with several years of experience in the IT industry.
-                </p>
-                <p>
-                  I've moved on to a freelance career in order to work as contractor and to progress on personal projects as well.
-                </p>
+                <div dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id : 'about_intro' }) }} />
                 <div className="details" data-aos="fade-up">
                   <ul>
                     {data.site.siteMetadata.contact.address && (
@@ -42,6 +34,11 @@ const About = ({ data }) => {
                     )}
                   </ul>
                 </div>
+              </div>
+            </div>
+            <div className="row flex">
+              <div className="col m6 hcenter" data-aos="fade-up">
+                <embed src={data.resume.publicURL} width="1060" height="1400" type="application/pdf" />
               </div>
             </div>
             <div className="main-title-text">
@@ -60,6 +57,9 @@ export const pageQuery = graphql`
       childImageSharp {
         gatsbyImageData(layout: CONSTRAINED)
       }
+    }
+    resume: file(relativePath: { regex: "/adriano_dalpane_resume_en.pdf/" }) {
+      publicURL
     }
     site {
         siteMetadata {

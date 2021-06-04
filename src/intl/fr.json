@@ -17,6 +17,7 @@
   "index_contact_success" : "Merci pour votre demande.",
   "index_contact_fail" : "Veuillez remplir correctement tous les champs obligatoires.",
   "index_contact_send" : "Envoyer",
+  "about_intro" : "<p>Bonjour visiteur, bienvenue sur mon site portfolio.</p><p>Je suis Adriano, un développeur senior et passionné avec plusieurs années d'expérience dans l'industrie informatique.</p><p>Je suis passé à une carrière indépendante afin de travailler en tant qu'entrepreneur et de progresser également sur des projets personnels.</p>",
   "navlinks_home": "Home",
   "navlinks_about": "À propos",
   "navlinks_portfolio": "Portfolio",

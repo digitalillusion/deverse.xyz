@@ -5,7 +5,7 @@ function ListItem(props) {
     const data = props.data;
     return (
         <li>
-            <a href={data.url} title={data.name}>
+            <a href={data.url} title={data.name} target={"_blank"}>
                 <img src={data.icon} alt={data.name} />
             </a>
         </li>
