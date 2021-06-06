@@ -122,7 +122,8 @@ section {
     width: 80%;
     margin: 0 auto;
 
-    .blog-post p {
+    .blog-post p,
+    .page p {
         text-align: justify;
     }
 }

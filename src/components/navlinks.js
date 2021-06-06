@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react"
-import { useStaticQuery, graphql } from "gatsby";
-import { Location } from "@reach/router";
-import { Sun, Moon } from "./icons";
-import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { useIntl, changeLocale, FormattedMessage } from "gatsby-plugin-intl"
-import ReactFlagsSelect from 'react-flags-select';
+import { graphql, useStaticQuery } from "gatsby"
+import { Location } from "@reach/router"
+import { Moon, Sun } from "./icons"
+import { AnchorLink } from "gatsby-plugin-anchor-links"
+import { changeLocale, FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import ReactFlagsSelect from "react-flags-select"
 
 
 function ListItem({ data, section}) {
@@ -40,7 +40,7 @@ function ListItem({ data, section}) {
                       {...anchor}
                       className={
                           (section === anchor.title) ||
-                          (!section && "/" + location.pathname.split("/")[1] === data.url)
+                          (!section && "/" + location.pathname.split("/")[1] === data.url && data.url)
                             ? "active"
                             : ""
                       }
@@ -55,22 +55,36 @@ function ListItem({ data, section}) {
 }
 
 function ThemeSwitchButton() {
-    function hasDarkMode() {
-        return localStorage.getItem("darkMode") === "dark-mode"
+    let [theme, setTheme] = useState(getTheme())
+
+    function getTheme() {
+        return localStorage.getItem("theme")
     }
-    let [darkMode, setDarkMode] = useState(hasDarkMode())
+
     useEffect(() => {
-        const darkMode = localStorage.getItem("darkMode");
-        document.body.className = darkMode;
+        document.body.className = getTheme() === null ? changeTheme() : getTheme()
     })
+
+    function hasDarkMode() {
+        return getTheme() !== "light-mode"
+    }
+
+    function changeTheme(onSwitch) {
+        if (theme === null) {
+            let newTheme = onSwitch ? "light-mode" : "dark-mode";
+            localStorage.setItem("theme", newTheme)
+            return newTheme
+        }
+        return getTheme() === "dark-mode" ? "light-mode" : "dark-mode"
+    }
 
     function switchTheme(event) {
         if (event.type === 'click' ||
           (['keydown', 'keypress'].includes(event.type) &&
             ['F9'].includes(event.key))) {
-            const change = hasDarkMode() ? "" : "dark-mode"
-            localStorage.setItem("darkMode", change)
-            setDarkMode(change)
+            let newTheme = changeTheme(true)
+            setTheme(newTheme)
+            localStorage.setItem("theme", newTheme)
         }
 
     }
@@ -82,14 +96,14 @@ function ThemeSwitchButton() {
                   <div
                     title="Switch to Dark Mode"
                     data-switch-to="dark"
-                    className={!darkMode ? "active" : ""}
+                    className={!hasDarkMode() ? "active" : ""}
                   >
                       <Moon />
                   </div>
                   <div
                     title="Switch to Light Mode"
                     data-switch-to="light"
-                    className={darkMode? "active" : ""}
+                    className={hasDarkMode() ? "active" : ""}
                   >
                       <Sun />
                   </div>
@@ -122,7 +136,7 @@ export default function() {
     const items = data.site.siteMetadata.navLinks;
     let list = [];
 
-    let [lastSectionOnScreen, setLastSectionOnScreen] = useState(items[0].name)
+    let [lastSectionOnScreen, setLastSectionOnScreen] = useState()
 
     let findLastSection = useCallback(() => {
         let lastSection = null

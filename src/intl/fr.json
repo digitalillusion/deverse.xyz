@@ -16,6 +16,7 @@
   "index_contact_message": "Message",
   "index_contact_success" : "Merci pour votre demande.",
   "index_contact_fail" : "Veuillez remplir correctement tous les champs obligatoires.",
+  "index_contact_fail_cookiepolicy": "Veuillez autoriser l'utilisation des cookies.",
   "index_contact_send" : "Envoyer",
   "about_intro" : "<p>Bonjour visiteur, bienvenue sur mon site portfolio.</p><p>Je suis Adriano, un développeur senior et passionné avec plusieurs années d'expérience dans l'industrie informatique.</p><p>Je suis passé à une carrière indépendante afin de travailler en tant qu'entrepreneur et de progresser également sur des projets personnels.</p>",
   "navlinks_home": "Home",
@@ -24,5 +25,8 @@
   "navlinks_technologies": "Technologies",
   "navlinks_contact": "Contact",
   "footerlinks_privacy-policy" : "Politique de confidentialité",
-  "footer_copyright" : "Copyright © {0} {1} - Toutes les marques déposées sont la propriété de leurs propriétaires respectifs."
+  "footer_copyright" : "Copyright © {0} {1} - Toutes les marques déposées sont la propriété de leurs propriétaires respectifs.",
+  "footer_cookie_consent": "Ce site web utilise des cookies pour offrir une meilleure expérience d'utilisation et, si cela est autorisé, pour accéder à des services tiers. Pour plus d'information, veuillez consulter la Politique de confidentialité.",
+  "footer_cookie_accept": "Autoriser",
+  "footer_cookie_decline": "Refuser"
 }
