@@ -30,7 +30,7 @@ class SectionTitle extends React.Component {
 
     render() {
         return (
-            <React.Fragment className="color-primary">
+            <React.Fragment>
                 <span ref={c => (this.cp = c)} className="color-primary"/>
                 <span
                   ref={c => (this.cs = c)}

@@ -97,13 +97,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlugAndLanguage($slug: String!, $language: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(fields: { 
+      slug: { eq: $slug }
+      language: { eq: $language } 
+    }) {
       id
       excerpt(pruneLength: 160)
       html

@@ -1,8 +1,9 @@
 import React from "react";
-import { Link as IntlLink } from "gatsby-plugin-intl";
+import { Link as IntlLink, useIntl } from "gatsby-plugin-intl";
 
 const Link = props => {
-    if (props.to.startsWith("/")) {
+    let intl = useIntl();
+    if (props.to.startsWith("/") && !props.to.startsWith("/" + intl.locale)) {
         return <IntlLink {...props}>{props.children}</IntlLink>;
     }
 

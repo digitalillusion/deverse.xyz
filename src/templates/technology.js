@@ -44,11 +44,11 @@ const Technology = ({ pageContext, data }) => {
 
 export default Technology
 export const pageQuery = graphql`
-  query($tag: String) {
+  query($tag: String!, $language: String!) {
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { tags: { in: [$tag] }, language: { eq : $language } } }
     ) {
       totalCount
       edges {

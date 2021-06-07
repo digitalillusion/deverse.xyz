@@ -189,7 +189,10 @@ export default function() {
           key="languageswitcher"
           selected={i18n.find(i => i.language === intl.locale).country}
           countries={i18n.map(i => i.country)}
-          onSelect={code => changeLocale(i18n.find(i => i.country === code).language) }
+          onSelect={code => {
+              let selected = i18n.find(i => i.country === code).language;
+              changeLocale(selected, `/`)
+          }}
           fullWidth={false}
           className="menu-flags"
           selectButtonClassName="menu-flags-button"

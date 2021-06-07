@@ -43,7 +43,7 @@ const CategoryTemplate = ({ pageContext, data }) => {
       <div className="category-container">
         <SEO title={`Posts in category "${category}"`} />
 
-        <section id="portfolio" className="container">
+        <section id="portfolio">
           <SectionTitle title={category} />
           <Container>
             <header>
@@ -54,7 +54,7 @@ const CategoryTemplate = ({ pageContext, data }) => {
                 return (
                   <PortfolioItem
                     noSeo
-                    key={node.id}
+                    key={index}
                     col={index%2 === 1 ? "col-right" : "col-left"}
                     data={node} />
                 )
@@ -70,10 +70,13 @@ const CategoryTemplate = ({ pageContext, data }) => {
 }
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String!) {
+  query CategoryPage($category: String!, $language: String!) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { category: { eq: $category } } }
+      filter: { fields: { 
+        category: { eq: $category } 
+        language: { eq: $language } 
+      } }
     ) {
       totalCount
       edges {
@@ -99,7 +102,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allCategories: allMarkdownRemark {
+    allCategories: allMarkdownRemark (
+      filter: { fields: { language: { eq: $language } } } 
+    ) {
       group(
           field: frontmatter___category,
           limit: 1

@@ -1,8 +1,8 @@
 ---
 title: Privacy Policy
+language: en
 slug: privacy-policy
 ---
-## Privacy Policy
 
 #### What information do we collect?
 
@@ -25,10 +25,6 @@ We do not sell, trade, or otherwise transfer to outside parties your personally 
 #### Third-party links
 
 Occasionally, at our discretion, we may include or offer third-party products or services on our website. These third-party sites have separate and independent privacy policies. We, therefore, have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.
-
-#### Children's Online Privacy Protection Act Compliance
-
-We are in compliance with the requirements of COPPA (Children's Online Privacy Protection Act), we do not collect any information from anyone under 13 years of age. Our website, products, and services are all directed to people who are at least 13 years old or older.
 
 #### Your Consent
 

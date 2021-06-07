@@ -105,7 +105,7 @@ function IndexPage({ data }){
 export default IndexPage;
 
 export const query = graphql`
-    query {
+    query($language: String!) {
         site {
             siteMetadata {
                 social {
@@ -116,6 +116,7 @@ export const query = graphql`
             }
         }
         allCategories: allMarkdownRemark(
+          filter: { fields: { language: { eq: $language }}}
           sort: { fields: [frontmatter___date], order: DESC }
         ) {
           group(
@@ -146,6 +147,7 @@ export const query = graphql`
           }
         }
         allTags:   allMarkdownRemark(
+          filter: { fields: { language: { eq: $language }}}
           sort: { fields: [frontmatter___date], order: DESC }
         ) {
           group(
