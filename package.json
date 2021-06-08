@@ -8,6 +8,7 @@
     "url": "https://github.com/digitalillusion/deverse.xyz/issues"
   },
   "dependencies": {
+    "@iconify-icons/logos": "^1.1.9",
     "aos": "^2.3.4",
     "cross-env": "^7.0.3",
     "emailjs-com": "^2.6.4",

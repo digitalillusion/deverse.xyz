@@ -8,10 +8,13 @@ import java from "@iconify/icons-simple-icons/java"
 import terminal from "@iconify/icons-fa-solid/terminal"
 import javascript from "@iconify/icons-simple-icons/javascript"
 import typescript from "@iconify/icons-simple-icons/typescript"
+import gatsby from "@iconify-icons/logos/gatsby";
+import graphql from "@iconify-icons/logos/graphql";
+import react from "@iconify-icons/logos/react";
 
 let colors = [ "blue", "orange", "gold", "red", "purple", "green", "crimson", "steel", "pink", "rebecca", "gainsboro"]
 
-const techhnologies = {
+export const technologies = {
   'java' : {
     color: 'blue',
     name: 'Java',
@@ -27,6 +30,21 @@ const techhnologies = {
     name: 'Typescript',
     icon: typescript
   },
+  'gatsby-js' : {
+    color: 'purple',
+    name: 'Gatsby JS',
+    icon: gatsby
+  },
+  'graphql' : {
+    color: 'pink',
+    name: 'graphql',
+    icon: graphql
+  },
+  'react-js' : {
+    color: 'aqua',
+    name: 'React JS',
+    icon: react
+  }
 }
 
 function TechItem({ data, maxCount, icon = false }) {
@@ -35,8 +53,8 @@ function TechItem({ data, maxCount, icon = false }) {
     name: 'Other',
     icon: terminal
   }
-  if (techhnologies[data.fieldValue]) {
-    tech = techhnologies[data.fieldValue];
+  if (technologies[data.fieldValue]) {
+    tech = technologies[data.fieldValue];
   }
 
   if (icon) {

@@ -16,6 +16,16 @@ footer {
     overflow: hidden;
 }
 
+#blog-post {
+
+    .links {
+        margin: 1em 0.5em;
+        font-size: 3em;
+        width: 100%;
+        display: flex;
+    }
+}
+
 
 .main-title-text{
     top: 0;
@@ -132,8 +142,8 @@ section {
     max-width: 100% !important;
     width: 100% !important;
 
-    footer {
-        background-color: #171B27 !important;
+    footer.page-footer {
+        background-color: inherit !important;
     }
 }
 
@@ -256,6 +266,10 @@ header nav {
     ul {
         width: 100%;
         margin: 0;
+
+        li {
+            width: 15em;
+        }
     }
 }
 

@@ -4,8 +4,10 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
-import TechItem from "../components/items-tech"
 import { Link } from "gatsby-plugin-intl"
+import github from "@iconify/icons-simple-icons/github";
+import Icon from "@iconify/react";
+import TechItem from "../components/items-tech";
 
 const NavBlock = ({ pageContext, post }) => {
   const { previous, next } = pageContext
@@ -29,7 +31,7 @@ const NavBlock = ({ pageContext, post }) => {
       <li>
         {post && (
           <Link to={post.fields.categorySlug} rel="up" className="text-secondary">
-            ▲ Back to {post.frontmatter.category}
+            ▲ All {post.frontmatter.category}
           </Link>
         )}
       </li>
@@ -52,7 +54,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <section id="portfolio" className="row flex" >
+      <section id="blog-post" className="row flex" >
         <article>
           <header>
             <h1
@@ -75,6 +77,17 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <NavBlock pageContext={pageContext} post={post} />
           </header>
             <div className="blog-post" dangerouslySetInnerHTML={{ __html: post.html }} />
+            <div className="links">
+              {post.frontmatter.links.map(link => {
+                let icon
+                if (link.indexOf("github.com") > 0) {
+                  icon = github
+                }
+                return <a href={link} title={link} target="_blank" rel="noreferrer">
+                  <Icon icon={icon} color ="#6888DF" />
+                </a>
+              })}
+            </div>
             <div className="badge-wrapper">
               {post.frontmatter.tags.map((tag, index) => {
                 return <TechItem
@@ -119,6 +132,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         tags
+        links
       }
     }
   }

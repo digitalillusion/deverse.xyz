@@ -6,11 +6,12 @@ import SectionTitle from "../components/sectiontitle"
 import { Container } from "react-bootstrap"
 import PortfolioItem from "../components/items-portfolio"
 import { Link } from "gatsby-plugin-intl"
+import { technologies } from "../components/items-tech";
 
 const Technology = ({ pageContext, data }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
-  const tagHeader = `Using ${tag} in ${totalCount} project${
+  const tagHeader = `Using ${technologies[tag].name} in ${totalCount} project${
     totalCount === 1 ? "" : "s"
   }`
   return (
@@ -32,7 +33,7 @@ const Technology = ({ pageContext, data }) => {
                   data={node} />
               )
             })}
-            <footer>
+            <footer className="page-footer">
               <Link to="/#technologies">All technologies</Link>
             </footer>
           </Container>
@@ -53,6 +54,7 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt
           fields {
             slug
             category
