@@ -1,12 +1,13 @@
 import React from "react"
 
-import { Link } from "gatsby-plugin-intl"
+import { Link, useIntl } from "gatsby-plugin-intl";
 import "../styles/list-portfolio.less"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 function CategoryItem({ data, aos }) {
+  const intl = useIntl()
   let post = data.edges[0].node
-  let category = post.frontmatter.category
+  let category = intl.formatMessage({ id: "blog_post_category_" + post.frontmatter.category })
   return (
     <div className="item-category col s12" data-aos={aos} >
       <div className="row flex">

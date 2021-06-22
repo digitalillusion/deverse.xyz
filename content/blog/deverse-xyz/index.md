@@ -2,8 +2,9 @@
 title: deverse.xyz
 date: "2021-06-08T16:23:00.000Z"
 coverImage: cover.jpg
+description: My portfolio website, the one you are browsing.
 language: en
-category: Websites
+category: websites
 links:
   - https://github.com/digitalillusion/deverse.xyz
 tags:

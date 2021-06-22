@@ -28,5 +28,10 @@
   "footer_copyright" : "Copyright © {0} {1} - Toutes les marques déposées sont la propriété de leurs propriétaires respectifs.",
   "footer_cookie_consent": "Ce site web utilise des cookies pour offrir une meilleure expérience d'utilisation et, si cela est autorisé, pour accéder à des services tiers. Pour plus d'information, veuillez consulter la Politique de confidentialité.",
   "footer_cookie_accept": "Autoriser",
-  "footer_cookie_decline": "Refuser"
+  "footer_cookie_decline": "Refuser",
+  "blog_post_all": "Tous les {0}",
+  "blog_post_category_websites": "Sites web",
+  "technology_using_one": "{0} est utilisé dans un projet",
+  "technology_using_many": "{0} est utilisé dans {1} projets",
+  "technology_all": "Toutes les technologies"
 }

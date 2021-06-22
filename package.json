@@ -71,7 +71,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby develop",
+    "develop": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby clean & gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",

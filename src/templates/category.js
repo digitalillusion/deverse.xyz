@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PortfolioItem from "../components/items-portfolio"
 import SectionTitle from "../components/sectiontitle"
-import { Link } from "gatsby-plugin-intl"
+import { Link, useIntl } from "gatsby-plugin-intl";
 
 const NavBlock = ({ currentCategory, allCategories }) => {
   return <nav>
@@ -36,15 +36,16 @@ const NavBlock = ({ currentCategory, allCategories }) => {
   </nav>
 }
 
-const CategoryTemplate = ({ pageContext, data }) => {
+const CategoryTemplate = ({ data }) => {
   const category = data.allMarkdownRemark.edges[0].node.frontmatter.category
+  const intl = useIntl()
   return (
     <Layout>
       <div className="category-container">
         <SEO title={`Posts in category "${category}"`} />
 
         <section id="portfolio">
-          <SectionTitle title={category} />
+          <SectionTitle title={intl.formatMessage({ id: "blog_post_category_" + category })} />
           <Container>
             <header>
               <NavBlock currentCategory={category} allCategories={data.allCategories} />

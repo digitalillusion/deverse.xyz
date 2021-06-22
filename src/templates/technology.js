@@ -5,15 +5,17 @@ import Layout from "../components/layout"
 import SectionTitle from "../components/sectiontitle"
 import { Container } from "react-bootstrap"
 import PortfolioItem from "../components/items-portfolio"
-import { Link } from "gatsby-plugin-intl"
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 import { technologies } from "../components/items-tech";
 
 const Technology = ({ pageContext, data }) => {
   const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
-  const tagHeader = `Using ${technologies[tag].name} in ${totalCount} project${
-    totalCount === 1 ? "" : "s"
-  }`
+  const intl = useIntl();
+  const { edges, totalCount } = data.allMarkdownRemark;
+
+  const tagHeader = totalCount === 1 ?
+    intl.formatMessage({ id : 'technology_using_one'}, { 0: technologies[tag].name }) :
+    intl.formatMessage({ id : 'technology_using_many'}, { 0: technologies[tag].name, 1: totalCount });
   return (
     <Layout>
       <div className="category-container">
@@ -22,7 +24,13 @@ const Technology = ({ pageContext, data }) => {
           <SectionTitle title={tagHeader} />
           <Container>
             <header>
-              <Link to="/#technologies">All technologies</Link>
+              <nav>
+                <ul className={"inner"}>
+                  <li>
+                    <Link to="/#technologies" className="text-secondary" rel="up"  > ▲ <FormattedMessage id={'technology_all'}/></Link>
+                  </li>
+                </ul>
+              </nav>
             </header>
             {edges.map((node, index) => {
               return (
@@ -34,7 +42,13 @@ const Technology = ({ pageContext, data }) => {
               )
             })}
             <footer className="page-footer">
-              <Link to="/#technologies">All technologies</Link>
+              <nav>
+                <ul className={"inner"}>
+                  <li>
+                    <Link to="/#technologies" className="text-secondary" rel="up"  > ▲ <FormattedMessage id={'technology_all'}/></Link>
+                  </li>
+                </ul>
+              </nav>
             </footer>
           </Container>
         </section>

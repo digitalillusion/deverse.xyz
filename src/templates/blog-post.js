@@ -4,23 +4,16 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
-import { Link } from "gatsby-plugin-intl"
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 import github from "@iconify/icons-simple-icons/github";
 import Icon from "@iconify/react";
 import TechItem from "../components/items-tech";
 
 const NavBlock = ({ pageContext, post }) => {
   const { previous, next } = pageContext
+  const intl = useIntl();
   return <nav>
-    <ul
-      style={{
-        display: `flex`,
-        flexWrap: `wrap`,
-        justifyContent: `space-between`,
-        listStyle: `none`,
-        padding: 0,
-      }}
-    >
+    <ul className={"inner"}>
       <li>
         {previous && (
           <Link to={previous.fields.slug} rel="prev" className="text-secondary">
@@ -31,7 +24,7 @@ const NavBlock = ({ pageContext, post }) => {
       <li>
         {post && (
           <Link to={post.fields.categorySlug} rel="up" className="text-secondary">
-            ▲ All {post.frontmatter.category}
+            ▲ <FormattedMessage id={"blog_post_all"} values={{ 0: intl.formatMessage({ id: "blog_post_category_" + post.frontmatter.category }) }} />
           </Link>
         )}
       </li>
@@ -48,6 +41,7 @@ const NavBlock = ({ pageContext, post }) => {
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
+  const intl = useIntl();
   return (
     <Layout location={location}>
       <SEO
@@ -72,7 +66,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 marginBottom: rhythm(1),
               }}
             >
-              {post.frontmatter.date}
+              {intl.formatDate(post.frontmatter.date, { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
             <NavBlock pageContext={pageContext} post={post} />
           </header>

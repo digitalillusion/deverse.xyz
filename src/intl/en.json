@@ -28,5 +28,9 @@
   "footer_copyright" : "Copyright © {0} {1} - All registered trademarks are property of their respective owners.",
   "footer_cookie_consent": "This website uses cookies to produce a better user experience and, if allowed, to access third party services. For more information, please consult the Privacy policy.",
   "footer_cookie_accept": "Allow",
-  "footer_cookie_decline": "Decline"
+  "footer_cookie_decline": "Decline",
+  "blog_post_all": "All {0}",
+  "technology_using_one": "{0} is used in one project",
+  "technology_using_many": "{0} is used in {1} projects",
+  "technology_all": "All technologies"
 }

@@ -7,7 +7,7 @@
   "index_about_msg_0_caption": "Un universo di sviluppo",
   "index_about_msg_0_label": "Competenza in un'ampia varietà di tecnologie e domini funzionali",
   "index_about_msg_1_caption": "Una mentalità diversa",
-  "index_about_msg_1_label": "Dedito a lavorare con interesse e coinvolgimento",
+  "index_about_msg_1_label": "Dedizione nel lavorare con interesse e coinvolgimento",
   "index_about_msg_2_caption": "Un'impresa entusiasmante",
   "index_about_msg_2_label": "Passione, creatività e divertimento sempre vivi",
   "index_contact_intro" : "Non esitare a contattarmi se hai bisogno di assumere uno sviluppatore remoto, part-time e freelance. Possiamo connetterci sui social network, oppure puoi utilizzare il modulo qui presente per inviare direttamente la tua domanda.",
@@ -28,5 +28,10 @@
   "footer_copyright": "Copyright © {0} {1} - Tutti i marchi registrati sono di proprietà dei rispettivi proprietari.",
   "footer_cookie_consent": "Questo sito web utilizza i cookie per produrre una migliore esperienza d'utilizzo e, se consentito, per accedere a servizi di terze parti. Per maggiori informazioni, consultare la Politica sulla riservatezza.",
   "footer_cookie_accept": "Consenti",
-  "footer_cookie_decline": "Rifiuta"
+  "footer_cookie_decline": "Rifiuta",
+  "blog_post_all": "Tutti i {0}",
+  "blog_post_category_websites": "Siti web",
+  "technology_using_one": "{0} è utilizzato in un progetto",
+  "technology_using_many": "{0} è utilizzato in {1} progetti",
+  "technology_all": "Tutte le tecnologie"
 }
