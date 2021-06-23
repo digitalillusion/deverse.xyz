@@ -1250,6 +1250,16 @@
   resolved "https://registry.yarnpkg.com/@iconify-icons/logos/-/logos-1.1.9.tgz#5216541eb62c5849ed33e46e951271bef63ef2af"
   integrity sha512-+myjzWPtTp7vNYrl2t7gV4xojG3Rl2b8xw6sD0V0dib/h1UwsTYo4X7AaLQDrdO8Bxe1wzQfhSgS6qLbBRYCpw==
 
+"@iconify/icons-cib@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-cib/-/icons-cib-1.1.0.tgz#f718e7c311d30573418f25cec2bf2fece286afd5"
+  integrity sha512-WZb+BlQAJQqcYdUb66pGpK4AEm3taWos5SWDoCaba5w0QoFmTeFY4G6kxmq1unvicT0Ah69DJ6KD1kIWh5iYUw==
+
+"@iconify/icons-fa-brands@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-fa-brands/-/icons-fa-brands-1.1.0.tgz#a7eab49c679c54813f204891e2a307a73e044725"
+  integrity sha512-7IsOtTx4lPPqkYdz5fydOo/RXQAIq62gNJCasU+o7OkX/Sk15zW6b7atpf0fK2LmdDmejWlzkZkc5xKGaD+rHA==
+
 "@iconify/icons-fa-solid@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@iconify/icons-fa-solid/-/icons-fa-solid-1.1.1.tgz#1488a133cff834bc78d599a23904c6cc350c8fbf"

@@ -134,6 +134,7 @@ export const query = graphql`
                 frontmatter {
                   category
                   date(formatString: "MMMM DD, YYYY")
+                  timestamp: date (formatString: "x")
                   title
                   description
                   coverImage {

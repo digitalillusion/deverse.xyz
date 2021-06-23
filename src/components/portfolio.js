@@ -4,7 +4,9 @@ import CategoryItem from "./items-category"
 const PortfolioSection = ({ postsByCategory }) => {
   return (
     <section id="portfolio" className="container">
-      {postsByCategory.map((category, index) => {
+      {postsByCategory
+        .sort((c1, c2) => c2.edges[0].node.frontmatter.timestamp - c1.edges[0].node.frontmatter.timestamp)
+        .map((category, index) => {
         return (
           <CategoryItem
             key={index}

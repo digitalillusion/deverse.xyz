@@ -6,8 +6,11 @@ import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 import github from "@iconify/icons-simple-icons/github";
+import youtube from "@iconify/icons-simple-icons/youtube";
+import googleplay from "@iconify/icons-fa-brands/google-play";
 import Icon from "@iconify/react";
 import TechItem from "../components/items-tech";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const NavBlock = ({ pageContext, post }) => {
   const { previous, next } = pageContext
@@ -70,28 +73,45 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             </p>
             <NavBlock pageContext={pageContext} post={post} />
           </header>
-            <div className="blog-post" dangerouslySetInnerHTML={{ __html: post.html }} />
-            <div className="links">
-              {post.frontmatter.links.map(link => {
-                let icon
-                if (link.indexOf("github.com") > 0) {
-                  icon = github
-                }
-                return <a href={link} title={link} target="_blank" rel="noreferrer">
-                  <Icon icon={icon} color ="#6888DF" />
-                </a>
-              })}
+          <div className="blog-post-row">
+            <div className="blog-post-lcol" data-aos="zoom-in">
+              <GatsbyImage className="blog-post-cover" image={post.frontmatter.coverImage.childImageSharp.gatsbyImageData} alt={post.frontmatter.title}/>
             </div>
-            <div className="badge-wrapper">
-              {post.frontmatter.tags.map((tag, index) => {
-                return <TechItem
-                  key={index}
-                  maxCount={1}
-                  data={{ fieldValue: tag, totalCount: 1 }}
-                  icon={true}
-                />
-              })}
+            <div className="blog-post-rcol" data-aos="zoom">
+              <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
             </div>
+          </div>
+          <div className="blog-post-row">
+            <div className="blog-post-lcol">
+              <div className="links">
+                {post.frontmatter.links && post.frontmatter.links.map(link => {
+                  let icon
+                  if (link.indexOf("github.com") > 0) {
+                    icon = github
+                  } else if (link.indexOf("youtube.com") > 0) {
+                    icon = youtube
+                  } else if (link.indexOf("play.google.com") > 0) {
+                    icon = googleplay
+                  }
+                  return <a key={icon} href={link} title={link} target="_blank" rel="noreferrer">
+                    <Icon icon={icon} color ="#6888DF" />
+                  </a>
+                })}
+              </div>
+            </div>
+            <div className="blog-post-rcol">
+              <div className="badge-wrapper">
+                {post.frontmatter.tags.map((tag, index) => {
+                  return <TechItem
+                    key={index}
+                    maxCount={1}
+                    data={{ fieldValue: tag, totalCount: 1 }}
+                    icon={true}
+                  />
+                })}
+              </div>
+            </div>
+          </div>
           <footer>
             <NavBlock pageContext={pageContext} post={post} />
           </footer>
@@ -122,6 +142,11 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+        coverImage {
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED)
+          }
+        }
         category
         date(formatString: "MMMM DD, YYYY")
         description

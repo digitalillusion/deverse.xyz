@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import PortfolioItem from "../components/items-portfolio"
 import SectionTitle from "../components/sectiontitle"
-import { Link, useIntl } from "gatsby-plugin-intl";
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 
 const NavBlock = ({ currentCategory, allCategories }) => {
   return <nav>
@@ -27,7 +27,7 @@ const NavBlock = ({ currentCategory, allCategories }) => {
         return (
           <li>
             <Link to={node.fields.categorySlug} rel="prev" className="text-secondary">
-              {node.frontmatter.category}
+              <FormattedMessage id={"blog_post_category_" + node.frontmatter.category} />
             </Link>
           </li>
         )
@@ -39,13 +39,14 @@ const NavBlock = ({ currentCategory, allCategories }) => {
 const CategoryTemplate = ({ data }) => {
   const category = data.allMarkdownRemark.edges[0].node.frontmatter.category
   const intl = useIntl()
+  let categoryTitle = intl.formatMessage({ id: "blog_post_category_" + category });
   return (
     <Layout>
       <div className="category-container">
-        <SEO title={`Posts in category "${category}"`} />
+        <SEO title={intl.formatMessage({ id: "blog_post_title" },{ 0: categoryTitle } )} />
 
         <section id="portfolio">
-          <SectionTitle title={intl.formatMessage({ id: "blog_post_category_" + category })} />
+          <SectionTitle title={categoryTitle} />
           <Container>
             <header>
               <NavBlock currentCategory={category} allCategories={data.allCategories} />
@@ -57,6 +58,7 @@ const CategoryTemplate = ({ data }) => {
                     noSeo
                     key={index}
                     col={index%2 === 1 ? "col-right" : "col-left"}
+                    aos={index%2 === 1 ? "fade-left" : "fade-right"}
                     data={node} />
                 )
               })}

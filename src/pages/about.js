@@ -12,7 +12,7 @@ const About = ({ data }) => {
   return (
     <Layout>
       <div className="about-container">
-        <SEO title={`About deverse.xyz`} />
+        <SEO title={intl.formatMessage({ id: "about_title" })} />
 
         <section id="about" className="container">
           <Container>
@@ -37,7 +37,7 @@ const About = ({ data }) => {
               </div>
             </div>
             <div className="row flex">
-              <div className="col m6 hcenter" data-aos="fade-up">
+              <div className="col m6 hcenter" data-aos="zoom-in">
                 <embed src={data.resume.publicURL} width="1060" height="1400" type="application/pdf" />
               </div>
             </div>

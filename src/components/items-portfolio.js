@@ -1,45 +1,57 @@
 import React from "react";
 
-import { Link } from "gatsby-plugin-intl";
+import { Link, useIntl } from "gatsby-plugin-intl";
 import "../styles/list-portfolio.less";
 import SEO from "./seo"
 import { GatsbyImage } from "gatsby-plugin-image"
 import TechItem from "./items-tech"
+import { rhythm, scale } from "../utils/typography";
 
 function PortfolioItem({ data, aos, noSeo }) {
+  const intl = useIntl()
+  let { frontmatter, fields } = data.node;
   return (
     <div className="item-portfolio col s12" data-aos={aos} >
-      {!!!noSeo && <SEO title={data.node.frontmatter.title} description={data.node.frontmatter.description} />}
+      {!!!noSeo && <SEO title={frontmatter.title} description={frontmatter.description} />}
       <div className="row flex">
         <div className="col m6 image">
-          <GatsbyImage image={data.node.frontmatter.coverImage.childImageSharp.gatsbyImageData} alt={data.node.frontmatter.title}/>
+          <GatsbyImage image={frontmatter.coverImage.childImageSharp.gatsbyImageData} alt={frontmatter.title}/>
           <Link
-            to={data.node.fields.slug}
-            title={data.node.frontmatter.title}
-            aria-label={data.node.frontmatter.title}
+            to={fields.slug}
+            title={frontmatter.title}
+            aria-label={frontmatter.title}
             className="overlay-link"
             style={{ opacity: 0 }}
           >
-            {data.node.frontmatter.title}
+            {frontmatter.title}
           </Link>
         </div>
         <div className="col m6 content">
           <h2 className="text-primary pseudo-divider">
             <Link
-              to={data.node.fields.slug}
-              title={data.node.frontmatter.title}
+              to={fields.slug}
+              title={frontmatter.title}
               aria-label={
-                data.node.frontmatter.title
+                frontmatter.title
               }
             >
-              {data.node.frontmatter.title}
+              {frontmatter.title}
             </Link>
           </h2>
+          <p
+            style={{
+              ...scale(-1 / 5),
+              display: `block`,
+              marginBottom: rhythm(1),
+            }}
+          >
+            {intl.formatDate(frontmatter.date, { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
           <p className="text-tertiary">
-            {data.node.frontmatter.description || data.node.excerpt}
+            {frontmatter.description || data.node.excerpt}
           </p>
           <div className="badge-wrapper">
-            {data.node.frontmatter.tags.map((tag, index) => {
+            {frontmatter.tags.map((tag, index) => {
               return <TechItem
                 key={index}
                 maxCount={1}

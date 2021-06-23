@@ -9,9 +9,10 @@ links:
   - https://github.com/digitalillusion/deverse.xyz
 tags:
   - javascript
-  - gatsby-js
+  - gatsby
   - graphql
-  - react-js
+  - react
+  - docker
 ---
 
 My portfolio website, the one you are browsing. 

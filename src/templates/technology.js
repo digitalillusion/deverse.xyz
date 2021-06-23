@@ -38,6 +38,7 @@ const Technology = ({ pageContext, data }) => {
                   noSeo
                   key={node.id}
                   col={index%2 === 1 ? "col-right" : "col-left"}
+                  aos={index%2 === 1 ? "fade-left" : "fade-right"}
                   data={node} />
               )
             })}

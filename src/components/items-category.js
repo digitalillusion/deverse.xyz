@@ -36,7 +36,7 @@ function CategoryItem({ data, aos }) {
             </Link>
           </h2>
           <p className="text-tertiary">
-            {post.frontmatter.date}
+            {intl.formatDate(post.frontmatter.date, { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
           <p className="text-totalcount">
             {data.totalCount}
