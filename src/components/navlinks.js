@@ -6,7 +6,6 @@ import { AnchorLink } from "gatsby-plugin-anchor-links"
 import { changeLocale, FormattedMessage, useIntl } from "gatsby-plugin-intl"
 import ReactFlagsSelect from "react-flags-select"
 
-
 function ListItem({ data, section}) {
     const intl = useIntl();
     let anchor = {
@@ -58,7 +57,10 @@ function ThemeSwitchButton() {
     let [theme, setTheme] = useState(getTheme())
 
     function getTheme() {
-        return localStorage.getItem("theme")
+        if (typeof window !== "undefined") {
+            return window.localStorage.getItem("theme")
+        }
+        return null
     }
 
     useEffect(() => {
@@ -72,7 +74,9 @@ function ThemeSwitchButton() {
     function changeTheme(onSwitch) {
         if (theme === null) {
             let newTheme = onSwitch ? "light-mode" : "dark-mode";
-            localStorage.setItem("theme", newTheme)
+            if (typeof window !== "undefined") {
+                window.localStorage.setItem("theme", newTheme);
+            }
             return newTheme
         }
         return getTheme() === "dark-mode" ? "light-mode" : "dark-mode"
@@ -84,7 +88,9 @@ function ThemeSwitchButton() {
             ['F9'].includes(event.key))) {
             let newTheme = changeTheme(true)
             setTheme(newTheme)
-            localStorage.setItem("theme", newTheme)
+            if (typeof window !== "undefined") {
+                window.localStorage.setItem("theme", newTheme);
+            }
         }
 
     }

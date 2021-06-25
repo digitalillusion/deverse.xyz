@@ -12,7 +12,6 @@ tags:
   - gatsby
   - graphql
   - react
-  - docker
 ---
 
 Il mio sito portfolio, quello che stai navigando.

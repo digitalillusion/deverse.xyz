@@ -14,7 +14,7 @@ import { Link } from "gatsby-plugin-intl"
 
 
 function IndexPage({ data }){
-  let [winHeight, setWinHeight] = useState(window.outerHeight);
+  let [winHeight, setWinHeight] = useState(0);
   let [wallpaper, setWallpaper] = useState(null);
   const intl = useIntl();
 
@@ -28,14 +28,20 @@ function IndexPage({ data }){
     }
     return wallpaper
   }, [wallpaper]);
-  let resizeListener = useCallback(() => setWinHeight(window.outerHeight), [setWinHeight]);
+  let resizeListener = useCallback(() => {
+    const outerHeight = typeof window !== "undefined" ? window.outerHeight : 0
+    setWinHeight(outerHeight)
+  }, [setWinHeight]);
   let scrollListener = useCallback(() => setWallpaper(chooseWallpaper()), [chooseWallpaper]);
 
   useEffect(() => {
-    window.addEventListener("resize", resizeListener)
-    window.addEventListener("scroll", scrollListener)
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", resizeListener)
+      window.addEventListener("scroll", scrollListener)
+    }
 
     if (wallpaper == null) {
+      resizeListener()
       scrollListener()
     }
 
@@ -59,8 +65,8 @@ function IndexPage({ data }){
               <div className="main-title-text">
                 <svg>
                   <defs>
-                    <mask id="mask" x="0" y="0" width="100%" height="100%">
-                      <rect id="alpha" x="0" y="0" width="100%" height="100%"/>
+                    <mask id="mask" x="0" y="0" width="100%" height={winHeight}>
+                      <rect id="alpha" x="0" y="0" width="100%" height={winHeight}/>
                       <text id="title" x="50%" y={0 - Math.max(0,  400 - 0.5 * winHeight)} dy="1.58em" textAnchor="middle">
                         {intl.formatMessage({ id: "site_metadata_title" })}
                       </text>

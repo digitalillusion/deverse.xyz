@@ -6,6 +6,7 @@ coverImage: cover.jpg
 language: fr
 category: webapps
 links:
+  - https://mtm.video
 tags:
   - typescript
   - angular
@@ -18,4 +19,4 @@ La premiere "remote video content factory".
 
 Briefer. Pitcher. Sélectionner. Produire. Gagner du temps et de l'argent.
 
-Tirez parti du pouvoir de notre sélection de maisons de production pour produire, à la vitesse des réseaux, des vidéos d’une qualité incomparable.. Vous pouvez le faire 100% à distance, du brief créatif à la post-production et jusqu’aux éléments finaux, le tout sur notre plateforme collaborative de gestion de projet vidéo.
+Tirez parti du pouvoir d'une sélection de maisons de production pour produire, à la vitesse des réseaux, des vidéos d’une qualité incomparable.. Vous pouvez le faire 100% à distance, du brief créatif à la post-production et jusqu’aux éléments finaux, le tout sur une plateforme collaborative de gestion de projet vidéo.

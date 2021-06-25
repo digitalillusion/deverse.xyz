@@ -5,7 +5,6 @@ import NavLinks from "./navlinks";
 import SocialLinks from "./sociallinks";
 import Logo from "./logo";
 import { Hamburger } from "./icons";
-
 import "../styles/navbar.less";
 
 function SidebarContents() {
@@ -61,19 +60,15 @@ class Navbar extends React.Component {
     }
 
     changeNavbarHeight() {
-        /* While the name states changeNavbarHeight, this does not directly change the navbar height. It simply reduces the width of the logo, which reduces the height and thereby the overall navbar height.
-
-		Also this slightly reduces the vertical padding
-
-		*/
-
-        window.addEventListener("scroll", function() {
-            if (this.scrollY > 0) {
-                document.querySelector("nav").classList.add("scrolled");
-            } else {
-                document.querySelector("nav").classList.remove("scrolled");
-            }
-        });
+        if (typeof window != "undefined") {
+            window.addEventListener("scroll", function() {
+                if (this.scrollY > 0) {
+                    document.querySelector("nav").classList.add("scrolled");
+                } else {
+                    document.querySelector("nav").classList.remove("scrolled");
+                }
+            });
+        }
     }
 
     changeNavbarPlaceholderHeight() {

@@ -13,11 +13,17 @@ export default () => {
   let [isSubmitted, setSubmitted] = useState(0)
 
   function isCookiePolicyAccepted() {
+    if (typeof window == "undefined") {
+      return true
+    }
     return !!window.gaGlobal
   }
 
   useEffect(() => {
     function renderCaptcha() {
+      if (typeof window == "undefined") {
+        return
+      }
       if (window.grecaptcha && window.grecaptcha.render && captchaRef.current && captchaRef.current.innerHTML === "") {
         window.grecaptcha.render(captchaRef.current, {
           "sitekey": "6Lc4ARgbAAAAABiBU4OerSf_X_m4iVeZzj7J_Uaa",

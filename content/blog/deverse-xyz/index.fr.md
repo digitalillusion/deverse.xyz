@@ -12,7 +12,6 @@ tags:
   - gatsby
   - graphql
   - react
-  - docker
 ---
 
 

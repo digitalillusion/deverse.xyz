@@ -53,10 +53,10 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
-    "@iconify/icons-fa-solid": "^1.1.1",
-    "@iconify/icons-fa-brands": "^1.1.0",
-    "@iconify/icons-simple-icons": "^1.1.26",
     "@iconify/icons-cib": "^1.1.0",
+    "@iconify/icons-fa-brands": "^1.1.0",
+    "@iconify/icons-fa-solid": "^1.1.1",
+    "@iconify/icons-simple-icons": "^1.1.26",
     "@iconify/react": "^1.1.4",
     "prettier": "2.3.0",
     "slug": "^3.5.2"
@@ -72,7 +72,7 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby build",
     "develop": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby clean & gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",

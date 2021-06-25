@@ -8,6 +8,7 @@ import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 import github from "@iconify/icons-simple-icons/github";
 import youtube from "@iconify/icons-simple-icons/youtube";
 import googleplay from "@iconify/icons-fa-brands/google-play";
+import linkout from "@iconify/icons-fa-solid/link";
 import Icon from "@iconify/react";
 import TechItem from "../components/items-tech";
 import { GatsbyImage } from "gatsby-plugin-image";
@@ -92,6 +93,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                     icon = youtube
                   } else if (link.indexOf("play.google.com") > 0) {
                     icon = googleplay
+                  } else {
+                    icon = linkout
                   }
                   return <a key={icon} href={link} title={link} target="_blank" rel="noreferrer">
                     <Icon icon={icon} color ="#6888DF" />
