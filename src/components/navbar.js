@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "gatsby-plugin-intl"
+import { Link } from "gatsby-plugin-intl";
 import Sidebar from "react-sidebar";
 import NavLinks from "./navlinks";
 import SocialLinks from "./sociallinks";
 import Logo from "./logo";
 import { Hamburger } from "./icons";
 import "../styles/navbar.less";
+import NavButtons from "./navbuttons";
 
 function SidebarContents() {
     return (
@@ -113,7 +114,10 @@ class Navbar extends React.Component {
                     <Link to="/">
                         <Logo />
                     </Link>
-                    <NavLinks />
+                    <span className="navbar-nav">
+                        <NavLinks />
+                        <NavButtons />
+                    </span>
                 </nav>
                 {placeholder && (
                     <div

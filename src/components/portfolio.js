@@ -1,5 +1,5 @@
-import React from "react"
-import CategoryItem from "./items-category"
+import React from "react";
+import CategoryItem from "./items-category";
 
 const PortfolioSection = ({ postsByCategory }) => {
   return (

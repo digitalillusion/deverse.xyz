@@ -1,24 +1,16 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Container } from "react-bootstrap"
+import React from "react";
+import { graphql } from "gatsby";
+import { Container } from "react-bootstrap";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import PortfolioItem from "../components/items-portfolio"
-import SectionTitle from "../components/sectiontitle"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import PortfolioItem from "../components/items-portfolio";
+import SectionTitle from "../components/sectiontitle";
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 
 const NavBlock = ({ currentCategory, allCategories }) => {
   return <nav>
-    <ul
-      style={{
-        display: `flex`,
-        flexWrap: `wrap`,
-        justifyContent: `center`,
-        listStyle: `none`,
-        padding: 0,
-      }}
-    >
+    <ul>
       {allCategories && allCategories.group.map( group => {
         let node = group.edges[0].node
         if (currentCategory === node.frontmatter.category) {

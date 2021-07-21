@@ -1,21 +1,22 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
-import SEO from "../components/seo"
+import SEO from "../components/seo";
 import SocialLinks from "../components/sociallinks";
 import "../styles/wall.less";
-import AboutSection from "../components/about"
-import PortfolioSection from "../components/portfolio"
-import TechSection from "../components/tech"
-import Contact from "../components/contact"
-import { GatsbyImage } from "gatsby-plugin-image"
-import { useIntl, FormattedMessage } from "gatsby-plugin-intl"
-import { Link } from "gatsby-plugin-intl"
-
+import AboutSection from "../components/about";
+import PortfolioSection from "../components/portfolio";
+import TechSection from "../components/tech";
+import Contact from "../components/contact";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
+import { isSmallScreen } from "../utils/functions";
 
 function IndexPage({ data }){
   let [winHeight, setWinHeight] = useState(0);
+  let [winWidth, setWinWidth] = useState(0);
   let [wallpaper, setWallpaper] = useState(null);
+  let mainTitle = useRef();
   const intl = useIntl();
 
   let chooseWallpaper = useCallback(() => {
@@ -30,8 +31,10 @@ function IndexPage({ data }){
   }, [wallpaper]);
   let resizeListener = useCallback(() => {
     const outerHeight = typeof window !== "undefined" ? window.outerHeight : 0
+    const outerWidth = typeof window !== "undefined" ? window.outerWidth : 0
     setWinHeight(outerHeight)
-  }, [setWinHeight]);
+    setWinWidth(outerWidth)
+  }, [setWinHeight, setWinWidth]);
   let scrollListener = useCallback(() => setWallpaper(chooseWallpaper()), [chooseWallpaper]);
 
   useEffect(() => {
@@ -43,6 +46,14 @@ function IndexPage({ data }){
     if (wallpaper == null) {
       resizeListener()
       scrollListener()
+    }
+
+    for (let i = 0; i < 10; i++) {
+      setTimeout(() => {
+        if (mainTitle.current) {
+          mainTitle.current.innerHTML += ''
+        }
+      }, 200 * i)
     }
 
     return () => {
@@ -61,13 +72,13 @@ function IndexPage({ data }){
         />
         <div className="wall">
           <div className="intro container">
-            <div className="main-title text-primary" style={{  height: winHeight + "px" }}>
-              <div className="main-title-text">
+            <div className="main-title text-primary" style={{  height: winHeight + "px" }} ref={mainTitle}>
+              <div className="main-title-text" ref={mainTitle}>
                 <svg>
                   <defs>
                     <mask id="mask" x="0" y="0" width="100%" height={winHeight}>
                       <rect id="alpha" x="0" y="0" width="100%" height={winHeight}/>
-                      <text id="title" x="50%" y={0 - Math.max(0,  400 - 0.5 * winHeight)} dy="1.58em" textAnchor="middle">
+                      <text id="title" x="50%" y="0%" dy={isSmallScreen() ? "15%" : "40%"} textAnchor="middle">
                         {intl.formatMessage({ id: "site_metadata_title" })}
                       </text>
                     </mask>
@@ -81,7 +92,7 @@ function IndexPage({ data }){
                   <rect id="base" x="0" y="0" width="100%" height="100%"/>
                 </svg>
               </div>
-              <div className="main-title-subtext" style={{ top: -0.5 * winHeight + "px" }}>
+              <div className="main-title-subtext" style={{ top: (isSmallScreen() ? -0.8 * winHeight : -0.5 * winHeight) + "px" }}>
                 <p className="tag-line text-secondary">
                   <FormattedMessage id={"index_intro_tag"} />
                 </p>
@@ -99,11 +110,12 @@ function IndexPage({ data }){
           </div>
         </div>
       </section>
-
-      <AboutSection/>
-      <PortfolioSection postsByCategory={data.allCategories.group} />
-      <TechSection postsByTag={data.allTags.group} />
-      <Contact />
+      <div className="home">
+        <AboutSection width={winWidth}/>
+        <PortfolioSection postsByCategory={data.allCategories.group} />
+        <TechSection postsByTag={data.allTags.group} />
+        <Contact />
+      </div>
     </Layout>
   );
 }

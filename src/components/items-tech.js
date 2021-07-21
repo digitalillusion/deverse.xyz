@@ -1,18 +1,18 @@
 import React from "react";
 
-import "../styles/list-tech.less"
-import Link from "./link"
-import slug from "slug"
+import "../styles/list-tech.less";
+import Link from "./link";
+import slug from "slug";
 import { InlineIcon } from "@iconify/react";
-import java from "@iconify/icons-simple-icons/java"
-import terminal from "@iconify/icons-fa-solid/terminal"
-import javascript from "@iconify/icons-simple-icons/javascript"
-import typescript from "@iconify/icons-simple-icons/typescript"
+import java from "@iconify/icons-simple-icons/java";
+import terminal from "@iconify/icons-fa-solid/terminal";
+import javascript from "@iconify/icons-simple-icons/javascript";
+import typescript from "@iconify/icons-simple-icons/typescript";
 import gatsby from "@iconify-icons/logos/gatsby";
 import graphql from "@iconify-icons/logos/graphql";
 import react from "@iconify-icons/logos/react";
-import nodejs from "@iconify-icons/logos/nodejs-icon"
-import docker from "@iconify-icons/logos/docker-icon"
+import nodejs from "@iconify-icons/logos/nodejs-icon";
+import docker from "@iconify-icons/logos/docker-icon";
 import rust from "@iconify/icons-simple-icons/rust";
 import android from "@iconify-icons/logos/android-icon";
 import godotengine from "@iconify/icons-simple-icons/godotengine";
@@ -139,7 +139,7 @@ function TechItem({ data, maxCount, icon = false }) {
   return (
     <span className="tooltip" data-direction="bottom">
       <span className="tooltip__initiator">
-        <article className={`badge ${tech.color}`} style={{ scale: scaleFactor }} data-aos="flip-up" >
+        <article className={`badge ${tech.color}`} style={{ transform: `scale(${scaleFactor})` }} data-aos="flip-up" >
           <Link to={`/technologies/${slug(tech.name)}`} title={tech.name} aria-label={tech.name} style={{ color : "inherit" }}>
               <div className="rounded"><InlineIcon icon={tech.icon}/></div>
           </Link>

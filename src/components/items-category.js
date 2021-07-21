@@ -1,8 +1,8 @@
-import React from "react"
+import React from "react";
 
 import { Link, useIntl } from "gatsby-plugin-intl";
-import "../styles/list-portfolio.less"
-import { GatsbyImage } from "gatsby-plugin-image"
+import "../styles/list-portfolio.less";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 function CategoryItem({ data, aos }) {
   const intl = useIntl()

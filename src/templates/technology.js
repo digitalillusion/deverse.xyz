@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
-import SEO from "../components/seo"
-import Layout from "../components/layout"
-import SectionTitle from "../components/sectiontitle"
-import { Container } from "react-bootstrap"
-import PortfolioItem from "../components/items-portfolio"
+import React from "react";
+import { graphql } from "gatsby";
+import SEO from "../components/seo";
+import Layout from "../components/layout";
+import SectionTitle from "../components/sectiontitle";
+import { Container } from "react-bootstrap";
+import PortfolioItem from "../components/items-portfolio";
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 import { technologies } from "../components/items-tech";
 

@@ -21,4 +21,4 @@ Son objectif est de présenter les différents projets sur lesquels j'ai travail
 
 Conçu comme un simple site Web de présentation optimisé par Gatsby JS, il présente un contenu catégorisé dans le format blog et l'internationalisation des pages. 
 
-
+Son design responsive le rend consultable depuis les navigateurs mobiles et desktop.

@@ -2,9 +2,9 @@ import React from "react";
 
 import { Link, useIntl } from "gatsby-plugin-intl";
 import "../styles/list-portfolio.less";
-import SEO from "./seo"
-import { GatsbyImage } from "gatsby-plugin-image"
-import TechItem from "./items-tech"
+import SEO from "./seo";
+import { GatsbyImage } from "gatsby-plugin-image";
+import TechItem from "./items-tech";
 import { rhythm, scale } from "../utils/typography";
 
 function PortfolioItem({ data, aos, noSeo }) {

@@ -1,5 +1,5 @@
-import React from "react"
-import TechItem from "./items-tech"
+import React from "react";
+import TechItem from "./items-tech";
 
 const TechSection = ({ postsByTag }) => {
   let maxCount = Math.max.apply(Math, postsByTag.map(t => t.totalCount))

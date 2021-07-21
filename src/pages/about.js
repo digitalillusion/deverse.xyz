@@ -1,11 +1,14 @@
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { Container } from "react-bootstrap"
-import React from "react"
-import { graphql } from "gatsby"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import { Container } from "react-bootstrap";
+import React from "react";
+import { graphql } from "gatsby";
 import { Mapmarker } from "../components/icons";
-import { GatsbyImage } from "gatsby-plugin-image"
-import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import { GatsbyImage } from "gatsby-plugin-image";
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl";
+import filepdf from "@iconify/icons-fa-solid/file-pdf";
+import Icon from "@iconify/react";
+import { isSmallScreen } from "../utils/functions";
 
 const About = ({ data }) => {
   let intl = useIntl();
@@ -36,11 +39,16 @@ const About = ({ data }) => {
                 </div>
               </div>
             </div>
-            <div className="row flex">
+            {!isSmallScreen() && <div className="row flex">
               <div className="col m6 hcenter" data-aos="zoom-in">
                 <embed src={data.resume.publicURL} width="1060" height="1400" type="application/pdf" />
               </div>
-            </div>
+            </div>}
+            {isSmallScreen() && <div className="row flex">
+              <a className="download-resume" href={data.resume.publicURL} target="_blank" rel="noreferrer">
+                <Icon icon={filepdf} color ="#6888DF" />
+              </a>
+            </div>}
             <div className="main-title-text">
               <FormattedMessage id={"site_metadata_title"} />
             </div>

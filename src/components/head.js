@@ -1,6 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 
 function Header({ children }) {
     const query = useStaticQuery(graphql`

@@ -240,6 +240,11 @@ nav ul li a:before{
 	border-left: 3px solid @colorSecondary;
 }
 
+.download-resume {
+	font-size: 2.5em;
+	color: @textSecondary;
+	margin-left: 15%;
+}
 
 .dark-mode{
 	@background: #171B27;
@@ -337,16 +342,186 @@ div[role="navigation"]{
 	div[role="navigation"]{
 		display: block;
 	}
-	.container{
-		width: 95% !important;
-	}
 
 	section{
-			padding: 30px 0;
+		padding: 30px 0;
 	}
 
 	section svg text {
-	    font: bold 12px sans-serif;
+	    font: bold 0.28em sans-serif;
 	    font-family: 'Work Sans', sans-serif;
+	}
+
+	#home svg text,
+	#about .main-title-text{
+		font-size: 3em !important;
+	}
+
+	#about {
+		.image {
+			margin: 2em 0 0 0;
+			left: 0em;
+			width: 40%;
+			height: 13em;
+		}
+
+		.item {
+			margin: 0 8em;
+		}
+
+		.hcenter {
+			margin: 0;
+		}
+
+		.vcenter {
+			width: 58% !important;
+			margin: 0 !important;
+			padding-top: 2em;
+			font-size: 0.7em;
+		}
+
+		.main-title-text{
+			margin-top: -0.4em;
+			height: 2em;
+		}
+
+		.default__wrapper {
+
+			height: 120px;
+
+			.balloon {
+				max-width: 240px;
+				font-size: 0.7em;
+				position: relative;
+			}
+
+			.caption {
+				font-size: 1.5em;
+			}
+		}
+	}
+
+	#portfolio .item-category h2.text-primary, #technologies .item-category h2.text-primary,
+	#portfolio .text-totalcount, #technologies .text-totalcount {
+		font-size: 2em !important;
+	}
+
+	.badge-wrapper {
+		transform: scale(0.5);
+		margin: auto !important;
+	}
+
+	.home .badge-wrapper {
+		left: -50%;
+		top: -7em;
+		position: relative;
+		width: 200% !important;
+		max-width: 200% !important;
+	}
+
+	.badge {
+		margin: 0.5em;
+	}
+
+	.badge-wrapper:not(.home .badge-wrapper) .badge {
+		transform: scale(2);
+	}
+
+	#portfolio .flex .col, #technologies .flex .col {
+		min-width: 100%;
+		max-width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.home #portfolio .flex .col *,
+	.home #technologies .flex .col * {
+		margin: 0 !important;
+		padding: 0 0.1em !important;
+	}
+
+	#portfolio .flex .col .text-totalcount,
+	#technologies .flex .col .text-totalcount {
+		position: relative;
+		top: -0.4em;
+	}
+
+	#contact .details ul {
+		margin-left: 0 !important;
+	}
+
+	.seethrough {
+		height: 600px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	#about {
+		.image {
+			width: 100%;
+			margin: 4em 0 0 0;
+			position: inherit;
+			height: 14em;
+		}
+
+		.vcenter {
+			width: 100% !important;
+			padding: 1em 0 0 0;
+			text-align: left;
+			font-size: 0.9em;
+		}
+
+		.default__wrapper {
+
+			.balloon {
+				max-width: 180px;
+				font-size: 0.5em;
+				position: relative;
+			}
+
+			.caption {
+				font-size: 1.2em;
+			}
+		}
+		.main-title-text{
+			margin-top: 0.4em;
+			height: 2em;
+		}
+
+		.download-resume {
+			margin:auto;
+		}
+	}
+
+	.home .badge-wrapper {
+		transform: scale(0.4);
+		left: -50%;
+		top: -22em;
+	}
+
+	#portfolio .flex .col, #technologies .flex .col {
+		padding: 0
+	}
+
+	.seethrough {
+		height: 500px;
+	}
+
+	.row {
+		width: 100%;
+	}
+
+	.row .blog-post-row {
+		display: inherit;
+	}
+
+	#blog-post {
+		margin: 0;
+		padding: 0 5%;
+	}
+
+	#portfolio .flex h2, #technologies .flex h2 {
+		font-size: 30px !important;
 	}
 }

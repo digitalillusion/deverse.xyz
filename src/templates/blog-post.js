@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import { rhythm, scale } from "../utils/typography";
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
 import github from "@iconify/icons-simple-icons/github";
 import youtube from "@iconify/icons-simple-icons/youtube";

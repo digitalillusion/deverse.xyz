@@ -21,6 +21,10 @@ nav {
 		}
 	}
 
+	.navbar-nav {
+		display: inline-flex;
+	}
+
 	img {
 		width: 60px;
 		height: auto;
@@ -219,23 +223,48 @@ nav {
 
 @media only screen and (max-width: 800px) {
   	nav{
+		padding: 0.5em 0 0 0;
 		justify-content: center;
 
 		img {
 			width: 32px;
 		}
 
-		&.scrolled {
-			padding: 10px 36px 0;
+		.menu-flags ul {
+			margin: -3px -5px !important;
+		}
 
-			img {
-				width: 24px;
+		&.scrolled {
+			height: 32px;
+			padding: 0.3em 0 0.5em 0;
+
+			img{
+				margin-top: 22px;
+				width: 28px;
+			}
+
+			ul.navbar-buttons {
+				top: 0%;
+				transition: top 0.25s;
 			}
 		}
 
-		ul{
+		ul.navbar-links{
 			display: none;
 		}
+		ul.navbar-buttons{
+			margin: 0 !important;
+			margin-block: 0 !important;
+			position: absolute;
+			right: 0%;
+			top: 18%;
+		}
+
+		#rfs-btn {
+			padding: 5px;
+			border-width: 0 !important;
+		}
+
 
 		#menu-open{
 			display: block;

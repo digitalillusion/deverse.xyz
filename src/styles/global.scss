@@ -30,6 +30,7 @@ footer {
 .main-title-subtext{
     position: relative;
     z-index: 10;
+    padding: 0 0.2em;
 }
 
 #home svg{
@@ -175,7 +176,7 @@ section {
 
 .default__wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     color: white;
     padding-top: 10em;
 
@@ -281,12 +282,13 @@ header nav {
     position: inherit;
 
     ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
         width: 100%;
         margin: 0;
-
-        li {
-            width: 22em;
-        }
+        justify-content: space-evenly;
     }
 }
 
@@ -305,6 +307,10 @@ header, footer {
 }
 
 #about {
+    .default__container {
+        position: relative;
+    }
+
     .main-title-text {
         text-align: center;
         position: absolute;
@@ -329,7 +335,7 @@ header, footer {
         list-style: none;
     }
     .vcenter {
-        height: 400px;
+        height: auto;
         width: 41% !important;
         padding: 8em 2em 0;
         text-align: center;

@@ -1,8 +1,8 @@
-import React, { createRef, useEffect, useState } from "react"
-import { init, sendForm } from "emailjs-com"
+import React, { createRef, useEffect, useState } from "react";
+import { init, sendForm } from "emailjs-com";
 import "../styles/contact.less";
 import SocialLinks from "./sociallinks";
-import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl";
 
 export default () => {
   init("user_FJytP23RSN3LXSJA6gPJa");

@@ -1,7 +1,7 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import Link from "./link";
-import { FormattedMessage } from "gatsby-plugin-intl"
+import { FormattedMessage } from "gatsby-plugin-intl";
 
 function ListItem(props) {
     const data = props.data;

@@ -1,12 +1,12 @@
 import React from "react";
-import { useLocation } from "@reach/router"
-import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
+import { useLocation } from "@reach/router";
+import { initializeAndTrack } from "gatsby-plugin-gdpr-cookies";
 import Logo from "./logo";
 import Navlinks from "./navlinks";
 import FooterLinks from "./footer-links";
 import "../styles/footer.less";
-import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
-import CookieConsent from "react-cookie-consent"
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
+import CookieConsent from "react-cookie-consent";
 
 export default function() {
     let intl = useIntl();

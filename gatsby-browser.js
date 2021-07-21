@@ -1,14 +1,13 @@
 // custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
+import "typeface-montserrat";
+import "typeface-merriweather";
 
-import "prismjs/themes/prism.css"
+import "prismjs/themes/prism.css";
 
-import AOS from 'aos'
+import AOS from "aos";
 
-import './src/styles/aos.scss'
-import "./src/styles/global.scss"
-
+import "./src/styles/aos.scss";
+import "./src/styles/global.scss";
 
 
 AOS.init({

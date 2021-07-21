@@ -1,20 +1,21 @@
-import React from "react"
-import RellaxWrapper from "react-rellax-wrapper"
-import { FormattedMessage, Link } from "gatsby-plugin-intl"
+import React from "react";
+import RellaxWrapper from "react-rellax-wrapper";
+import { FormattedMessage, Link } from "gatsby-plugin-intl";
+import { isSmallScreen } from "../utils/functions";
 
-function AboutSection() {
-  return <section id="about" className="seethrough">
-    <div className={'default__container'}>
+export default ({ width })  => {
+  return <section id="about" className="seethrough" key={width}>
+    <div className={'default__container'} style={{ width: width }}>
       <div className={'default__wrapper'}>
-        <RellaxWrapper speed={-2.05}>
-          <div className="balloon" style={{ left: 400 }}>
+        <RellaxWrapper speed={isSmallScreen() ? -1.025 : -2.05}>
+          <div className="balloon" style={{ left: '50%' }}>
             <Link to="/about">
               <span className="caption"><FormattedMessage id={"index_about_msg_0_caption"} /></span>
               <p className="description"><FormattedMessage id={"index_about_msg_0_label"} /></p>
             </Link>
           </div>
         </RellaxWrapper>
-        <RellaxWrapper speed={1.0}>
+        <RellaxWrapper speed={isSmallScreen() ? 1.1 : 2.2} >
           <div className="balloon">
             <Link to="/about">
               <span className="caption"><FormattedMessage id={"index_about_msg_1_caption"} /></span>
@@ -22,8 +23,8 @@ function AboutSection() {
             </Link>
           </div>
         </RellaxWrapper>
-        <RellaxWrapper speed={-3.2} >
-          <div className="balloon" style={{ left: -300 }}>
+        <RellaxWrapper speed={isSmallScreen() ? -0.1 : -0.2} >
+          <div className="balloon" style={{ left: '-45%' }}>
             <Link to="/about">
               <span className="caption"><FormattedMessage id={"index_about_msg_2_caption"} /></span>
               <p className="description"><FormattedMessage id={"index_about_msg_2_label"} /></p>
@@ -34,7 +35,3 @@ function AboutSection() {
     </div>
   </section>
 }
-
-
-
-export default AboutSection;
