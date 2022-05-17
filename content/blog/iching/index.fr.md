@@ -21,4 +21,4 @@ Permet d'utiliser un dictionnaire personnalisé hérité de celui par défaut po
 
 Utilise la méthode des trois pièces pour lancer des hexagrammes, en générant au hasard un tirage au sort ou par saisie manuelle. Permet de choisir d'évaluer les lignes changeantes par interprétation manuelle ou en utilisant l'algorithme Master Yin ou Nanjing.
 
-Les lectures peuvent être enregistrées dans différents historiques et il est possible de protéger par mot de passe l'accès à ces fichiers. Sinon, chaque section de la lecture peut être partagée vers d'autres applications qui lisent le HTML. 
+Les lectures peuvent être enregistrées dans différents historiques et il est possible de protéger par mot de passe l'accès à ces fichiers. Sinon, chaque section de la lecture peut être partagée vers d'autres applications qui lisent le HTML.

@@ -17,4 +17,4 @@ Un semplice framework di azioni basato su redux.
 
 È pensato per pagine altamente dinamiche che necessitano di sincronizzazione in tempo reale tra modello e vista. Ha lo scopo di essere abbastanza generico da integrarsi anche con altri mezzi di sincronizzazione (ad esempio l'API Node di Gatsby).
 
-Silver Ghost è una speculazione sul nome della Rolls-Royce gialla che Gatsby guida nel romanzo di F. Scott Fitzgerald. 
+Silver Ghost è una speculazione sul nome della Rolls-Royce gialla che Gatsby guida nel romanzo di F. Scott Fitzgerald.

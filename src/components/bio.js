@@ -5,11 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import Image from "gatsby-plugin-image";
+import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-plugin-image"
 
-import { rhythm } from "../utils/typography";
+import { rhythm } from "../utils/typography"
 
 const Bio = () => {
   const data = useStaticQuery(graphql`

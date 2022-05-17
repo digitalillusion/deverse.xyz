@@ -1,25 +1,26 @@
 /**
- * SEO component that queries for data with
+ * Seo component that queries for data with
  *  Gatsby's useStaticQuery React hook
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
-import { useIntl } from "gatsby-plugin-intl";
+import React from "react"
+import PropTypes from "prop-types"
+import { Helmet } from "react-helmet"
+import { useIntl } from "gatsby-plugin-intl"
 
-const SEO = ({ description, meta, title }) => {
-  const intl = useIntl();
+const Seo = ({ description, meta, title }) => {
+  const intl = useIntl()
 
-  const metaTitle = intl.formatMessage({ id: "site_metadata_title" });
-  const metaDescription = description || intl.formatMessage({ id: "index_intro_description" })
+  const metaTitle = intl.formatMessage({ id: "site_metadata_title" })
+  const metaDescription =
+    description || intl.formatMessage({ id: "index_intro_description" })
 
   return (
     <Helmet
       htmlAttributes={{
-        lang : intl.locale,
+        lang: intl.locale,
       }}
       title={title}
       titleTemplate={`%s | ${metaTitle}`}
@@ -57,15 +58,15 @@ const SEO = ({ description, meta, title }) => {
   )
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
   meta: [],
   description: ``,
 }
 
-SEO.propTypes = {
+Seo.propTypes = {
   description: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
 }
 
-export default SEO
+export default Seo

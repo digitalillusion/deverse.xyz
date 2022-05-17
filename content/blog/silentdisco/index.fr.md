@@ -19,4 +19,4 @@ Prototype de discothèque silencieuse, construit sur deux éléments : la statio
 
 Le serveur de streaming, réalisé avec Node.js, lit la transmission azuracast et la propage à tous les clients connectés, en s'assurant qu'ils reçoivent tous le même instant de la transmission en même temps.
 
-En fait, le client calcule son retard à partir de la source et ajuste de manière adaptative le début du prochain tronçon de sorte que tous les flux aient tendance à être simultanés. 
+En fait, le client calcule son retard à partir de la source et ajuste de manière adaptative le début du prochain tronçon de sorte que tous les flux aient tendance à être simultanés.

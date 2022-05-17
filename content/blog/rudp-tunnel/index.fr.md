@@ -19,4 +19,4 @@ La commande agit comme un proxy entre l'origine et la destination du flux UDP in
 
 IPX est un protocole de couche réseau utilisé par les jeux DOS pour jouer sur le réseau local. Des émulateurs comme DOSBox fournissent une implémentation sur UDP d'un tel protocole appelé IPXNET. Cependant, comme IPX sur Ethernet a un taux d'erreur inférieur à UDP sur Internet, certains jeux peuvent ne pas se comporter correctement en présence, par exemple, de perte de paquets.
 
-rudp-tunnel peut être utilisé pour fournir une connexion fiable pour DOSBox IPXNET, permettant un gameplay stable. Typiquement, le serveur IPXNET lie un port à une adresse IP donnée et les clients IPXNET peuvent se connecter à cette adresse. Au lieu de cela, on achemine le trafic à travers les points de terminaison locaux du rudp-tunnel. 
+rudp-tunnel peut être utilisé pour fournir une connexion fiable pour DOSBox IPXNET, permettant un gameplay stable. Typiquement, le serveur IPXNET lie un port à une adresse IP donnée et les clients IPXNET peuvent se connecter à cette adresse. Au lieu de cela, on achemine le trafic à travers les points de terminaison locaux du rudp-tunnel.

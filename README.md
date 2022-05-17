@@ -18,3 +18,7 @@ Requires installed Node.js and Yarn package manager
 Serve on all network interfaces
 
     yarn serve -H 0.0.0.0
+
+## Build static website
+
+    gatsby build

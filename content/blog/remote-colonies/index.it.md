@@ -21,4 +21,4 @@ Tuttavia, prima o poi dovrai spostare la tua flotta e conquistare altri pianeti,
 
 Non spostare mai tutte le tue navi da un pianeta, però, o sarai una facile preda per le flotte nemiche attaccanti.
 
-Una volta che un giocatore ha conquistato tutti i pianeti nell'area, il gioco finisce. 
+Una volta che un giocatore ha conquistato tutti i pianeti nell'area, il gioco finisce.

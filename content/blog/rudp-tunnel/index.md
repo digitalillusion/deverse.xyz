@@ -11,9 +11,9 @@ tags:
   - rust
 ---
 
-An utility to upgrade an UDP stream to reliable UDP by mean of a tunnel relying on the Aeron driver. 
+An utility to upgrade an UDP stream to reliable UDP by mean of a tunnel relying on the Aeron driver.
 
-The command acts as a proxy between the origin and the destination of the initial, non-reliable UDP stream. 
+The command acts as a proxy between the origin and the destination of the initial, non-reliable UDP stream.
 
 **Example usage:**
 

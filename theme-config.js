@@ -8,13 +8,14 @@ module.exports = {
     switchTheme: true,
     siteUrl: `https://deverse.xyz/`,
     i18n: [
-      { country: "GB", language : "en" },
-      { country: "FR", language : "fr" },
-      { country: "IT", language : "it" }
+      { country: "GB", language: "en" },
+      { country: "FR", language: "fr" },
+      { country: "IT", language: "it" },
     ],
-    navLinks: [{
+    navLinks: [
+      {
         name: "home",
-        url: "/"
+        url: "/",
       },
       {
         name: "about",
@@ -31,32 +32,34 @@ module.exports = {
       {
         name: "contact",
         url: "/#contact",
-      }
+      },
     ],
-    footerLinks: [{
-          name: "privacy-policy",
-          url: "/privacy-policy"
-        }
+    footerLinks: [
+      {
+        name: "privacy-policy",
+        url: "/privacy-policy",
+      },
     ],
-    social: [{
+    social: [
+      {
         name: "github",
         icon: "/images/github.svg",
-        url: "https://github.com/digitalillusion"
+        url: "https://github.com/digitalillusion",
       },
       {
         name: "Linkedin",
         icon: "/images/linkedin.svg",
-        url: "https://www.linkedin.com/in/adriano-dalpane/"
+        url: "https://www.linkedin.com/in/adriano-dalpane/",
       },
       {
         name: "Stackoverflow",
         icon: "/images/stackoverflow.svg",
-        url: "https://stackexchange.com/users/43213/digital-illusion"
-      }
+        url: "https://stackexchange.com/users/43213/digital-illusion",
+      },
     ],
     contact: {
       description: ``,
-      address: "Vence, France"
-    }
-  }
+      address: "Vence, France",
+    },
+  },
 }

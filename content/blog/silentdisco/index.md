@@ -13,7 +13,7 @@ tags:
   - docker
 ---
 
-An audio-stream time-synchronization service that can be used to party. 
+An audio-stream time-synchronization service that can be used to party.
 
 Prototype of silent discotheque, built on two components: the radio station (which uses azuracast) and a webpage where dancers connect to receive the audio stream through their mobile phone. It's intended to be used through wifi, on site for all participants.
 

@@ -1,25 +1,32 @@
-import React from "react";
-import { graphql } from "gatsby";
-import SEO from "../components/seo";
-import Layout from "../components/layout";
-import SectionTitle from "../components/sectiontitle";
-import { Container } from "react-bootstrap";
-import PortfolioItem from "../components/items-portfolio";
-import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl";
-import { technologies } from "../components/items-tech";
+import React from "react"
+import { graphql } from "gatsby"
+import Seo from "../components/seo"
+import Layout from "../components/layout"
+import SectionTitle from "../components/sectiontitle"
+import { Container } from "react-bootstrap"
+import PortfolioItem from "../components/items-portfolio"
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
+import { technologies } from "../components/items-tech"
 
 const Technology = ({ pageContext, data }) => {
   const { tag } = pageContext
-  const intl = useIntl();
-  const { edges, totalCount } = data.allMarkdownRemark;
+  const intl = useIntl()
+  const { edges, totalCount } = data.allMarkdownRemark
 
-  const tagHeader = totalCount === 1 ?
-    intl.formatMessage({ id : 'technology_using_one'}, { 0: technologies[tag].name }) :
-    intl.formatMessage({ id : 'technology_using_many'}, { 0: technologies[tag].name, 1: totalCount });
+  const tagHeader =
+    totalCount === 1
+      ? intl.formatMessage(
+          { id: "technology_using_one" },
+          { 0: technologies[tag].name }
+        )
+      : intl.formatMessage(
+          { id: "technology_using_many" },
+          { 0: technologies[tag].name, 1: totalCount }
+        )
   return (
     <Layout>
       <div className="category-container">
-        <SEO title={tagHeader} />
+        <Seo title={tagHeader} />
         <section id="technologies" className="container">
           <SectionTitle title={tagHeader} />
           <Container>
@@ -27,7 +34,14 @@ const Technology = ({ pageContext, data }) => {
               <nav>
                 <ul className={"inner"}>
                   <li>
-                    <Link to="/#technologies" className="text-secondary" rel="up"  > ▲ <FormattedMessage id={'technology_all'}/></Link>
+                    <Link
+                      to="/#technologies"
+                      className="text-secondary"
+                      rel="up"
+                    >
+                      {" "}
+                      ▲ <FormattedMessage id={"technology_all"} />
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -37,16 +51,24 @@ const Technology = ({ pageContext, data }) => {
                 <PortfolioItem
                   noSeo
                   key={node.id}
-                  col={index%2 === 1 ? "col-right" : "col-left"}
-                  aos={index%2 === 1 ? "fade-left" : "fade-right"}
-                  data={node} />
+                  col={index % 2 === 1 ? "col-right" : "col-left"}
+                  aos={index % 2 === 1 ? "fade-left" : "fade-right"}
+                  data={node}
+                />
               )
             })}
             <footer className="page-footer">
               <nav>
                 <ul className={"inner"}>
                   <li>
-                    <Link to="/#technologies" className="text-secondary" rel="up"  > ▲ <FormattedMessage id={'technology_all'}/></Link>
+                    <Link
+                      to="/#technologies"
+                      className="text-secondary"
+                      rel="up"
+                    >
+                      {" "}
+                      ▲ <FormattedMessage id={"technology_all"} />
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -60,11 +82,13 @@ const Technology = ({ pageContext, data }) => {
 
 export default Technology
 export const pageQuery = graphql`
-  query($tag: String!, $language: String!) {
+  query ($tag: String!, $language: String!) {
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] }, language: { eq : $language } } }
+      filter: {
+        frontmatter: { tags: { in: [$tag] }, language: { eq: $language } }
+      }
     ) {
       totalCount
       edges {

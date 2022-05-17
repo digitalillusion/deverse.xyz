@@ -1,37 +1,44 @@
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import { Container } from "react-bootstrap";
-import React from "react";
-import { graphql } from "gatsby";
-import { Mapmarker } from "../components/icons";
-import { GatsbyImage } from "gatsby-plugin-image";
-import { FormattedMessage, useIntl } from "gatsby-plugin-intl";
-import filepdf from "@iconify/icons-fa-solid/file-pdf";
-import Icon from "@iconify/react";
-import { isSmallScreen } from "../utils/functions";
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import { Container } from "react-bootstrap"
+import React from "react"
+import { graphql } from "gatsby"
+import { Mapmarker } from "../components/icons"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { FormattedMessage, useIntl } from "gatsby-plugin-intl"
+import filepdf from "@iconify/icons-fa-solid/file-pdf"
+import { Icon } from "@iconify/react"
+import { isSmallScreen } from "../utils/functions"
 
 const About = ({ data }) => {
-  let intl = useIntl();
+  let intl = useIntl()
   return (
     <Layout>
       <div className="about-container">
-        <SEO title={intl.formatMessage({ id: "about_title" })} />
+        <Seo title={intl.formatMessage({ id: "about_title" })} />
 
         <section id="about" className="container">
           <Container>
             <div className="row flex">
               <div className="col m6 image" data-aos="flip-left">
-                <GatsbyImage image={data.profilePic.childImageSharp.gatsbyImageData} alt={intl.formatMessage({ id: "site_metadata_title" })}/>
+                <GatsbyImage
+                  image={data.profilePic.childImageSharp.gatsbyImageData}
+                  alt={intl.formatMessage({ id: "site_metadata_title" })}
+                />
               </div>
               <div className="col m6 vcenter" data-aos="fade-down">
-                <div dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id : 'about_intro' }) }} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: intl.formatMessage({ id: "about_intro" }),
+                  }}
+                />
                 <div className="details" data-aos="fade-up">
                   <ul>
                     {data.site.siteMetadata.contact.address && (
-                      <li className="text-tertiary item" >
-                              <span className="icon">
-                                  <Mapmarker />
-                              </span>
+                      <li className="text-tertiary item">
+                        <span className="icon">
+                          <Mapmarker />
+                        </span>
                         {data.site.siteMetadata.contact.address}
                       </li>
                     )}
@@ -39,16 +46,30 @@ const About = ({ data }) => {
                 </div>
               </div>
             </div>
-            {!isSmallScreen() && <div className="row flex">
-              <div className="col m6 hcenter" data-aos="zoom-in">
-                <embed src={data.resume.publicURL} width="1060" height="1400" type="application/pdf" />
+            {!isSmallScreen() && (
+              <div className="row flex">
+                <div className="col m6 hcenter" data-aos="zoom-in">
+                  <embed
+                    src={data.resume.publicURL}
+                    width="1060"
+                    height="1400"
+                    type="application/pdf"
+                  />
+                </div>
               </div>
-            </div>}
-            {isSmallScreen() && <div className="row flex">
-              <a className="download-resume" href={data.resume.publicURL} target="_blank" rel="noreferrer">
-                <Icon icon={filepdf} color ="#6888DF" />
-              </a>
-            </div>}
+            )}
+            {isSmallScreen() && (
+              <div className="row flex">
+                <a
+                  className="download-resume"
+                  href={data.resume.publicURL}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon icon={filepdf} color="#6888DF" />
+                </a>
+              </div>
+            )}
             <div className="main-title-text">
               <FormattedMessage id={"site_metadata_title"} />
             </div>
@@ -70,11 +91,11 @@ export const pageQuery = graphql`
       publicURL
     }
     site {
-        siteMetadata {
-          contact {
-              address
-          }
+      siteMetadata {
+        contact {
+          address
         }
+      }
     }
   }
 `

@@ -22,4 +22,4 @@ Permet la création du produit et la mise à jour des caractéristiques telles q
 
 Pour chaque ligne du fichier excel, un rapport est généré en temps réel, indiquant si la ligne a été importée correctement ou s'il y a eu une erreur.
 
-Le fichier Excel contient un ensemble spécifique de colonnes et un horodatage pour chaque ligne ajoutée ou modifiée, afin que les données soient récupérées au bon endroit et que seules les lignes nouvelles et mises à jour soient traitées, ce qui réduit considérablement le temps d'attente. 
+Le fichier Excel contient un ensemble spécifique de colonnes et un horodatage pour chaque ligne ajoutée ou modifiée, afin que les données soient récupérées au bon endroit et que seules les lignes nouvelles et mises à jour soient traitées, ce qui réduit considérablement le temps d'attente.

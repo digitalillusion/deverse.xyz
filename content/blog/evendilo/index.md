@@ -16,7 +16,7 @@ tags:
   - docker
 ---
 
-A tool to synchronize an online shop inventory from an excel file toward Woocommerce and ebay. 
+A tool to synchronize an online shop inventory from an excel file toward Woocommerce and ebay.
 
 Allows for creation of product and update of its characteristics like category, price, quantity, pictures and description directly in the excel file, then uploaded through the minimal user interface.
 

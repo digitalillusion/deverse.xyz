@@ -22,4 +22,4 @@ Consente la creazione del prodotto e l'aggiornamento di caratteristiche come cat
 
 Per ogni riga del file excel viene generato in tempo reale un report che indica se la riga è stata importata correttamente o se si è verificato un errore.
 
-Il file excel contiene un set specifico di colonne e un timestamp per ogni riga aggiunta o modificata, in modo che i dati vengano recuperati dal posto giusto e vengano elaborate solo le righe nuove e aggiornate, riducendo notevolmente i tempi di attesa. 
+Il file excel contiene un set specifico di colonne e un timestamp per ogni riga aggiunta o modificata, in modo che i dati vengano recuperati dal posto giusto e vengano elaborate solo le righe nuove e aggiornate, riducendo notevolmente i tempi di attesa.

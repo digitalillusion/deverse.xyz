@@ -15,7 +15,7 @@ tags:
   - google-cloud-platform
 ---
 
-The first remote video content factory. 
+The first remote video content factory.
 
 Brief. Pitch. Select. Produce. Save time & money.
 

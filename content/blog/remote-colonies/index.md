@@ -13,7 +13,7 @@ tags:
   - godot-engine
 ---
 
-A 2D RTS game written in Rust using Godot engine. 
+A 2D RTS game written in Rust using Godot engine.
 
 In this simple and addictive planetary conquest game, you build fleets on your home colony planet and you extract resources to build more ships. The more ships orbiting around a planet, the more the extraction rate.
 

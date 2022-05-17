@@ -13,7 +13,7 @@ tags:
   - react
 ---
 
-A simple action framework based on redux. 
+A simple action framework based on redux.
 
 It is thought for highly dynamic pages in need of real time synchronization between model and view. It aims to be generic enough to integrate with others means of synchronization (e.g: the Gatsby Node API) as well.
 

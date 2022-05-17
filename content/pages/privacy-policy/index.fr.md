@@ -1,6 +1,6 @@
 ---
-title : Politique de confidentialité
-language : fr
+title: Politique de confidentialité
+language: fr
 slug: privacy-policy
 ---
 

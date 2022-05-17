@@ -19,4 +19,4 @@ Prototipo di discoteca silenziosa, costruita su due componenti: la stazione radi
 
 Lo streaming server, realizzato con Node.js, legge la trasmissione azuracast e la propaga a tutti i client connessi, assicurandosi che ricevano tutti lo stesso istante della trasmissione simultaneamente.
 
-Infatti, il client calcola il proprio ritardo dall'origine e regola in modo adattivo l'inizio del blocco successivo in modo che tutti i flussi tendano ad essere simultanei.  
+Infatti, il client calcola il proprio ritardo dall'origine e regola in modo adattivo l'inizio del blocco successivo in modo che tutti i flussi tendano ad essere simultanei.
