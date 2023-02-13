@@ -368,7 +368,16 @@ nav ul li a:before {
 div[role="navigation"] {
   display: none;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
+  #home svg text,
+  #about .main-title-text {
+    font-size: 3.5em !important;
+  }
+
+  .intro {
+    padding-top: 4em;
+  }
+
   div[role="navigation"] {
     display: block;
   }
@@ -382,17 +391,13 @@ div[role="navigation"] {
     font-family: "Work Sans", sans-serif;
   }
 
-  #home svg text,
-  #about .main-title-text {
-    font-size: 3em !important;
-  }
-
   #about {
+    min-height: 40em;
     .image {
-      margin: 2em 0 0 0;
+      margin: 2em 0;
       left: 0em;
       width: 40%;
-      height: 13em;
+      height: 19em;
     }
 
     .item {
@@ -442,14 +447,6 @@ div[role="navigation"] {
     margin: auto !important;
   }
 
-  .home .badge-wrapper {
-    left: -50%;
-    top: -7em;
-    position: relative;
-    width: 200% !important;
-    max-width: 200% !important;
-  }
-
   .badge {
     margin: 0.5em;
   }
@@ -467,11 +464,30 @@ div[role="navigation"] {
     justify-content: space-between;
   }
 
-  .home #portfolio .flex .col *,
-  .home #technologies .flex .col * {
-    margin: 0 !important;
-    padding: 0 0.1em !important;
+  .wall .social-buttons {
+    left: 15px !important;
+
+    ul {
+      width: 60px
+    }
   }
+
+  .home {
+    #portfolio .flex .col *,
+    #technologies .flex .col * {
+      margin: 0 !important;
+      padding: 0 0.1em !important;
+    }
+
+    .badge-wrapper {
+      left: -50%;
+      top: -7em;
+      position: relative;
+      width: 200% !important;
+      max-width: 200% !important;
+    }
+  }
+
 
   #portfolio .flex .col .text-totalcount,
   #technologies .flex .col .text-totalcount {
@@ -482,19 +498,21 @@ div[role="navigation"] {
   #contact .details ul {
     margin-left: 0 !important;
   }
-
-  .seethrough {
-    height: 600px;
-  }
 }
 
 @media only screen and (max-width: 400px) {
+
+  .intro {
+    padding-top: 0em;
+  }
+
   #about {
+    min-height: 4px;
     .image {
       width: 100%;
       margin: 4em 0 0 0;
       position: inherit;
-      height: 14em;
+      height: 22em;
     }
 
     .vcenter {
@@ -527,17 +545,17 @@ div[role="navigation"] {
 
   .home .badge-wrapper {
     transform: scale(0.4);
-    left: -50%;
-    top: -22em;
+    top: -30vh;
   }
 
   #portfolio .flex .col,
   #technologies .flex .col {
     padding: 0;
-  }
 
-  .seethrough {
-    height: 500px;
+    h2 {
+      width: 100%;
+      text-align: left;
+    }
   }
 
   .row {
@@ -556,5 +574,9 @@ div[role="navigation"] {
   #portfolio .flex h2,
   #technologies .flex h2 {
     font-size: 30px !important;
+  }
+
+  article {
+    width: 100%;
   }
 }

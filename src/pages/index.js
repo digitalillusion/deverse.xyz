@@ -113,7 +113,7 @@ function IndexPage({ data }) {
                         {intl.formatMessage({ id: "site_metadata_title" })}
                       </text>
                     </mask>
-                    <linearGradient id="alpha-gradient" x2="0%" y2="100%">
+                    <linearGradient id="alpha-gradient" x2="0%" y2="95%">
                       <stop offset="70%" stopColor="white" />
                       <stop offset="80%" stopColor="lightgrey" />
                       <stop offset="90%" stopColor="grey" />

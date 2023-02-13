@@ -65,6 +65,8 @@ footer {
 
 .seethrough {
   background-color: transparent !important;
+  z-index: 1;
+  height: 100vh;
 }
 section {
   position: relative;
@@ -76,9 +78,8 @@ section {
   }
 }
 
-.seethrough {
-  z-index: 1;
-  height: 1000px;
+#technologies.seethrough {
+  padding-bottom: 0;
 }
 
 #portfolio::after,
@@ -113,6 +114,7 @@ section {
   z-index: 10;
   width: 100% !important;
   max-width: 100% !important;
+  height: 100vh;
   margin: 0 !important;
 }
 
@@ -162,7 +164,7 @@ section {
 
 .footer {
   position: relative;
-  index: 1;
+  z-index: 1;
 }
 
 .social-buttons {
@@ -309,7 +311,7 @@ footer {
 }
 
 #about {
-  overflow-y: hidden;
+  overflow: hidden;
 
   .default__container {
     position: relative;

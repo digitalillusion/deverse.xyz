@@ -37,6 +37,7 @@
   "blog_post_category_mobileapps": "Mobile apps",
   "blog_post_category_libraries": "Libraries",
   "blog_post_category_games": "Games",
+  "blog_post_category_blockchain": "Blockchain",
   "technology_using_one": "{0} is used in 1 project",
   "technology_using_many": "{0} is used in {1} projects",
   "technology_all": "All technologies"

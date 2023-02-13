@@ -22,6 +22,8 @@ import heroku from "@iconify-icons/logos/heroku-icon"
 import cassandra from "@iconify-icons/logos/cassandra"
 import gcp from "@iconify/icons-cib/google-cloud"
 import angular from "@iconify-icons/logos/angular-icon"
+import substrate from "@iconify/icons-simple-icons/paritysubstrate"
+import wasm from "@iconify-icons/logos/webassembly";
 import { useIntl } from "gatsby-plugin-intl"
 
 export const technologies = {
@@ -109,6 +111,16 @@ export const technologies = {
     color: "sand",
     name: "Google Cloud Platform",
     icon: gcp,
+  },
+  "parity-substrate": {
+    color: "lime",
+    name: "Parity Substrate",
+    icon: substrate,
+  },
+  "web-assembly": {
+    color: "purple",
+    name: "Web Assembly",
+    icon: wasm,
   },
 }
 

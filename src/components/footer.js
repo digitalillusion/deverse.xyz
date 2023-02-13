@@ -13,26 +13,28 @@ const Footer = () => {
   const location = useLocation()
   let title = intl.formatMessage({ id: "site_metadata_title" })
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="logo">
-          <Link to="/" title={title}>
-            <Logo />
-          </Link>
+    <div>
+      <footer className="footer">
+        <div className="container">
+          <div className="logo">
+            <Link to="/" title={title}>
+              <Logo />
+            </Link>
+          </div>
+          <div className="navlinks text-secondary">
+            <Navlinks />
+          </div>
+          <div className="navlinks text-secondary" style={{ marginTop: "20px" }}>
+            <FooterLinks />
+          </div>
+          <p className="text-primary f-d">
+            <FormattedMessage
+              id={"footer_copyright"}
+              values={{ 0: new Date().getFullYear(), 1: title }}
+            />
+          </p>
         </div>
-        <div className="navlinks text-secondary">
-          <Navlinks />
-        </div>
-        <div className="navlinks text-secondary" style={{ marginTop: "20px" }}>
-          <FooterLinks />
-        </div>
-        <p className="text-primary f-d">
-          <FormattedMessage
-            id={"footer_copyright"}
-            values={{ 0: new Date().getFullYear(), 1: title }}
-          />
-        </p>
-      </div>
+      </footer>
       <CookieConsent
         location="bottom"
         containerClasses="cookie-banner"
@@ -49,7 +51,7 @@ const Footer = () => {
       >
         <FormattedMessage id={"footer_cookie_consent"} />
       </CookieConsent>
-    </footer>
+    </div>
   )
 }
 
