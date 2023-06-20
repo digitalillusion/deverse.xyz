@@ -70,7 +70,7 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby build",
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby build & mkdir -p ./public/project & cp -r ./project ./public",
     "develop": "cross-env NODE_OPTIONS=--max-old-space-size=2048 gatsby clean & gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",

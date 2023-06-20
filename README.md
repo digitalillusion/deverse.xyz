@@ -7,7 +7,6 @@ See it online: [deverse.xyz](https://deverse.xyz)
 Requires installed Node.js and Yarn package manager
 
     yarn install
-    yarn build
 
 ## Run develop
 
@@ -21,4 +20,5 @@ Serve on all network interfaces
 
 ## Build static website
 
-    gatsby build
+    yarn clean
+    yarn build

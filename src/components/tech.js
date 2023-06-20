@@ -8,12 +8,10 @@ const TechSection = ({ postsByTag }) => {
   )
   return (
     <section id="technologies" className="seethrough">
-      <div data-aos="fade-up">
-        <div className="badge-wrapper">
-          {postsByTag.map((tag, index) => {
-            return <TechItem key={index} maxCount={maxCount} data={tag} />
-          })}
-        </div>
+      <div className="badge-wrapper" data-aos="fade-up" >
+        {postsByTag.map((tag, index) => {
+          return <TechItem key={index} maxCount={maxCount} data={tag} />
+        })}
       </div>
     </section>
   )

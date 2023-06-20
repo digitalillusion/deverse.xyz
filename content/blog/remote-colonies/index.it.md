@@ -8,9 +8,11 @@ category: games
 links:
   - https://github.com/digitalillusion/remote_colonies
   - https://www.youtube.com/watch?v=yD3zzcRjmIM
+  - https://deverse.xyz/project/remote-colonies
 tags:
   - rust
   - godot-engine
+  - web-assembly
 ---
 
 Un gioco RTS 2D scritto in Rust usando il motore Godot.
