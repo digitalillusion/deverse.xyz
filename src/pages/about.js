@@ -34,14 +34,12 @@ const About = ({ data }) => {
                 />
                 <div className="details" data-aos="fade-up">
                   <ul>
-                    {data.site.siteMetadata.contact.address && (
-                      <li className="text-tertiary item">
-                        <span className="icon">
-                          <Mapmarker />
-                        </span>
-                        {data.site.siteMetadata.contact.address}
-                      </li>
-                    )}
+                    <li className="text-tertiary item">
+                      <span className="icon">
+                        <Mapmarker />
+                      </span>
+                      <FormattedMessage id={"about_position"} />
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -89,13 +87,6 @@ export const pageQuery = graphql`
     }
     resume: file(relativePath: { regex: "/adriano_dalpane_resume_en.pdf/" }) {
       publicURL
-    }
-    site {
-      siteMetadata {
-        contact {
-          address
-        }
-      }
     }
   }
 `

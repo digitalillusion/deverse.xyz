@@ -57,9 +57,5 @@ module.exports = {
         url: "https://stackexchange.com/users/43213/digital-illusion",
       },
     ],
-    contact: {
-      description: ``,
-      address: "Vence, France",
-    },
   },
 }
