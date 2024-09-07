@@ -6,6 +6,7 @@ coverImage: cover.jpg
 language: fr
 category: webapps
 links:
+  - https://github.com/digitalillusion/evendilo
 tags:
   - javascript
   - gatsby

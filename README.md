@@ -12,6 +12,8 @@ Requires installed Node.js and Yarn package manager
 
     yarn start
 
+The website will be online at http://localhost:8000
+
 ## Run prod
 
 Serve on all network interfaces
@@ -22,3 +24,5 @@ Serve on all network interfaces
 
     yarn clean
     yarn build
+
+Then, deploy the content of the `public` folder to a web server.

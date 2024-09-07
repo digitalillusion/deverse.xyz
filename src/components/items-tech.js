@@ -23,7 +23,8 @@ import cassandra from "@iconify-icons/logos/cassandra"
 import gcp from "@iconify/icons-cib/google-cloud"
 import angular from "@iconify-icons/logos/angular-icon"
 import substrate from "@iconify/icons-simple-icons/paritysubstrate"
-import wasm from "@iconify-icons/logos/webassembly";
+import wasm from "@iconify-icons/logos/webassembly"
+import share from "@iconify/icons-fa-solid/share-alt"
 import { useIntl } from "gatsby-plugin-intl"
 
 export const technologies = {
@@ -121,6 +122,11 @@ export const technologies = {
     color: "purple",
     name: "Web Assembly",
     icon: wasm,
+  },
+  "delta-sharing": {
+    color: "lightseagreen",
+    name: "Delta Sharing",
+    icon: share,
   },
 }
 

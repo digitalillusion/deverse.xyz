@@ -85,7 +85,7 @@ export const pageQuery = graphql`
         gatsbyImageData(layout: CONSTRAINED)
       }
     }
-    resume: file(relativePath: { regex: "/adriano_dalpane_resume_en.pdf/" }) {
+    resume: file(relativePath: { regex: "/adriano_dalpane_cv_en.pdf/" }) {
       publicURL
     }
   }

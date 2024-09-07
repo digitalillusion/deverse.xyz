@@ -9,7 +9,7 @@ const About = ({ width }) => {
       <div className={"default__container"} style={{ width: width }}>
         <div className={"default__wrapper"}>
           <RellaxWrapper speed={isSmallScreen() ? -1.025 : -2.05}>
-            <div className="balloon" style={{ left: "50%" }}>
+            <div className="balloon" style={{ left: width * 0.5 }}>
               <Link to="/about">
                 <span className="caption">
                   <FormattedMessage id={"index_about_msg_0_caption"} />
@@ -33,7 +33,7 @@ const About = ({ width }) => {
             </div>
           </RellaxWrapper>
           <RellaxWrapper speed={isSmallScreen() ? -0.1 : -0.2}>
-            <div className="balloon" style={{ left: "-45%" }}>
+            <div className="balloon" style={{ left: -width * 0.45 }}>
               <Link to="/about">
                 <span className="caption">
                   <FormattedMessage id={"index_about_msg_2_caption"} />
