@@ -7,7 +7,6 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
 import { useIntl } from "gatsby-plugin-intl"
 
 const Seo = ({ description, meta, title }) => {
@@ -17,44 +16,45 @@ const Seo = ({ description, meta, title }) => {
   const metaDescription =
     description || intl.formatMessage({ id: "index_intro_description" })
 
+  const allMeta = [
+    {
+      name: `description`,
+      content: metaDescription,
+    },
+    {
+      property: `og:title`,
+      content: title,
+    },
+    {
+      property: `og:description`,
+      content: metaDescription,
+    },
+    {
+      property: `og:type`,
+      content: `website`,
+    },
+    {
+      name: `twitter:card`,
+      content: `summary`,
+    },
+    {
+      name: `twitter:title`,
+      content: title,
+    },
+    {
+      name: `twitter:description`,
+      content: metaDescription,
+    },
+  ].concat(meta)
+
   return (
-    <Helmet
-      htmlAttributes={{
-        lang: intl.locale,
-      }}
-      title={title}
-      titleTemplate={`%s | ${metaTitle}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <>
+      <html lang={intl.locale} />
+      <title>{`${title} | ${metaTitle}`}</title>
+      {allMeta.map((m, i) => (
+        <meta key={i} {...m} />
+      ))}
+    </>
   )
 }
 

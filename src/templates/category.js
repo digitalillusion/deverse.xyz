@@ -3,7 +3,10 @@ import { graphql } from "gatsby"
 import { Container } from "react-bootstrap"
 
 import Layout from "../components/layout"
+
 import Seo from "../components/seo"
+import GlobalHead from "../components/head"
+import { createIntl, createIntlCache, RawIntlProvider } from "react-intl"
 import PortfolioItem from "../components/items-portfolio"
 import SectionTitle from "../components/sectiontitle"
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
@@ -46,12 +49,7 @@ const CategoryTemplate = ({ data }) => {
   return (
     <Layout>
       <div className="category-container">
-        <Seo
-          title={intl.formatMessage(
-            { id: "blog_post_title" },
-            { 0: categoryTitle }
-          )}
-        />
+
 
         <section id="portfolio">
           <SectionTitle title={categoryTitle} />
@@ -90,7 +88,7 @@ const CategoryTemplate = ({ data }) => {
 export const pageQuery = graphql`
   query CategoryPage($category: String!, $language: String!) {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: {
         fields: { category: { eq: $category }, language: { eq: $language } }
       }
@@ -122,7 +120,7 @@ export const pageQuery = graphql`
     allCategories: allMarkdownRemark(
       filter: { fields: { language: { eq: $language } } }
     ) {
-      group(field: frontmatter___category, limit: 1) {
+      group(field: {frontmatter: {category: SELECT}}, limit: 1) {
         edges {
           node {
             fields {
@@ -137,5 +135,30 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export const Head = ({ data, pageContext }) => {
+  const intl = createIntl(
+    {
+      locale: pageContext.intl.language,
+      messages: pageContext.intl.messages,
+    },
+    createIntlCache()
+  )
+  const category = data.allMarkdownRemark.edges[0].node.frontmatter.category
+  let categoryTitle = intl.formatMessage({
+    id: "blog_post_category_" + category,
+  })
+  return (
+    <RawIntlProvider value={intl}>
+      <GlobalHead />
+      <Seo
+        title={intl.formatMessage(
+          { id: "blog_post_title" },
+          { 0: categoryTitle }
+        )}
+      />
+    </RawIntlProvider>
+  )
+}
 
 export default CategoryTemplate

@@ -20,7 +20,7 @@ exports.createPages = async ({ node, graphql, actions }) => {
           }
         }
         blogMarkdownRemark: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
+          sort: { frontmatter: { date: DESC } }
           filter: { fileAbsolutePath: { regex: "/.*blog.*/" } }
           limit: 1000
         ) {
@@ -39,7 +39,7 @@ exports.createPages = async ({ node, graphql, actions }) => {
           }
         }
         pageMarkdownRemark: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
+          sort: { frontmatter: { date: DESC } }
           filter: { fileAbsolutePath: { regex: "/.*pages.*/" } }
           limit: 1000
         ) {
@@ -59,7 +59,7 @@ exports.createPages = async ({ node, graphql, actions }) => {
           }
         }
         tagsGroup: allMarkdownRemark(limit: 2000) {
-          group(field: frontmatter___tags) {
+          group(field: {frontmatter: {tags: SELECT}}) {
             fieldValue
           }
         }
@@ -141,11 +141,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === "MarkdownRemark") {
-    const value = `/${
-      node.frontmatter.slug
-        ? node.frontmatter.slug
-        : slug(node.frontmatter.title)
-    }`
+    const value = `/${node.frontmatter.slug
+      ? node.frontmatter.slug
+      : slug(node.frontmatter.title)
+      }`
     createNodeField({
       name: `slug`,
       node,

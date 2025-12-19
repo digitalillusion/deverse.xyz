@@ -4,7 +4,7 @@ import "../styles/list-tech.less"
 import Link from "./link"
 import slug from "slug"
 import { InlineIcon } from "@iconify/react"
-import java from "@iconify/icons-simple-icons/java"
+import java from "@iconify/icons-simple-icons/openjdk"
 import terminal from "@iconify/icons-fa-solid/terminal"
 import javascript from "@iconify/icons-simple-icons/javascript"
 import typescript from "@iconify/icons-simple-icons/typescript"
@@ -162,9 +162,9 @@ function TechItem({ data, maxCount, icon = false }) {
     data.totalCount === 1
       ? intl.formatMessage({ id: "technology_using_one" }, { 0: tech.name })
       : intl.formatMessage(
-          { id: "technology_using_many" },
-          { 0: tech.name, 1: data.totalCount }
-        )
+        { id: "technology_using_many" },
+        { 0: tech.name, 1: data.totalCount }
+      )
 
   let scaleFactor = "" + Math.log(1 + (data.totalCount / maxCount) * 4)
   return (

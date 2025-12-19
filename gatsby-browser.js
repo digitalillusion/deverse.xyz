@@ -33,3 +33,7 @@ AOS.init({
 setTimeout(() => {
   AOS.refresh()
 }, 500)
+
+export const onRouteUpdate = () => {
+  AOS.refresh()
+}

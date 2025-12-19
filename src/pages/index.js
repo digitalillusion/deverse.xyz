@@ -1,7 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react"
+import AOS from "aos"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
+
 import Seo from "../components/seo"
+import GlobalHead from "../components/head"
+import { createIntl, createIntlCache, RawIntlProvider } from "react-intl"
 import SocialLinks from "../components/sociallinks"
 import "../styles/wall.less"
 import AboutSection from "../components/about"
@@ -16,7 +20,7 @@ function IndexPage({ data }) {
   let initialHeight = 0, initialWidth = 0;
   if (typeof window !== "undefined") {
     initialHeight = window.innerHeight
-    initialWidth =  window.innerWidth
+    initialWidth = window.innerWidth
   }
   let [winHeight, setWinHeight] = useState(initialHeight)
   let [winWidth, setWinWidth] = useState(initialWidth)
@@ -36,8 +40,8 @@ function IndexPage({ data }) {
     return wallpaper
   }, [wallpaper])
   let resizeListener = useCallback(() => {
-    const outerHeight = typeof window !== "undefined" ? window.outerHeight : 0
-    const outerWidth = typeof window !== "undefined" ? window.outerWidth : 0
+    const outerHeight = typeof window !== "undefined" ? window.innerHeight : 0
+    const outerWidth = typeof window !== "undefined" ? window.innerWidth : 0
     setWinHeight(outerHeight)
     setWinWidth(outerWidth)
   }, [setWinHeight, setWinWidth])
@@ -57,6 +61,19 @@ function IndexPage({ data }) {
       scrollListener()
     }
 
+    const aosTimer = setTimeout(() => {
+      AOS.refresh()
+    }, 1000)
+
+    return () => {
+      window.removeEventListener("resize", resizeListener)
+      window.removeEventListener("scroll", scrollListener)
+      clearTimeout(aosTimer)
+    }
+  }, [wallpaper, resizeListener, scrollListener])
+
+  useEffect(() => {
+    // Redraw SVG once to force title rendering
     for (let i = 0; i < 10; i++) {
       setTimeout(() => {
         if (mainTitle.current) {
@@ -64,12 +81,8 @@ function IndexPage({ data }) {
         }
       }, 200 * i)
     }
+  }, [])
 
-    return () => {
-      window.removeEventListener("resize", resizeListener)
-      window.removeEventListener("scroll", scrollListener)
-    }
-  }, [wallpaper, resizeListener, scrollListener])
 
   return (
     <Layout placeholder={false}>
@@ -81,56 +94,61 @@ function IndexPage({ data }) {
         />
       )}
       <section id="home" className="seethrough">
-        <Seo
-          lang={intl.locale}
-          title={intl.formatMessage({ id: "index_title" })}
-        />
+
         <div className="wall">
           <div className="intro container">
             <div
               className="main-title text-primary"
-              style={{ height: winHeight + "px" }}
+              style={{ height: winHeight ? winHeight + "px" : "100vh" }}
               ref={mainTitle}
             >
-              <div className="main-title-text" ref={mainTitle}>
+              <div className="main-title-text">
+
                 <svg>
                   <defs>
-                    <mask id="mask" x="0" y="0" width="100%" height={winHeight}>
+                    <mask id="home-mask" x="0" y="0" width="100%" height="100%">
                       <rect
-                        id="alpha"
+                        id="home-alpha"
                         x="0"
                         y="0"
                         width="100%"
-                        height={winHeight}
+                        height="100%"
+                        fill="url(#home-alpha-gradient)"
                       />
+
+
                       <text
-                        id="title"
+                        id="home-title"
                         x="50%"
                         y="0%"
                         dy={isSmallScreen() ? "15%" : "40%"}
                         textAnchor="middle"
+                        fill="black"
                       >
+
+
                         {intl.formatMessage({ id: "site_metadata_title" })}
                       </text>
                     </mask>
-                    <linearGradient id="alpha-gradient" x2="0%" y2="95%">
+                    <linearGradient id="home-alpha-gradient" x2="0%" y2="95%">
                       <stop offset="70%" stopColor="white" />
                       <stop offset="80%" stopColor="lightgrey" />
                       <stop offset="90%" stopColor="grey" />
                       <stop offset="99%" stopColor="black" />
                     </linearGradient>
                   </defs>
-                  <rect id="base" x="0" y="0" width="100%" height="100%" />
+                  <rect
+                    id="home-base"
+                    x="0"
+                    y="0"
+                    width="100%"
+                    height="100%"
+                    mask="url(#home-mask)"
+                  />
                 </svg>
+
               </div>
-              <div
-                className="main-title-subtext"
-                style={{
-                  top:
-                    (isSmallScreen() ? -0.8 * winHeight : -0.5 * winHeight) +
-                    "px",
-                }}
-              >
+              <div className="main-title-subtext">
                 <p className="tag-line text-secondary">
                   <FormattedMessage id={"index_intro_tag"} />
                 </p>
@@ -173,9 +191,9 @@ export const query = graphql`
     }
     allCategories: allMarkdownRemark(
       filter: { fields: { language: { eq: $language } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
-      group(field: frontmatter___category, limit: 1) {
+      group(field: {frontmatter: {category: SELECT}}, limit: 1) {
         totalCount
         edges {
           node {
@@ -202,9 +220,9 @@ export const query = graphql`
     }
     allTags: allMarkdownRemark(
       filter: { fields: { language: { eq: $language } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
-      group(field: frontmatter___tags, limit: 1) {
+      group(field: {frontmatter: {tags: SELECT}}, limit: 1) {
         fieldValue
         totalCount
       }
@@ -221,3 +239,19 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = ({ pageContext }) => {
+  const intl = createIntl(
+    {
+      locale: pageContext.intl.language,
+      messages: pageContext.intl.messages,
+    },
+    createIntlCache()
+  )
+  return (
+    <RawIntlProvider value={intl}>
+      <GlobalHead />
+      <Seo title={intl.formatMessage({ id: "index_title" })} />
+    </RawIntlProvider>
+  )
+}

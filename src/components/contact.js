@@ -1,4 +1,5 @@
 import React, { createRef, useEffect, useState } from "react"
+import AOS from "aos"
 import { init, sendForm } from "@emailjs/browser"
 import "../styles/contact.less"
 import SocialLinks from "./sociallinks"
@@ -40,6 +41,14 @@ const Contact = () => {
     }
     renderCaptcha()
   }, [captchaRef, intl])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      AOS.refresh()
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
 
   return (
     <section id="contact" className="container">

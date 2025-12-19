@@ -3,6 +3,8 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import GlobalHead from "../components/head"
+import { createIntl, createIntlCache, RawIntlProvider } from "react-intl"
 import { rhythm, scale } from "../utils/typography"
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
 import github from "@iconify/icons-simple-icons/github"
@@ -66,10 +68,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const intl = useIntl()
   return (
     <Layout location={location}>
-      <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+
       <section id="blog-post" className="row flex">
         <article>
           <header>
@@ -200,3 +199,23 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export const Head = ({ data, pageContext }) => {
+  const intl = createIntl(
+    {
+      locale: pageContext.intl.language,
+      messages: pageContext.intl.messages,
+    },
+    createIntlCache()
+  )
+  const post = data.markdownRemark
+  return (
+    <RawIntlProvider value={intl}>
+      <GlobalHead />
+      <Seo
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
+    </RawIntlProvider>
+  )
+}

@@ -1,6 +1,7 @@
 const themeConfig = require("./theme-config.js")
 
 module.exports = {
+  trailingSlash: "never",
   siteMetadata: themeConfig.siteMetadata,
   plugins: [
     {
@@ -9,7 +10,15 @@ module.exports = {
         templatePath: `${__dirname}/src/templates/category.js`,
       },
     },
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        sassOptions: {
+          quietDeps: true,
+          silenceDeprecations: ['import', 'legacy-js-api'],
+        },
+      },
+    },
     `gatsby-plugin-less`,
     {
       resolve: `gatsby-plugin-anchor-links`,
@@ -88,7 +97,7 @@ module.exports = {
         icon: `static/images/deverse.svg`,
       },
     },
-    `gatsby-plugin-react-helmet`,
+
     {
       resolve: `gatsby-plugin-typography`,
       options: {

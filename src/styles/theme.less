@@ -43,6 +43,7 @@ nav {
 }
 
 .text-secondary {
+
   &,
   & a {
     color: @textSecondary;
@@ -60,6 +61,7 @@ nav {
 }
 
 .text-primary {
+
   &,
   & a {
     color: @textPrimary;
@@ -114,11 +116,9 @@ h6 {
   letter-spacing: 1px;
   margin: 25px 0;
   padding: 0 45px !important;
-  background-image: linear-gradient(
-    to left,
-    @colorPrimary,
-    @colorSecondary
-  ) !important;
+  background-image: linear-gradient(to left,
+      @colorPrimary,
+      @colorSecondary ) !important;
   color: #fff !important;
   border: none !important;
 
@@ -141,11 +141,9 @@ h6 {
   position: absolute;
   width: 100%;
   height: 5px;
-  background: linear-gradient(
-    to left,
-    @colorPrimary,
-    @colorSecondary
-  ) !important;
+  background: linear-gradient(to left,
+      @colorPrimary,
+      @colorSecondary ) !important;
   bottom: -4px;
   left: 0;
 }
@@ -204,11 +202,9 @@ section {
     top: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      to left,
-      @colorPrimary,
-      @colorSecondary
-    ) !important;
+    background: linear-gradient(to left,
+        @colorPrimary,
+        @colorSecondary ) !important;
     border-radius: 5px;
   }
 }
@@ -243,6 +239,7 @@ nav ul li a:before {
 }
 
 .fill-primary {
+
   &,
   & path {
     fill: @colorPrimary;
@@ -250,6 +247,7 @@ nav ul li a:before {
 }
 
 .fill-secondary {
+
   &,
   & path {
     fill: @textSecondary;
@@ -287,6 +285,7 @@ nav ul li a:before {
   }
 
   .text-secondary {
+
     &,
     & a {
       color: @textSecondary;
@@ -295,6 +294,7 @@ nav ul li a:before {
 
   .text-tertiary,
   blockquote {
+
     &,
     & a {
       color: @textTertiary;
@@ -302,6 +302,7 @@ nav ul li a:before {
   }
 
   .text-primary {
+
     &,
     & a {
       color: @textPrimary;
@@ -341,19 +342,15 @@ nav ul li a:before {
   }
 
   .btn {
-    background-image: linear-gradient(
-      to left,
-      @colorPrimary,
-      @colorSecondary
-    ) !important;
+    background-image: linear-gradient(to left,
+        @colorPrimary,
+        @colorSecondary ) !important;
   }
 
   .pseudo-divider:after {
-    background: linear-gradient(
-      to left,
-      @colorPrimary,
-      @colorSecondary
-    ) !important;
+    background: linear-gradient(to left,
+        @colorPrimary,
+        @colorSecondary ) !important;
   }
 
   .sidebar-content {
@@ -368,14 +365,12 @@ nav ul li a:before {
 div[role="navigation"] {
   display: none;
 }
+
 @media only screen and (max-width: 900px) {
+
   #home svg text,
   #about .main-title-text {
     font-size: 3.5em !important;
-  }
-
-  .intro {
-    padding-top: 4em;
   }
 
   div[role="navigation"] {
@@ -393,6 +388,7 @@ div[role="navigation"] {
 
   #about {
     min-height: 40em;
+
     .image {
       margin: 2em 0;
       left: 0em;
@@ -434,6 +430,7 @@ div[role="navigation"] {
       }
     }
   }
+  
 
   #portfolio .item-category h2.text-primary,
   #technologies .item-category h2.text-primary,
@@ -473,6 +470,7 @@ div[role="navigation"] {
   }
 
   .home {
+
     #portfolio .flex .col *,
     #technologies .flex .col * {
       margin: 0 !important;
@@ -509,6 +507,7 @@ div[role="navigation"] {
 
   #about {
     min-height: 4px;
+
     .image {
       width: 100%;
       margin: 4em 0 0 0;
@@ -534,6 +533,7 @@ div[role="navigation"] {
         font-size: 1.2em;
       }
     }
+
     .main-title-text {
       margin-top: 0.4em;
       height: 2em;

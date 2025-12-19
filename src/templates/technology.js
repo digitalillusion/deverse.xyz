@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Seo from "../components/seo"
+import GlobalHead from "../components/head"
+import { createIntl, createIntlCache, RawIntlProvider } from "react-intl"
 import Layout from "../components/layout"
 import SectionTitle from "../components/sectiontitle"
 import { Container } from "react-bootstrap"
@@ -16,17 +18,17 @@ const Technology = ({ pageContext, data }) => {
   const tagHeader =
     totalCount === 1
       ? intl.formatMessage(
-          { id: "technology_using_one" },
-          { 0: technologies[tag].name }
-        )
+        { id: "technology_using_one" },
+        { 0: technologies[tag].name }
+      )
       : intl.formatMessage(
-          { id: "technology_using_many" },
-          { 0: technologies[tag].name, 1: totalCount }
-        )
+        { id: "technology_using_many" },
+        { 0: technologies[tag].name, 1: totalCount }
+      )
   return (
     <Layout>
       <div className="category-container">
-        <Seo title={tagHeader} />
+
         <section id="technologies" className="container">
           <SectionTitle title={tagHeader} />
           <Container>
@@ -85,7 +87,7 @@ export const pageQuery = graphql`
   query ($tag: String!, $language: String!) {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: {
         frontmatter: { tags: { in: [$tag] }, language: { eq: $language } }
       }
@@ -115,3 +117,33 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export const Head = ({ data, pageContext }) => {
+  const intl = createIntl(
+    {
+      locale: pageContext.intl.language,
+      messages: pageContext.intl.messages,
+    },
+    createIntlCache()
+  )
+  const { tag } = pageContext
+  const { totalCount } = data.allMarkdownRemark
+
+  const tagHeader =
+    totalCount === 1
+      ? intl.formatMessage(
+        { id: "technology_using_one" },
+        { 0: technologies[tag].name }
+      )
+      : intl.formatMessage(
+        { id: "technology_using_many" },
+        { 0: technologies[tag].name, 1: totalCount }
+      )
+
+  return (
+    <RawIntlProvider value={intl}>
+      <GlobalHead />
+      <Seo title={tagHeader} />
+    </RawIntlProvider>
+  )
+}
