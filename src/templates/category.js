@@ -8,7 +8,6 @@ import Seo from "../components/seo"
 import GlobalHead from "../components/head"
 import { createIntl, createIntlCache, RawIntlProvider } from "react-intl"
 import PortfolioItem from "../components/items-portfolio"
-import SectionTitle from "../components/sectiontitle"
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
 
 const NavBlock = ({ currentCategory, allCategories }) => {
@@ -22,7 +21,7 @@ const NavBlock = ({ currentCategory, allCategories }) => {
               return null
             }
             return (
-              <li>
+              <li key={node.fields.categorySlug}>
                 <Link
                   to={node.fields.categorySlug}
                   rel="prev"
@@ -52,7 +51,7 @@ const CategoryTemplate = ({ data }) => {
 
 
         <section id="portfolio">
-          <SectionTitle title={categoryTitle} />
+          <h2 className="section-title">{categoryTitle}</h2>
           <Container>
             <header>
               <NavBlock
@@ -60,24 +59,19 @@ const CategoryTemplate = ({ data }) => {
                 allCategories={data.allCategories}
               />
             </header>
-
-            {data.allMarkdownRemark.edges.map((node, index) => {
-              return (
-                <PortfolioItem
-                  noSeo
-                  key={index}
-                  col={index % 2 === 1 ? "col-right" : "col-left"}
-                  aos={index % 2 === 1 ? "fade-left" : "fade-right"}
-                  data={node}
-                />
-              )
-            })}
-            <footer>
-              <NavBlock
-                currentCategory={category}
-                allCategories={data.allCategories}
-              />
-            </footer>
+            <div className="portfolio-grid">
+              {data.allMarkdownRemark.edges.map((node, index) => {
+                return (
+                  <PortfolioItem
+                    noSeo
+                    key={index}
+                    col={index % 2 === 1 ? "col-right" : "col-left"}
+                    aos="fade-up"
+                    data={node}
+                  />
+                )
+              })}
+            </div>
           </Container>
         </section>
       </div>

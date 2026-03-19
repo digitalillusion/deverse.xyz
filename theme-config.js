@@ -3,7 +3,8 @@ module.exports = {
   siteMetadata: {
     logo: `/images/deverse.svg`,
     icon: `/images/deverse.svg`,
-    author: `@digitalillusion`,
+    author: `deverse.xyz`,
+
     darkmode: true,
     switchTheme: true,
     siteUrl: `https://deverse.xyz/`,
@@ -47,7 +48,8 @@ module.exports = {
         url: "https://github.com/digitalillusion",
       },
       {
-        name: "Linkedin",
+        name: "LinkedIn",
+
         icon: "/images/linkedin.svg",
         url: "https://www.linkedin.com/in/adriano-dalpane/",
       },

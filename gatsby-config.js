@@ -1,7 +1,7 @@
 const themeConfig = require("./theme-config.js")
 
 module.exports = {
-  trailingSlash: "never",
+  trailingSlash: "never", // Refresh: 2026-03-19T17:15:00
   siteMetadata: themeConfig.siteMetadata,
   plugins: [
     {

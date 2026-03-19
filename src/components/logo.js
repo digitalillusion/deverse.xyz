@@ -14,7 +14,6 @@ const Logo = () => {
   `)
   return (
     <img
-      className="logo"
       src={query.site.siteMetadata.logo}
       alt={query.site.siteMetadata.title}
     />

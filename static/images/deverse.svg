@@ -1,16 +1,23 @@
-<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1"
-     width="110pt" viewBox="185 50 110 110" height="110pt" xmlns="http://www.w3.org/2000/svg"><defs xmlns="http://www.w3.org/1999/xhtml"><style type="text/css"><![CDATA[]]></style></defs><defs xmlns="http://www.w3.org/1999/xhtml"><style type="text/css"></style></defs><defs xmlns="http://www.w3.org/1999/xhtml"><style type="text/css"></style></defs>
-  <g id="surface2">
-    
-    <path d="M 212.648438 97.449219 L 239.250000 73.199219 L 239.250000 50.851562 L 212.648438 97.449219 " style=" stroke:none;fill-rule:evenodd;fill:rgb(0, 223, 0);fill-opacity:1;"/>
-    <path d="M 266.148438 97.398438 L 239.398438 50.601562 L 239.300781 50.800781 L 239.300781 73.148438 L 239.398438 73.050781 L 266.148438 97.398438 " style=" stroke:none;fill-rule:evenodd;fill:rgb(0,158,0);fill-opacity:1;"/>
-    
-    <path d="M 266.351562 98.101562 L 274.148438 133.250000 L 293.550781 144.351562 L 266.351562 98.101562 " style=" stroke:none;fill-rule:evenodd;fill:rgb(0,143,254);fill-opacity:1;"/>
-    <path d="M 239.800781 144.500000 L 293.699219 144.550781 L 293.601562 144.351562 L 274.148438 133.250000 L 274.199219 133.398438 L 239.800781 144.500000 " style=" stroke:none;fill-rule:evenodd;fill:rgb(0,119,254);fill-opacity:1;"/>
-    
-    <path d="M 212.199219 98.101562 L 204.398438 133.250000 L 185.000000 144.351562 L 212.199219 98.101562 " style=" stroke:none;fill-rule:evenodd;fill:rgb(225,0,0);fill-opacity:1;"/>
-    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(255,0,34);fill-opacity:1;" d="M 238.750000 144.500000 L 184.851562 144.550781 L 184.949219 144.351562 L 204.398438 133.250000 L 204.351562 133.398438 L 238.750000 144.500000 "/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="deverse logo">
+  <defs>
+    <linearGradient id="boltPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="boltGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="boltGray" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4D4D8"/>
+      <stop offset="100%" stop-color="#71717A"/>
+    </linearGradient>
+  </defs>
+
+  <g fill-rule="evenodd">
+    <!-- Base Z-like hooked ribbon, then rotated 3-way -->
+    <path fill="url(#boltPurple)" d="M120 30L160 30L136 72L168 72L148 108L108 108L128 72L96 72Z"/>
+    <path fill="url(#boltGreen)" transform="rotate(120 128 128)" d="M120 30L160 30L136 72L168 72L148 108L108 108L128 72L96 72Z"/>
+    <path fill="url(#boltGray)" transform="rotate(-120 128 128)" d="M120 30L160 30L136 72L168 72L148 108L108 108L128 72L96 72Z"/>
   </g>
-  
 </svg>

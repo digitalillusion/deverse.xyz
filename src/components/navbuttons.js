@@ -56,19 +56,12 @@ function ThemeSwitchButton() {
           onClick={switchTheme}
           onKeyDown={switchTheme}
         >
-          <div
-            title="Switch to Dark Mode"
-            data-switch-to="dark"
-            className={!hasDarkMode() ? "active" : ""}
-          >
-            <Moon />
-          </div>
-          <div
-            title="Switch to Light Mode"
-            data-switch-to="light"
-            className={hasDarkMode() ? "active" : ""}
-          >
-            <Sun />
+          <div className="switch-track">
+            <div className="track-icon moon"><Moon /></div>
+            <div className="track-icon sun"><Sun /></div>
+            <div className={`knob ${hasDarkMode() ? "dark" : "light"}`}>
+              {hasDarkMode() ? <Moon /> : <Sun />}
+            </div>
           </div>
         </div>
       </li>

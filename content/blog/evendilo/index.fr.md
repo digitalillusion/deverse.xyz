@@ -7,6 +7,7 @@ language: fr
 category: webapps
 links:
   - https://github.com/digitalillusion/evendilo
+  - https://github.com/digitalillusion/evendilo-ui
 tags:
   - javascript
   - gatsby

@@ -5,8 +5,8 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import GlobalHead from "../components/head"
 import { createIntl, createIntlCache, RawIntlProvider } from "react-intl"
-import { rhythm, scale } from "../utils/typography"
 import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
+
 import github from "@iconify/icons-simple-icons/github"
 import youtube from "@iconify/icons-simple-icons/youtube"
 import googleplay from "@iconify/icons-fa-brands/google-play"
@@ -68,102 +68,80 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const intl = useIntl()
   return (
     <Layout location={location}>
-
-      <section id="blog-post" className="row flex">
-        <article>
-          <header>
-            <h1
-              style={{
-                marginTop: rhythm(1),
-                marginBottom: 0,
-              }}
-            >
-              {post.frontmatter.title}
-            </h1>
-            <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(1),
-              }}
-            >
+      <div className="project-detail-page">
+        <section className="container section-padding">
+          <div className="project-header" data-aos="fade-up">
+            <NavBlock pageContext={pageContext} post={post} />
+            <h1 className="project-title">{post.frontmatter.title}</h1>
+            <p className="project-date">
               {intl.formatDate(post.frontmatter.date, {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
             </p>
-            <NavBlock pageContext={pageContext} post={post} />
-          </header>
-          <div className="blog-post-row">
-            <div className="blog-post-lcol" data-aos="zoom-in">
-              <GatsbyImage
-                className="blog-post-cover"
-                image={
-                  post.frontmatter.coverImage.childImageSharp.gatsbyImageData
-                }
-                alt={post.frontmatter.title}
-              />
-            </div>
-            <div className="blog-post-rcol" data-aos="zoom">
-              <div
-                className="blog-post-content"
-                dangerouslySetInnerHTML={{ __html: post.html }}
-              />
-            </div>
           </div>
-          <div className="blog-post-row">
-            <div className="blog-post-lcol">
-              <div className="links">
-                {post.frontmatter.links &&
-                  post.frontmatter.links.map(link => {
-                    let icon
-                    if (link.indexOf("github.com") > 0) {
-                      icon = github
-                    } else if (link.indexOf("youtube.com") > 0) {
-                      icon = youtube
-                    } else if (link.indexOf("play.google.com") > 0) {
-                      icon = googleplay
-                    } else {
-                      icon = linkout
-                    }
-                    return (
-                      <a
-                        key={icon}
-                        href={link}
-                        title={link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <Icon icon={icon} color="#6888DF" />
-                      </a>
-                    )
-                  })}
+
+          <div className="project-grid">
+            <div className="project-main-content">
+              <div className="glass-card content-card" data-aos="fade-up">
+                <GatsbyImage
+                  className="project-cover"
+                  image={post.frontmatter.coverImage.childImageSharp.gatsbyImageData}
+                  alt={post.frontmatter.title}
+                />
+                <div
+                  className="project-body"
+                  dangerouslySetInnerHTML={{ __html: post.html }}
+                />
               </div>
             </div>
-            <div className="blog-post-rcol">
-              <div className="badge-wrapper">
-                {post.frontmatter.tags.map((tag, index) => {
-                  return (
+
+            <aside className="project-sidebar">
+              <div className="glass-card sidebar-card" data-aos="fade-left">
+                <h3 className="sidebar-title">
+                  <FormattedMessage id="blog_post_links" />
+                </h3>
+                <div className="project-links">
+                  {post.frontmatter.links &&
+                    post.frontmatter.links.map(link => {
+                      let icon
+                      if (link.indexOf("github.com") > 0) icon = github
+                      else if (link.indexOf("youtube.com") > 0) icon = youtube
+                      else if (link.indexOf("play.google.com") > 0) icon = googleplay
+                      else icon = linkout
+                      
+                      return (
+                        <a key={link} href={link} target="_blank" rel="noreferrer" className="link-item">
+                          <Icon icon={icon} className="link-icon" />
+                          <span className="link-text">{new URL(link).hostname}</span>
+                        </a>
+                      )
+                    })}
+                </div>
+
+                <h3 className="sidebar-title mt-4">
+                  <FormattedMessage id="blog_post_tags" />
+                </h3>
+                <div className="project-tags">
+                  {post.frontmatter.tags.map((tag, index) => (
                     <TechItem
                       key={index}
-                      maxCount={1}
+                      icon
+                      compact
                       data={{ fieldValue: tag, totalCount: 1 }}
-                      icon={true}
                     />
-                  )
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
+            </aside>
           </div>
-          <footer>
-            <NavBlock pageContext={pageContext} post={post} />
-          </footer>
-        </article>
-      </section>
+        </section>
+      </div>
     </Layout>
   )
 }
+
 
 export default BlogPostTemplate
 

@@ -11,9 +11,11 @@ export default function Page({ data }) {
   return (
     <Layout>
 
-      <section id={frontmatter.slug} className="row flex">
-        <h3>{frontmatter.title}</h3>
-        <div className="page" dangerouslySetInnerHTML={{ __html: html }} />
+      <section id={frontmatter.slug} className="page-template row flex">
+        <div className="container">
+          <h3>{frontmatter.title}</h3>
+          <div className="page" dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
       </section>
     </Layout>
   )

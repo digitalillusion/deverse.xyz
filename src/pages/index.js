@@ -7,7 +7,6 @@ import Seo from "../components/seo"
 import GlobalHead from "../components/head"
 import { createIntl, createIntlCache, RawIntlProvider } from "react-intl"
 import SocialLinks from "../components/sociallinks"
-import "../styles/wall.less"
 import AboutSection from "../components/about"
 import PortfolioSection from "../components/portfolio"
 import TechSection from "../components/tech"
@@ -17,157 +16,57 @@ import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
 import { isSmallScreen } from "../utils/functions"
 
 function IndexPage({ data }) {
-  let initialHeight = 0, initialWidth = 0;
-  if (typeof window !== "undefined") {
-    initialHeight = window.innerHeight
-    initialWidth = window.innerWidth
-  }
-  let [winHeight, setWinHeight] = useState(initialHeight)
-  let [winWidth, setWinWidth] = useState(initialWidth)
-
-  let [wallpaper, setWallpaper] = useState(null)
-  let mainTitle = useRef()
   const intl = useIntl()
 
-  let chooseWallpaper = useCallback(() => {
-    let documentHeight = document.body.offsetHeight
-    let scroll = window.innerHeight + window.scrollY
-    if (scroll < documentHeight * 0.6 && wallpaper !== "wall") {
-      return "wall"
-    } else if (scroll >= documentHeight * 0.6 && wallpaper !== "wall2") {
-      return "wall2"
-    }
-    return wallpaper
-  }, [wallpaper])
-  let resizeListener = useCallback(() => {
-    const outerHeight = typeof window !== "undefined" ? window.innerHeight : 0
-    const outerWidth = typeof window !== "undefined" ? window.innerWidth : 0
-    setWinHeight(outerHeight)
-    setWinWidth(outerWidth)
-  }, [setWinHeight, setWinWidth])
-  let scrollListener = useCallback(
-    () => setWallpaper(chooseWallpaper()),
-    [chooseWallpaper]
-  )
-
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", resizeListener)
-      window.addEventListener("scroll", scrollListener)
-    }
-
-    if (wallpaper == null) {
-      resizeListener()
-      scrollListener()
-    }
-
     const aosTimer = setTimeout(() => {
       AOS.refresh()
     }, 1000)
 
     return () => {
-      window.removeEventListener("resize", resizeListener)
-      window.removeEventListener("scroll", scrollListener)
       clearTimeout(aosTimer)
-    }
-  }, [wallpaper, resizeListener, scrollListener])
-
-  useEffect(() => {
-    // Redraw SVG once to force title rendering
-    for (let i = 0; i < 10; i++) {
-      setTimeout(() => {
-        if (mainTitle.current) {
-          mainTitle.current.innerHTML += ""
-        }
-      }, 200 * i)
     }
   }, [])
 
 
+
   return (
     <Layout placeholder={false}>
-      {wallpaper && (
-        <GatsbyImage
-          className="wallpaper"
-          image={data[wallpaper].childImageSharp.gatsbyImageData}
-          alt="wallpaper"
-        />
-      )}
-      <section id="home" className="seethrough">
-
-        <div className="wall">
-          <div className="intro container">
-            <div
-              className="main-title text-primary"
-              style={{ height: winHeight ? winHeight + "px" : "100vh" }}
-              ref={mainTitle}
-            >
-              <div className="main-title-text">
-
-                <svg>
-                  <defs>
-                    <mask id="home-mask" x="0" y="0" width="100%" height="100%">
-                      <rect
-                        id="home-alpha"
-                        x="0"
-                        y="0"
-                        width="100%"
-                        height="100%"
-                        fill="url(#home-alpha-gradient)"
-                      />
-
-
-                      <text
-                        id="home-title"
-                        x="50%"
-                        y="0%"
-                        dy={isSmallScreen() ? "15%" : "40%"}
-                        textAnchor="middle"
-                        fill="black"
-                      >
-
-
-                        {intl.formatMessage({ id: "site_metadata_title" })}
-                      </text>
-                    </mask>
-                    <linearGradient id="home-alpha-gradient" x2="0%" y2="95%">
-                      <stop offset="70%" stopColor="white" />
-                      <stop offset="80%" stopColor="lightgrey" />
-                      <stop offset="90%" stopColor="grey" />
-                      <stop offset="99%" stopColor="black" />
-                    </linearGradient>
-                  </defs>
-                  <rect
-                    id="home-base"
-                    x="0"
-                    y="0"
-                    width="100%"
-                    height="100%"
-                    mask="url(#home-mask)"
-                  />
-                </svg>
-
-              </div>
-              <div className="main-title-subtext">
-                <p className="tag-line text-secondary">
-                  <FormattedMessage id={"index_intro_tag"} />
-                </p>
-                <p className="caption text-tertiary">
-                  <FormattedMessage id={"index_intro_description"} />
-                </p>
-                <Link to="/#portfolio" className="btn">
-                  <FormattedMessage id={"index_intro_works"} />
-                </Link>
-              </div>
-            </div>
+      <section id="home" className="main-title v2">
+        <div className="hero-content" data-aos="fade-up" data-aos-duration="1200">
+          <div className="hero-badge">
+            <span className="badge-dot"></span>
+            <FormattedMessage id="index_intro_tag" />
+            <span className="badge-dot badge-dot-right"></span>
           </div>
-          <div className="social-buttons">
+          <h1 className="hero-headline">
+            {intl.formatMessage({ id: "site_metadata_title" })}
+          </h1>
+          <p className="hero-description">
+            <FormattedMessage id="index_intro_description" />
+          </p>
+          <div className="hero-social">
             <SocialLinks />
+          </div>
+          <div className="cta-group">
+            <Link to="/#contact" className="btn secondary">
+              <FormattedMessage id="navlinks_contact" />
+            </Link>
+            <Link to="/#portfolio" className="btn primary glow">
+              <FormattedMessage id="index_intro_works" />
+            </Link>
+          </div>
+        </div>
+        <div className="scroll-indicator-v2">
+          <div className="mouse">
+            <div className="wheel"></div>
           </div>
         </div>
       </section>
+
+
       <div className="home">
-        <AboutSection width={winWidth} />
+        <AboutSection />
         <PortfolioSection postsByCategory={data.allCategories.group} />
         <TechSection postsByTag={data.allTags.group} />
         <Contact />

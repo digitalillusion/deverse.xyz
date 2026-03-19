@@ -1,6 +1,5 @@
 import React from "react"
 
-import "../styles/list-tech.less"
 import Link from "./link"
 import slug from "slug"
 import { InlineIcon } from "@iconify/react"
@@ -130,7 +129,7 @@ export const technologies = {
   },
 }
 
-function TechItem({ data, maxCount, icon = false }) {
+function TechItem({ data, maxCount, icon = false, compact = false }) {
   const intl = useIntl()
   let tech = {
     color: "steel",
@@ -143,15 +142,15 @@ function TechItem({ data, maxCount, icon = false }) {
 
   if (icon) {
     return (
-      <article className={`badge badge-icon ${tech.color}`}>
+      <article className={`tech-badge${compact ? " compact" : ""}`}>
         <Link
           to={`/technologies/${slug(tech.name)}`}
           title={tech.name}
           aria-label={tech.name}
           style={{ color: "inherit" }}
         >
-          <div className="rounded">
-            <InlineIcon icon={tech.icon} />
+          <div className="rounded" style={{ color: tech.color }}>
+            <InlineIcon icon={tech.icon} width="100%" height="100%" />
           </div>
         </Link>
       </article>
@@ -166,27 +165,25 @@ function TechItem({ data, maxCount, icon = false }) {
         { 0: tech.name, 1: data.totalCount }
       )
 
-  let scaleFactor = "" + Math.log(1 + (data.totalCount / maxCount) * 4)
+  let scaleFactor = "" + (1 + (data.totalCount / maxCount) * 0.2)
   return (
-    <span className="tooltip" data-direction="bottom">
-      <span className="tooltip__initiator">
-        <article
-          className={`badge ${tech.color}`}
-          style={{ transform: `scale(${scaleFactor})` }}
-          data-aos="flip-up"
+    <span className="tooltip">
+      <article
+        className="tech-badge"
+        style={{ transform: `scale(${scaleFactor})` }}
+        data-aos="flip-up"
+      >
+        <Link
+          to={`/technologies/${slug(tech.name)}`}
+          title={tech.name}
+          aria-label={tech.name}
+          style={{ color: "inherit" }}
         >
-          <Link
-            to={`/technologies/${slug(tech.name)}`}
-            title={tech.name}
-            aria-label={tech.name}
-            style={{ color: "inherit" }}
-          >
-            <div className="rounded">
-              <InlineIcon icon={tech.icon} />
-            </div>
-          </Link>
-        </article>
-      </span>
+          <div className="rounded" style={{ color: tech.color }}>
+            <InlineIcon icon={tech.icon} width="100%" height="100%" />
+          </div>
+        </Link>
+      </article>
       <div className="tooltip__item">{tagPopup}</div>
     </span>
   )

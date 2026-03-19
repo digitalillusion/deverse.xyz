@@ -112,7 +112,7 @@ const NavLinks = () => {
     )
   })
 
-  return <ul className="navbar-links">{list}</ul>
+  return <ul className="nav-links">{list}</ul>
 }
 
 export default NavLinks
